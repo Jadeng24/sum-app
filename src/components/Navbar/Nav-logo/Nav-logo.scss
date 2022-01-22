@@ -1,0 +1,10 @@
+.Nav-logo {
+	margin-left: 4%;
+	a.logo-holder {
+		text-decoration: none;
+		color: #222;
+		&:hover {
+			transform: scale(0.8);
+		}
+	}
+}
