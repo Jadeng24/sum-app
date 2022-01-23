@@ -8,44 +8,50 @@ import Home3 from './../../assets/home_boat_3.jpeg';
 import Home4 from './../../assets/home_boat_4.jpeg';
 import Home5 from './../../assets/home_boat_5.jpeg';
 
+import './Home.scss';
 const Home = () => {
 	const homeSections = [
 		{
-			background: Home1,
+			backgroundImg: Home1,
+			title: 'Inflatable boats',
+			subtitle: 'Choose your adventure',
+			link: Pages.BoatBuilder,
+		},
+		{
+			backgroundImg: Home2,
 			title: 'Aluminum boats',
+			subtitle: 'Choose your adventure',
 			link: Pages.BoatBuilder,
 		},
 		{
-			background: Home2,
-			title: 'Inflatable boats',
-			link: Pages.BoatBuilder,
-		},
-		{
-			background: Home3,
+			backgroundImg: Home3,
 			title: 'Aluminum boats',
+			subtitle: 'Choose your adventure',
 			link: Pages.BoatBuilder,
 		},
 		{
-			background: Home4,
+			backgroundImg: Home4,
 			title: 'Inflatable boats',
+			subtitle: 'Choose your adventure',
 			link: Pages.BoatBuilder,
 		},
 		{
-			background: Home5,
-			title: 'Inflatable boats',
+			backgroundImg: Home5,
+			title: 'Aluminum boats',
+			subtitle: 'Choose your adventure',
 			link: Pages.BoatBuilder,
 		},
 	];
 	return (
-		<div className="Page Home">
-			{homeSections.map((section, key) => {
+		<div className="Home column">
+			{homeSections.map((section, key) => (
 				<HomeSection
 					title={section.title}
-					background={section.background}
+					backgroundImg={section.backgroundImg}
+					subtitle={section.subtitle}
 					link={section.link}
-				/>;
-			})}
-			<h2>Welcome to Sport Utility Marine</h2>
+				/>
+			))}
 		</div>
 	);
 };
