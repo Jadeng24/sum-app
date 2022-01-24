@@ -48,7 +48,7 @@ const Home = () => {
 	return (
 		<div className="Home column">
 			<div className="login" onClick={signInWithGoogle}>
-				Sign in with Google
+				Sign in with Google!
 				{localStorage.getItem('profilePic') && (
 					<img
 						src={localStorage.getItem('profilePic') || ''}
