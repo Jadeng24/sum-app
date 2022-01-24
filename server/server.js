@@ -26,7 +26,7 @@ app.post('/api/user', (req, res) => {
 if (process.env.NODE_ENV === 'production') {
 	app.use(express.static('build'));
 	app.get('*', (req, res) => {
-		req.sendFile(path.resove(__dirname, 'build', '../build/index.html'));
+		req.sendFile(path.resolve(__dirname, 'build', '../build/index.html'));
 	});
 } else {
 	app.get('/', (req, res) => {
