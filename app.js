@@ -15,4 +15,4 @@ if (process.env.NODE_ENV === 'production') {
 app.listen(port, (err) => {
 	if (err) console.log(err);
 	console.log('Listing on port: ', port);
-})
+});
