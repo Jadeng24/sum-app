@@ -13,7 +13,7 @@ const Home = () => {
 	const homeSections = [
 		{
 			backgroundImg: Home1,
-			title: 'Inflatable boats',
+			title: 'Inflatable boatss',
 			subtitle: 'Choose your adventure',
 			link: Pages.BoatBuilder,
 		},
