@@ -2,7 +2,12 @@
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import {
+	FacebookAuthProvider,
+	getAuth,
+	GoogleAuthProvider,
+	signInWithPopup,
+} from 'firebase/auth';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -26,8 +31,24 @@ export const auth = getAuth(app);
 
 const gmailProvider = new GoogleAuthProvider();
 
+const facebookProvider = new FacebookAuthProvider();
+
 export const signInWithGoogle = () => {
 	signInWithPopup(auth, gmailProvider).then(
+		(response) => {
+			console.log(response.user);
+			const name = response.user.displayName || '';
+			const pic = response.user.photoURL || '';
+			localStorage.setItem('currentUser', name);
+			localStorage.setItem('profilePic', pic);
+		},
+		(error) => {
+			console.log(error);
+		}
+	);
+};
+export const signInWithFacebook = () => {
+	signInWithPopup(auth, facebookProvider).then(
 		(response) => {
 			console.log(response.user);
 			const name = response.user.displayName || '';
