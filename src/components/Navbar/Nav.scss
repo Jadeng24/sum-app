@@ -3,15 +3,13 @@ nav {
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
-	position: absolute;
+	position: fixed;
 	top: 0;
-	// margin-bottom: 16px;
-	// background: white;
 	backdrop-filter: blur(20px);
 	background: rgba(255, 255, 255, 0.336);
 	box-sizing: border-box; // maintain width at 100%;
 
-	z-index: 100;
+	// z-index: 2;
 	.nav-links {
 		height: 70px;
 		display: flex;
