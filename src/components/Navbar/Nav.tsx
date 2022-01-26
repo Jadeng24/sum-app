@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import LoginModal from '../Login-Modal/Login-Modal';
 
 import NavLogo from './Nav-logo/Nav-logo';
+import { signInWithGoogle } from '../../Firebase/Firebase';
 
 import './Nav.scss';
 
@@ -28,19 +29,31 @@ const Nav = () => {
 				<Link to="/shop">Shop</Link>
 				<Link to="/about">About</Link>
 				<Link to="/contact">Contact</Link>
+
+				<div>
+					{/* // modal  */}
+
+					{localStorage.getItem('currentUser') ? (
+						<img
+							onClick={openModal}
+							className="profilePic clickable"
+							src={localStorage.getItem('profilePic') || ''}
+							alt="googlepic"
+						/>
+					) : (
+						<button onClick={openModal}>Open Modal</button>
+					)}
+				</div>
+
 				<Link className="build-link" to="/boat-builder">
 					Build
 				</Link>
 
-				<div>
-					<button onClick={openModal}>Open Modal</button>
-					{/* // modal  */}
-					<LoginModal
-						modalIsOpen={modalIsOpen}
-						afterOpenModal={afterOpenModal}
-						closeModal={closeModal}
-					/>
-				</div>
+				<LoginModal
+					modalIsOpen={modalIsOpen}
+					afterOpenModal={afterOpenModal}
+					closeModal={closeModal}
+				/>
 			</div>
 		</nav>
 	);

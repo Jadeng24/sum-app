@@ -9,7 +9,6 @@ import Home4 from './../../assets/home_boat_4.jpeg';
 import Home5 from './../../assets/home_boat_5.jpeg';
 
 import './Home.scss';
-import { signInWithGoogle } from '../../Firebase/Firebase';
 
 const Home = () => {
 	const homeSections = [
@@ -47,15 +46,6 @@ const Home = () => {
 
 	return (
 		<div className="Home column">
-			<div className="login" onClick={signInWithGoogle}>
-				Sign in with Google!
-				{localStorage.getItem('profilePic') && (
-					<img
-						src={localStorage.getItem('profilePic') || ''}
-						alt="googlepic"
-					/>
-				)}
-			</div>
 			{homeSections.map((section, key) => (
 				<HomeSection
 					title={section.title}
