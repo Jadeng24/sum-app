@@ -45,16 +45,16 @@ const NavLinks = () => {
 			<div>
 				{/* // modal  */}
 
-				{/* {localStorage.getItem('currentUser') ? (
-						<img
-							onClick={openModal}
-							className="profilePic clickable"
-							src={localStorage.getItem('profilePic') || ''}
-							alt="googlepic"
-						/>
-					) : (
-						<button onClick={openModal}>Open Modal</button>
-					)} */}
+				{localStorage.getItem('currentUser') ? (
+					<img
+						onClick={openModal}
+						className="profilePic clickable"
+						src={localStorage.getItem('profilePic') || ''}
+						alt="googlepic"
+					/>
+				) : (
+					<button onClick={openModal}>Open Modal</button>
+				)}
 			</div>
 
 			<NavLink className="build-link" to="/boat-builder">

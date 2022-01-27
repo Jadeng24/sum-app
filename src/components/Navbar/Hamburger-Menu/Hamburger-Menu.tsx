@@ -6,7 +6,6 @@ const HamburgerMenu = () => {
 
 	const toggleClass = () => {
 		setActive(!isActive);
-		console.log('clicked');
 	};
 	return (
 		<div id="menu" onClick={toggleClass} className={isActive ? 'open' : ''}>
