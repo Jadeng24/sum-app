@@ -7,17 +7,18 @@
 		align-items: center;
 		transition: 0.2s;
 		img.logo {
-			height: 55px;
+			height: 50px;
 			&.mobile-logo {
 				height: 15px;
 			}
-			&.tablet-logo {
-				height: 40px;
-			}
 		}
 		img.logo-text {
-			width: 100%;
-			max-width: 250px;
+			&.mobile-text {
+				width: 190px;
+			}
+			&.tablet-text {
+				width: 300px;
+			}
 		}
 		&:hover {
 			transform: scale(0.96);

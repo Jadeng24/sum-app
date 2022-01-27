@@ -24,6 +24,7 @@ const Nav = () => {
 			</Desktop>
 
 			<TabletAndMobile>
+				{/* Add login */}
 				<HamburgerMenu
 					isActive={isActive}
 					onChange={(value: boolean) => {

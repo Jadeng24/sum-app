@@ -43,8 +43,6 @@ const NavLinks = () => {
 			</NavLink>
 
 			<div>
-				{/* // modal  */}
-
 				{localStorage.getItem('currentUser') ? (
 					<img
 						onClick={openModal}

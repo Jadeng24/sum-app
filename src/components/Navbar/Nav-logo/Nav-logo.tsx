@@ -7,6 +7,8 @@ import { TabletAndMobile } from '../../Devices/TabletAndMobile';
 import SUMLogo from './../../../assets/SUM_no_text.png';
 import SUMText from './../../../assets/SUM_text.png';
 import './Nav-logo.scss';
+import { Tablet } from '../../Devices/Tablet';
+import { Mobile } from '../../Devices/Mobile';
 
 interface NavLogoProps {
 	isActive: boolean;
@@ -26,13 +28,20 @@ const NavLogo = (props: NavLogoProps) => {
 		<div className="Nav-logo">
 			<Link to="/" className="logo-holder row" onClick={handleChange}>
 				<img src={SUMLogo} className="logo" alt="SUM logo" />
-				<TabletAndMobile>
+				<Tablet>
 					<img
 						src={SUMText}
-						className="logo-text"
+						className="logo-text tablet-text"
 						alt="Sport Utility Marine"
 					/>
-				</TabletAndMobile>
+				</Tablet>
+				<Mobile>
+					<img
+						src={SUMText}
+						className="logo-text mobile-text"
+						alt="Sport Utility Marine"
+					/>
+				</Mobile>
 			</Link>
 		</div>
 	);
