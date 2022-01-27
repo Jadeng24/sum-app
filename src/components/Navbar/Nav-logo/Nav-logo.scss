@@ -1,10 +1,18 @@
 .Nav-logo {
-	margin-left: 4%;
+	margin-left: 4px;
 	a.logo-holder {
 		text-decoration: none;
 		color: #222;
+		align-items: center;
+		transition: 0.2s;
+		img.logo {
+			height: 55px;
+		}
+		img.logo-text {
+			width: 100px;
+		}
 		&:hover {
-			transform: scale(0.8);
+			transform: scale(0.96);
 		}
 	}
 }

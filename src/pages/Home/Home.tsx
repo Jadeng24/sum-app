@@ -17,37 +17,43 @@ const Home = () => {
 			title: 'Inflatable boats',
 			subtitle: 'Choose your adventure',
 			link: Pages.BoatBuilder,
+			id: 1,
 		},
 		{
 			backgroundImg: Home2,
 			title: 'Aluminum boats',
 			subtitle: 'Choose your adventure',
 			link: Pages.BoatBuilder,
+			id: 2,
 		},
 		{
 			backgroundImg: Home3,
 			title: 'Aluminum boats',
 			subtitle: 'Choose your adventure',
 			link: Pages.BoatBuilder,
+			id: 3,
 		},
 		{
 			backgroundImg: Home4,
 			title: 'Inflatable boats',
 			subtitle: 'Choose your adventure',
 			link: Pages.BoatBuilder,
+			id: 4,
 		},
 		{
 			backgroundImg: Home5,
 			title: 'Aluminum boats',
 			subtitle: 'Choose your adventure',
 			link: Pages.BoatBuilder,
+			id: 5,
 		},
 	];
 
 	return (
 		<div className="Home column">
-			{homeSections.map((section, key) => (
+			{homeSections.map((section) => (
 				<HomeSection
+					key={section.id}
 					title={section.title}
 					backgroundImg={section.backgroundImg}
 					subtitle={section.subtitle}
