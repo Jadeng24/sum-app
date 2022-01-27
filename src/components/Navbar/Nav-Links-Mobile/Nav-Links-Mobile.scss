@@ -1,0 +1,26 @@
+.mobile-links.nav-links {
+	position: fixed;
+	z-index: 2;
+	top: 60px;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(255, 255, 255, 0.94);
+	backdrop-filter: blur(20px);
+	// margin-left: -100vw;
+	align-items: center;
+	justify-content: flex-start;
+	padding-top: 15vh;
+	backdrop-filter: blur(20px);
+	a {
+		height: 60px;
+		font-size: 24px;
+		padding: 4px 10px;
+		margin-bottom: 20px;
+		min-width: 150px;
+	}
+
+	transition: 0.3s;
+	&.active {
+		// margin-left: 0px;
+	}
+}
