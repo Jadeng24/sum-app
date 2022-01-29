@@ -1,11 +1,13 @@
 import React from 'react';
 
 import './Boat-Builder.scss';
-import BuilderNav from './Builder-Nav/Builder-Nav';
+
+import BuilderWizard from './Builder-Wizard/Builder-Wizard';
+
 const BoatBuilder = () => {
 	return (
 		<div className="Boat-Builder">
-			<BuilderNav />
+			<BuilderWizard />
 		</div>
 	);
 };
