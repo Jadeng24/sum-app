@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
+const cors = require('cors');
+const pool = require('./../db.ts');
 require('dotenv').config();
 
 const port = process.env.PORT || 8080;
@@ -10,6 +12,7 @@ const port = process.env.PORT || 8080;
 const users = ['test'];
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get('/api/users', (req, res) => {
 	console.log('api/users called!!!!');
@@ -21,6 +24,16 @@ app.post('/api/user', (req, res) => {
 	console.log('Adding user::::::::', user);
 	users.push(user);
 	res.json('user addedd');
+});
+
+app.get('/boats', async (req, res) => {
+	try {
+		const allBoats = await pool.query('SELECT * FROM boats');
+
+		res.json(allBoats.rows);
+	} catch (err) {
+		console.error(err.message);
+	}
 });
 
 // For Production (prod)

@@ -46,6 +46,13 @@ const NavLinksMobile = (props: NavLinksMobileProps) => {
 			>
 				Contact
 			</NavLink>
+			<NavLink
+				to="/boat-builder"
+				onClick={closeModal}
+				className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+			>
+				Boat Builder
+			</NavLink>
 		</div>
 	);
 };

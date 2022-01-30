@@ -6,12 +6,15 @@ import BuilderNav from '../Builder-Nav/Builder-Nav';
 import Step1 from './Step1/Step1';
 import Step2 from './Step2/Step2';
 
+import './Builder-Wizard.scss';
 const BuilderWizard = () => {
 	return (
-		<Wizard header={<BuilderNav />} footer={<BuilderFooter />}>
-			<Step1 />
-			<Step2 />
-		</Wizard>
+		<div className="Builder-Wizard">
+			<Wizard header={<BuilderNav />} footer={<BuilderFooter />}>
+				<Step1 />
+				<Step2 />
+			</Wizard>
+		</div>
 	);
 };
 
