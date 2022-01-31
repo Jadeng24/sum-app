@@ -3,8 +3,8 @@ import { Wizard } from 'react-use-wizard';
 import BuilderFooter from '../Builder-Footer/Builder-Footer';
 
 import BuilderNav from '../Builder-Nav/Builder-Nav';
-import Step1 from './Step1/Step1';
-import Step2 from './Step2/Step2';
+import Step1 from './Builder-steps/Step1/Step1';
+import Step2 from './Builder-steps/Step2/Step2';
 
 import './Builder-Wizard.scss';
 
