@@ -1,14 +1,16 @@
-import React from 'react'
-import './Login-Modal-Content.scss'
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import React from 'react';
+import './Login-Modal-Content.scss';
 
-import googleSignIn from './../../../assets/googleSignIn.jpg'
-import facebookSignIn from './../../../assets/facebookSignIn.png'
-import googleSignUp from './../../../assets/googleSignUp.jpg'
+import googleSignIn from '../../../assets/googleSignIn.jpg';
+import facebookSignIn from '../../../assets/facebookSignIn.png';
+import googleSignUp from '../../../assets/googleSignUp.jpg';
 
 import {
     signInWithFacebook,
     signInWithGoogle,
-} from '../../../Firebase/Firebase'
+} from '../../../Firebase/Firebase';
 
 const LoginModalContent = (closeModal: any) => {
     return (
@@ -28,7 +30,7 @@ const LoginModalContent = (closeModal: any) => {
             />
 
             <div className="flex column registerSection">
-                Don't have an account?
+                Don&apos;t have an account?
                 <h1>Register</h1>
                 <img
                     onClick={signInWithGoogle}
@@ -39,7 +41,7 @@ const LoginModalContent = (closeModal: any) => {
                 <div className="clickable">Cancel</div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default LoginModalContent
+export default LoginModalContent;

@@ -37,7 +37,15 @@
         ],
         "@typescript-eslint/explicit-function-return-type": "off",
         "react/prop-types": "off",
-        "no-unused-vars": "off"
+        "no-unused-vars": "off",
+        "prefer-destructuring": 1,
+        "react/function-component-definition": [
+            2,
+            {
+                "namedComponents": "arrow-function",
+                "unnamedComponents": "arrow-function"
+            }
+        ]
     },
     "settings": {
         "import/resolver": {

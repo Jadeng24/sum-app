@@ -1,11 +1,13 @@
-import React from 'react'
-import Carousel from 'react-spring-3d-carousel'
-import { config } from 'react-spring'
-import './Step1.scss'
+import React from 'react';
+import Carousel from 'react-spring-3d-carousel';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { config } from 'react-spring';
+import boat from '../../../../assets/boat.png';
 
-import boat from './../../../../assets/boat.png'
+import './Step1.scss';
+
 const Step1 = () => {
-    let slides = [
+    const slides = [
         {
             key: 1,
             content: <img className="boat-picker" src={boat} alt="boat" />,
@@ -34,10 +36,10 @@ const Step1 = () => {
             key: 7,
             content: <img className="boat-picker" src={boat} alt="boat" />,
         },
-    ]
-    const showNavigation = false
-    const goToSlide = 0
-    const offsetRadius = 2
+    ];
+    const showNavigation = false;
+    const goToSlide = 0;
+    const offsetRadius = 2;
     return (
         <div className="wizardStep carousel-holder">
             <Carousel
@@ -48,7 +50,7 @@ const Step1 = () => {
                 animationConfig={config}
             />
         </div>
-    )
-}
+    );
+};
 
-export default Step1
+export default Step1;

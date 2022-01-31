@@ -1,13 +1,13 @@
-import React from 'react'
-import Modal from 'react-modal'
-import LoginModalContent from './Login-Modal-Content/Login-Modal-Content'
+import React from 'react';
+import Modal from 'react-modal';
+import LoginModalContent from './Login-Modal-Content/Login-Modal-Content';
 
-import './Login-Modal.scss'
+import './Login-Modal.scss';
 
 interface LoginModalProps {
-    modalIsOpen: any
-    afterOpenModal: any
-    closeModal: any
+    modalIsOpen: any;
+    afterOpenModal: any;
+    closeModal: any;
 }
 const styles = {
     content: {
@@ -34,10 +34,10 @@ const styles = {
     // 		transform: 'translate(-50%, -50%)',
     // 	},
     // },
-}
+};
 
 const LoginModal = (props: LoginModalProps) => {
-    const { modalIsOpen, afterOpenModal, closeModal } = props
+    const { modalIsOpen, afterOpenModal, closeModal } = props;
 
     return (
         <div>
@@ -51,7 +51,7 @@ const LoginModal = (props: LoginModalProps) => {
                 <LoginModalContent closeModal={closeModal} />
             </Modal>
         </div>
-    )
-}
+    );
+};
 
-export default LoginModal
+export default LoginModal;

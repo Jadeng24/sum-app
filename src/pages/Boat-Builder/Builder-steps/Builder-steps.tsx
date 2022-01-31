@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const BuilderSteps = () => {
-    return <div>Color</div>
-}
+    return <div>Color</div>;
+};
 
-export default BuilderSteps
+export default BuilderSteps;

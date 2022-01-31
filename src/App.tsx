@@ -10,7 +10,7 @@ import Contact from './pages/Contact/Contact';
 import Boats from './pages/Boats/Boats';
 import BoatBuilder from './pages/Boat-Builder/Boat-Builder';
 
-function App() {
+const App = () => {
     return (
         <div className="App">
             <BrowserRouter>
@@ -26,6 +26,6 @@ function App() {
             </BrowserRouter>
         </div>
     );
-}
+};
 
 export default App;
