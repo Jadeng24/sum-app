@@ -7,6 +7,7 @@ import Step1 from './Step1/Step1';
 import Step2 from './Step2/Step2';
 
 import './Builder-Wizard.scss';
+
 const BuilderWizard = () => {
     return (
         <div className="Builder-Wizard">
