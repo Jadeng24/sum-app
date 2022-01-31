@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const express = require('express');
 
 const app = express();
@@ -17,13 +18,11 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/api/users', (req, res) => {
-    console.log('api/users called!!!!');
     res.json(users);
 });
 
 app.post('/api/user', (req, res) => {
     const { user } = req.body;
-    console.log('Adding user::::::::', user);
     users.push(user);
     res.json('user addedd');
 });

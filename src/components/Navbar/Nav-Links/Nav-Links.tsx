@@ -12,7 +12,6 @@ const NavLinks = () => {
     };
     const afterOpenModal = () => {
         // references are now sync'd and can be accessed.
-        console.log('modal is opened');
     };
     const closeModal = () => {
         setIsOpen(false);

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
@@ -36,7 +37,6 @@ const facebookProvider = new FacebookAuthProvider();
 export const signInWithGoogle = () => {
     signInWithPopup(auth, gmailProvider).then(
         (response) => {
-            console.log(response.user);
             const name = response.user.displayName || '';
             const pic = response.user.photoURL || '';
             localStorage.setItem('currentUser', name);

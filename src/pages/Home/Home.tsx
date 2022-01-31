@@ -1,14 +1,14 @@
-import React from 'react'
-import { Pages } from '../../types/Types'
-import HomeSection from './Home-Section/Home-Section'
+import React from 'react';
+import { Pages } from '../../types/Types';
+import HomeSection from './Home-Section/Home-Section';
 
-import Home1 from './../../assets/home_boat_1.jpeg'
-import Home2 from './../../assets/home_boat_2.jpeg'
-import Home3 from './../../assets/home_boat_3.jpeg'
-import Home4 from './../../assets/home_boat_4.jpeg'
-import Home5 from './../../assets/home_boat_5.jpeg'
+import Home1 from '../../assets/home_boat_1.jpeg';
+import Home2 from '../../assets/home_boat_2.jpeg';
+import Home3 from '../../assets/home_boat_3.jpeg';
+import Home4 from '../../assets/home_boat_4.jpeg';
+import Home5 from '../../assets/home_boat_5.jpeg';
 
-import './Home.scss'
+import './Home.scss';
 
 const Home = () => {
     const homeSections = [
@@ -47,7 +47,7 @@ const Home = () => {
             link: Pages.BoatBuilder,
             id: 5,
         },
-    ]
+    ];
 
     return (
         <div className="Home column">
@@ -61,7 +61,7 @@ const Home = () => {
                 />
             ))}
         </div>
-    )
-}
+    );
+};
 
-export default Home
+export default Home;
