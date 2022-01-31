@@ -1,10 +1,10 @@
 const express = require('express');
-
 const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
-const pool = require('../db');
+// eslint-disable-next-line import/extensions
+const pool = require('../db.ts');
 require('dotenv').config();
 
 const port = process.env.PORT || 8080;
