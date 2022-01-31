@@ -1,14 +1,14 @@
-import { Grid } from '@material-ui/core'
-import React from 'react'
-import { productColor } from '../../types/Types'
-import './Boats.scss'
+import { Grid } from '@material-ui/core';
+import React from 'react';
+import { productColor } from '../../types/Types';
+import './Boats.scss';
 
 interface Boat {
-    id: number
-    type: string
-    name: string
-    length: number
-    colors: productColor[]
+    id: number;
+    type: string;
+    name: string;
+    length: number;
+    colors: productColor[];
 }
 const Boats = () => {
     const boats: Boat[] = [
@@ -172,7 +172,7 @@ const Boats = () => {
                 },
             ],
         },
-    ]
+    ];
 
     return (
         <div className="Page Boats">
@@ -186,7 +186,7 @@ const Boats = () => {
                 ))}
             </Grid>
         </div>
-    )
-}
+    );
+};
 
-export default Boats
+export default Boats;
