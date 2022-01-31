@@ -21,7 +21,9 @@ const BuilderFooter = (props) => {
             >
                 <div className="next-button column">
                     <span className="next-text">Next</span>
-                    <span>{labels[activeStep + 1]}</span>
+                    {labels && activeStep !== labels.length - 1 && (
+                        <span>{labels[activeStep + 1]}</span>
+                    )}
                 </div>
                 <GoChevronRight />
             </div>

@@ -1,5 +1,6 @@
 .Builder-Wizard {
     height: calc(100vh - 70px);
+    overflow-x: hidden;
     .wizardStep {
         height: calc(100% - 100px); // Nav and footer
     }

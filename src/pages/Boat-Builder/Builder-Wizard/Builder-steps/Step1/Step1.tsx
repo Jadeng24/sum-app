@@ -91,6 +91,7 @@ const Step1 = () => {
 
     const showNavigation = false;
     const offsetRadius = 2;
+
     useEffect(() => {
         setGoToSlide(slides[0]);
         setCurrentSlide(0);
@@ -101,7 +102,6 @@ const Step1 = () => {
                     if (currentSlide === 0) {
                         // setGoToSlide(slides[slides.length - 1]);
                         setCurrentSlide(slides[slides.length - 1].key);
-                        console.log(slides[slides.length - 1].key);
                     } else {
                         setCurrentSlide(currentSlide - 1);
                     }
@@ -114,11 +114,7 @@ const Step1 = () => {
                     } else {
                         setCurrentSlide(currentSlide + 1);
                     }
-                    // if (goToSlide === slides[slides.length - 1]) {
-                    //     setGoToSlide(0);
-                    // } else {
-                    //     setGoToSlide(goToSlide + 1);
-                    // }
+
                     break;
                 default:
                     break;
