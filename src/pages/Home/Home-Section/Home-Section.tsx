@@ -1,16 +1,16 @@
-import React from 'react'
-import Button from '../../../components/Button/Button'
+import React from 'react';
+import Button from '../../../components/Button/Button';
 
-import './Home-Section.scss'
+import './Home-Section.scss';
 
 interface HomeSectionProps {
-    backgroundImg: any
-    link: string
-    title: string
-    subtitle: string
+    backgroundImg: any;
+    link: string;
+    title: string;
+    subtitle: string;
 }
 const HomeSection = (props: HomeSectionProps) => {
-    const { backgroundImg, link, title, subtitle } = props
+    const { backgroundImg, link, title, subtitle } = props;
     return (
         <div
             className="Home-Section flex"
@@ -26,7 +26,7 @@ const HomeSection = (props: HomeSectionProps) => {
                 <Button text="Build Now" link={link} />
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default HomeSection
+export default HomeSection;

@@ -1,7 +1,9 @@
+/* eslint-disable no-shadow */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import './Nav-Links-Mobile.scss';
+
 interface NavLinksMobileProps {
     isActive: boolean;
     onChange: (value: boolean) => void;
