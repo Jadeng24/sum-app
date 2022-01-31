@@ -4,7 +4,7 @@ import { MediaDevices } from './MediaDevices';
 
 export const Tablet = ({ children }: { children: any }) => {
     const isTablet = useMediaQuery({
-        minWidth: MediaDevices.TabletMax,
+        minWidth: MediaDevices.TabletMin,
         maxWidth: MediaDevices.TabletMax,
     });
     return isTablet ? children : null;
