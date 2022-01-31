@@ -28,6 +28,7 @@
             { "extensions": [".tsx", ".ts"] }
         ],
         "import/extensions": [
+            "error",
             "ignorePackages",
             {
                 "ts": "never",
@@ -42,5 +43,6 @@
         "import/resolver": {
             "typescript": {}
         }
-    }
+    },
+    "root": true
 }
