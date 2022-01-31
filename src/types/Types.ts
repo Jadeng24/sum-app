@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-shadow
 export enum Pages {
     Home = 'home',
     About = 'about',
@@ -7,6 +8,6 @@ export enum Pages {
 }
 
 export interface productColor {
-    name: string
-    color: string
+    name: string;
+    color: string;
 }
