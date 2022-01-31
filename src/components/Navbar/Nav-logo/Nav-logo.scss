@@ -8,15 +8,22 @@
         transition: 0.2s;
         img.logo {
             height: 50px;
-            &.mobile-logo {
+            &.mobile-text-logo {
                 height: 15px;
             }
         }
+        img.tablet-logo {
+            height: 40px;
+        }
+        img.mobile-logo {
+            height: 35px;
+        }
+
         img.logo-text {
-            &.mobile-text {
+            &.mobile-text-logo {
                 width: 190px;
             }
-            &.tablet-text {
+            &.tablet-text-logo {
                 width: 300px;
             }
         }

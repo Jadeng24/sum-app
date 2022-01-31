@@ -1,9 +1,10 @@
 .Boat-Slide {
-    width: 100%;
-    // border: solid 1px red;
     padding: 20px 0px;
     align-items: center;
+    width: 50%;
     cursor: pointer;
     .boat-image {
+        // width: 70%;
+        max-width: 275px;
     }
 }

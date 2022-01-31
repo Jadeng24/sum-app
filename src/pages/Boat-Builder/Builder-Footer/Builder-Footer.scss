@@ -1,0 +1,28 @@
+.Builder-Footer {
+    height: 60px;
+    width: 100%;
+    .footer-section {
+        width: 50%;
+        height: 100%;
+        background: white;
+        justify-content: space-between;
+        padding: 4px 20px;
+        box-sizing: border-box;
+    }
+    .footer-right-section {
+        background: dodgerblue;
+        color: white;
+
+        .next-button {
+            font-weight: 600;
+            // height: 100%;
+            align-items: flex-start;
+            font-size: 18px;
+            span.next-text {
+                margin-top: -8px;
+                font-size: 12px;
+                margin-bottom: 4px;
+            }
+        }
+    }
+}

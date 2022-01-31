@@ -16,7 +16,7 @@ const HamburgerMenu = (props: HamburgerProps) => {
         <div
             id="menu"
             onClick={handleChange}
-            className={isActive ? 'open' : ''}
+            className={isActive ? 'open touch' : 'touch'}
         >
             <span />
             <span />

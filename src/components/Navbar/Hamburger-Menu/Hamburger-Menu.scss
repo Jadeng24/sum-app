@@ -1,7 +1,7 @@
 /* Icon 3 */
 
 #menu {
-    width: 60px;
+    width: 50px;
     height: 40px;
     position: relative;
     margin: 0px 10px;
@@ -14,9 +14,9 @@
     -o-transition: 0.5s ease-in-out;
     transition: 0.5s ease-in-out;
     cursor: pointer;
-    user-select: none;
 
     span {
+        user-select: none;
         display: block;
         position: absolute;
         height: 6px;

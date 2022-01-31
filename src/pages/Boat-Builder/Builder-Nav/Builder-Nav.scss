@@ -1,12 +1,21 @@
 .Builder-Nav {
     width: 100%;
     justify-content: space-around;
-    height: 50px;
-    border-bottom: solid 1px grey;
+    height: 40px;
+    padding: 0px 4px;
+    box-sizing: border-box;
+    // border-bottom: solid 1px grey;
+
     span {
         cursor: pointer;
+        padding: 4px 0px;
+        border-bottom: solid 3px transparent;
+        transition: 0.3s;
         &:hover {
             opacity: 0.8;
+        }
+        &.active {
+            border-bottom: solid 3px dodgerblue;
         }
     }
 }
