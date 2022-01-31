@@ -1,64 +1,64 @@
 nav {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	width: 100%;
-	position: fixed;
-	top: 0;
-	backdrop-filter: blur(20px);
-	box-sizing: border-box; // maintain width at 100%;
-	min-height: 70px;
-	&.mobile-active {
-		background: rgba(255, 255, 255, 0.94);
-	}
-	.nav-links {
-		height: 70px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		a {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			text-decoration: none;
-			color: #222;
-			height: 100%;
-			width: 70px;
-			padding: 0px 10px;
-			margin-left: 2px;
-			font-family: Arial, Helvetica, sans-serif;
-			text-transform: uppercase;
-			transition: 0.2s;
-			font-size: 16px;
-			font-weight: 600;
-			text-align: center;
-			&:hover {
-				color: grey;
-			}
-		}
-		a.active {
-			color: dodgerblue;
-		}
-	}
-	a.build-link {
-		background: dodgerblue;
-		color: white;
-		height: 70%;
-		padding: 0px 30px;
-		margin-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    backdrop-filter: blur(20px);
+    box-sizing: border-box; // maintain width at 100%;
+    min-height: 70px;
+    &.mobile-active {
+        background: rgba(255, 255, 255, 0.94);
+    }
+    .nav-links {
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: #222;
+            height: 100%;
+            width: 70px;
+            padding: 0px 10px;
+            margin-left: 2px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-transform: uppercase;
+            transition: 0.2s;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            &:hover {
+                color: grey;
+            }
+        }
+        a.active {
+            color: dodgerblue;
+        }
+    }
+    a.build-link {
+        background: dodgerblue;
+        color: white;
+        height: 70%;
+        padding: 0px 30px;
+        margin-right: 8px;
 
-		&.active {
-			color: white;
-		}
-		&:hover {
-			opacity: 0.8;
-			color: white;
-		}
-	}
+        &.active {
+            color: white;
+        }
+        &:hover {
+            opacity: 0.8;
+            color: white;
+        }
+    }
 
-	img.profilePic {
-		width: 40px;
-		border-radius: 50%;
-		margin: 0px 8px;
-	}
+    img.profilePic {
+        width: 40px;
+        border-radius: 50%;
+        margin: 0px 8px;
+    }
 }

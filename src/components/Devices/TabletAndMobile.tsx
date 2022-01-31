@@ -1,9 +1,9 @@
-import { useMediaQuery } from 'react-responsive';
-import { MediaDevices } from './MediaDevices';
+import { useMediaQuery } from 'react-responsive'
+import { MediaDevices } from './MediaDevices'
 
 export const TabletAndMobile = ({ children }: { children: any }) => {
-	const isTabletAndMobile = useMediaQuery({
-		maxWidth: MediaDevices['TabletMax'],
-	});
-	return isTabletAndMobile ? children : null;
-};
+    const isTabletAndMobile = useMediaQuery({
+        maxWidth: MediaDevices['TabletMax'],
+    })
+    return isTabletAndMobile ? children : null
+}

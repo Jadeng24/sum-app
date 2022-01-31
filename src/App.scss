@@ -1,26 +1,26 @@
 .flex {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .row {
-	display: flex;
-	flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 .column {
-	display: flex;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 .Page {
-	padding: 70px 4% 30px;
+    padding: 70px 4% 30px;
 }
 
 .clickable {
-	cursor: pointer;
-	&:hover {
-		opacity: 0.8;
-	}
-	&:active {
-		transform: scale(0.98);
-	}
+    cursor: pointer;
+    &:hover {
+        opacity: 0.8;
+    }
+    &:active {
+        transform: scale(0.98);
+    }
 }

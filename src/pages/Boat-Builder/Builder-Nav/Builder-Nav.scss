@@ -1,12 +1,12 @@
 .Builder-Nav {
-	width: 100%;
-	justify-content: space-around;
-	height: 50px;
-	border-bottom: solid 1px grey;
-	span {
-		cursor: pointer;
-		&:hover {
-			opacity: 0.8;
-		}
-	}
+    width: 100%;
+    justify-content: space-around;
+    height: 50px;
+    border-bottom: solid 1px grey;
+    span {
+        cursor: pointer;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
 }

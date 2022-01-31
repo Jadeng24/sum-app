@@ -1,27 +1,27 @@
 .Nav-logo {
-	margin-left: 4px;
-	user-select: none;
-	a.logo-holder {
-		text-decoration: none;
-		color: #222;
-		align-items: center;
-		transition: 0.2s;
-		img.logo {
-			height: 50px;
-			&.mobile-logo {
-				height: 15px;
-			}
-		}
-		img.logo-text {
-			&.mobile-text {
-				width: 190px;
-			}
-			&.tablet-text {
-				width: 300px;
-			}
-		}
-		&:hover {
-			transform: scale(0.96);
-		}
-	}
+    margin-left: 4px;
+    user-select: none;
+    a.logo-holder {
+        text-decoration: none;
+        color: #222;
+        align-items: center;
+        transition: 0.2s;
+        img.logo {
+            height: 50px;
+            &.mobile-logo {
+                height: 15px;
+            }
+        }
+        img.logo-text {
+            &.mobile-text {
+                width: 190px;
+            }
+            &.tablet-text {
+                width: 300px;
+            }
+        }
+        &:hover {
+            transform: scale(0.96);
+        }
+    }
 }

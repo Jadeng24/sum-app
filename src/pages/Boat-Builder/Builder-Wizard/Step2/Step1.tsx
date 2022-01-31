@@ -1,8 +1,9 @@
 import React from 'react'
 import { useWizard } from 'react-use-wizard'
 
-const BuilderFooter = () => {
+const Step1 = () => {
     const { previousStep, nextStep } = useWizard()
+
     return (
         <div>
             <button onClick={() => previousStep()}>Previous</button>
@@ -11,4 +12,4 @@ const BuilderFooter = () => {
     )
 }
 
-export default BuilderFooter
+export default Step1

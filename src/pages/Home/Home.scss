@@ -1,11 +1,11 @@
 .Home {
-	scroll-snap-type: y mandatory;
-	overflow-y: auto;
-	height: 100vh;
-	// scroll-padding-top: 70px;
+    scroll-snap-type: y mandatory;
+    overflow-y: auto;
+    height: 100vh;
+    // scroll-padding-top: 70px;
 }
 .login {
-	position: absolute;
-	top: 100px;
-	cursor: pointer;
+    position: absolute;
+    top: 100px;
+    cursor: pointer;
 }

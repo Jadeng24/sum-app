@@ -1,17 +1,17 @@
 a.Button {
-	padding: 15px 30px;
-	background: dodgerblue;
-	width: auto;
-	border-radius: 30px;
-	color: white;
-	text-decoration: none;
-	transition: 0.3s;
-	&:hover {
-		opacity: 0.8;
-		padding: 18px 33px;
-	}
+    padding: 15px 30px;
+    background: dodgerblue;
+    width: auto;
+    border-radius: 30px;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+    &:hover {
+        opacity: 0.8;
+        padding: 18px 33px;
+    }
 }
 .secondary {
-	background: lightgrey;
-	color: #222;
+    background: lightgrey;
+    color: #222;
 }

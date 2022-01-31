@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-import './Shop.scss';
+import './Shop.scss'
 const Shop = () => {
-	return (
-		<div className="Page Shop">
-			<h2>Welcome to the Sport Utility Marine Shop</h2>
-		</div>
-	);
-};
+    return (
+        <div className="Page Shop">
+            <h2>Welcome to the Sport Utility Marine Shop</h2>
+        </div>
+    )
+}
 
-export default Shop;
+export default Shop
