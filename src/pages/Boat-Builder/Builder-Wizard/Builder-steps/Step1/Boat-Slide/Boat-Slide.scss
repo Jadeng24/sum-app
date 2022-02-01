@@ -1,10 +1,17 @@
 .Boat-Slide {
     padding: 20px 0px;
     align-items: center;
-    width: 50%;
-    cursor: pointer;
+    transition: 0.3s;
+    border: solid 3px transparent;
+    border-radius: 10px;
+    text-align: center;
+    &.isActive {
+        border: solid 2px dodgerblue;
+        margin-top: 10px;
+        transform: scale(1.3);
+    }
     .boat-image {
-        // width: 70%;
         max-width: 275px;
+        width: 100%;
     }
 }
