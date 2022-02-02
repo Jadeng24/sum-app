@@ -25,10 +25,11 @@ const Step1 = () => {
 
     return (
         <div className="wizardStep carousel-holder flex">
+            <div className="boat-floor" />
             <Swiper
                 onSwiper={setSwiperRef}
                 initialSlide={0}
-                spaceBetween={0}
+                spaceBetween={10}
                 slidesPerView={3}
                 // onSlideChange={() => console.log('slide change')}
                 grabCursor

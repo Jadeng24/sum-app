@@ -5,6 +5,7 @@ import { useWizard } from 'react-use-wizard';
 import { GoChevronRight } from 'react-icons/go';
 
 import './Builder-Footer.scss';
+import { Link } from 'react-router-dom';
 
 interface BuilderFooterProps {
     labels: string[];
@@ -12,9 +13,15 @@ interface BuilderFooterProps {
 const BuilderFooter = (props) => {
     const { labels } = props;
     const { previousStep, nextStep, activeStep } = useWizard();
+
     return (
         <div className="Builder-Footer flex">
-            <div className="footer-section flex">MSRP $5000</div>
+            <div
+                className="footer-section flex clickable"
+                onClick={() => previousStep()}
+            >
+                Go back
+            </div>
             <div
                 className="footer-section footer-right-section flex clickable touch"
                 onClick={() => nextStep()}
