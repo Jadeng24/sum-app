@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/jsx-curly-brace-presence */
 /* eslint-disable import/no-unresolved */
 import React, { useEffect, useState } from 'react';
@@ -12,95 +14,77 @@ import './Step1.scss';
 import BoatSlide from './Boat-Slide/Boat-Slide';
 
 const Step1 = () => {
+    const [swiperRef, setSwiperRef] = useState(null);
+    const slideTo = (eventObj) => {
+        console.log(eventObj);
+        if (eventObj.isPrev) {
+            swiperRef.slideTo(swiperRef.activeIndex - 1);
+        }
+        // swiperRef.slideTo(index - 1, 0);
+    };
+
     return (
-        <div className="wizardStep carousel-holder">
+        <div className="wizardStep carousel-holder flex">
             <Swiper
+                onSwiper={setSwiperRef}
+                initialSlide={0}
                 spaceBetween={0}
                 slidesPerView={3}
-                onSlideChange={() => console.log('slide change')}
-                onSwiper={(swiper) => console.log(swiper)}
+                // onSlideChange={() => console.log('slide change')}
                 grabCursor
+                loop
+                slideToClickedSlide
+                centeredSlides
             >
-                <SwiperSlide />
                 <SwiperSlide>
-                    {({ isNext }) => (
-                        <div>
-                            <BoatSlide
-                                boatImg={aluminumBoat}
-                                title="Aluminum Jetboat"
-                                length={10}
-                                model="aluminum"
-                                isActive={isNext}
-                            />
-                        </div>
-                    )}
+                    <BoatSlide
+                        boatImg={aluminumBoat}
+                        title="Aluminum Jetboat"
+                        length={10}
+                        model="aluminum"
+                    />
                 </SwiperSlide>
                 <SwiperSlide>
-                    {({ isNext }) => (
-                        <div>
-                            <BoatSlide
-                                boatImg={aluminumBoat}
-                                title="Aluminum Jetboat"
-                                length={12}
-                                model="aluminum"
-                                isActive={isNext}
-                            />
-                        </div>
-                    )}
+                    <BoatSlide
+                        boatImg={aluminumBoat}
+                        title="Aluminum Jetboat"
+                        length={12}
+                        model="aluminum"
+                    />
                 </SwiperSlide>
                 <SwiperSlide>
-                    {({ isNext }) => (
-                        <div>
-                            <BoatSlide
-                                boatImg={aluminumBoat}
-                                title="Aluminum Jetboat"
-                                length={14}
-                                model="aluminum"
-                                isActive={isNext}
-                            />
-                        </div>
-                    )}
+                    <BoatSlide
+                        boatImg={aluminumBoat}
+                        title="Aluminum Jetboat"
+                        length={14}
+                        model="aluminum"
+                    />
                 </SwiperSlide>
                 <SwiperSlide>
-                    {({ isNext }) => (
-                        <div>
-                            <BoatSlide
-                                boatImg={inflatableBoat}
-                                title="Inflatable Raceboat"
-                                length={10}
-                                model="inflatable"
-                                isActive={isNext}
-                            />
-                        </div>
-                    )}
+                    <BoatSlide
+                        boatImg={inflatableBoat}
+                        title="Inflatable Raceboat"
+                        length={10}
+                        model="inflatable"
+                    />
                 </SwiperSlide>
                 <SwiperSlide>
-                    {({ isNext }) => (
-                        <div>
-                            <BoatSlide
-                                boatImg={inflatableBoat}
-                                title="Inflatable Raceboat"
-                                length={12}
-                                model="inflatable"
-                                isActive={isNext}
-                            />
-                        </div>
-                    )}
+                    <BoatSlide
+                        boatImg={inflatableBoat}
+                        title="Inflatable Raceboat"
+                        length={12}
+                        model="inflatable"
+                    />
                 </SwiperSlide>
                 <SwiperSlide>
-                    {({ isNext }) => (
-                        <div>
-                            <BoatSlide
-                                boatImg={inflatableBoat}
-                                title="Inflatable Raceboat"
-                                length={14}
-                                model="inflatable"
-                                isActive={isNext}
-                            />
-                        </div>
-                    )}
+                    <BoatSlide
+                        boatImg={inflatableBoat}
+                        title="Inflatable Raceboat"
+                        length={14}
+                        model="inflatable"
+                    />
                 </SwiperSlide>
-                <SwiperSlide />
+                ƒ
             </Swiper>
         </div>
     );

@@ -1,6 +1,30 @@
 .carousel-holder {
-    // margin-top: 40vh;
     width: 100%;
     overflow: hidden;
-    margin-top: 20px;
+    margin-top: -20px;
+    transform: scale(1.3);
+    .swiper-slide {
+        transform: scale(0.95);
+        transition: 0.3s;
+        border-radius: 10px;
+    }
+    .swiper-slide-active {
+        transform: scale(1.05);
+        animation-duration: 4s;
+        transition: 0.5s;
+        animation-name: slidein;
+        animation-iteration-count: infinite;
+        img {
+            width: 110%;
+        }
+    }
+    @keyframes slidein {
+        0% {
+        }
+
+        50% {
+        }
+        100% {
+        }
+    }
 }

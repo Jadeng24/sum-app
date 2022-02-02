@@ -7,12 +7,11 @@ interface BoatSlideProps {
     title: string;
     model: string;
     length: number;
-    isActive: boolean;
 }
 const BoatSlide = (props: BoatSlideProps) => {
-    const { boatImg, title, model, length, isActive } = props;
+    const { boatImg, title, model, length } = props;
     return (
-        <div className={`Boat-Slide column ${isActive ? 'isActive' : ''}`}>
+        <div className="Boat-Slide column">
             <img className="boat-image" src={boatImg} alt={title} />
             <div>{title}</div>
             <div>{length}</div>
