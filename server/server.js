@@ -19,6 +19,7 @@ const users = ['test'];
 
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.json);
 
 app.get('/api/users', (req, res) => {
     res.json(users);
@@ -84,7 +85,6 @@ if (process.env.NODE_ENV === 'production') {
         req.sendFile(path.resolve(__dirname, 'build', '../build/index.html'));
     });
 } else {
-    app.use(express.json);
     app.use('/', router);
 }
 
