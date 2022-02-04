@@ -61,8 +61,8 @@ app.post('/api/contact', (req, res) => {
     const { name, email, message } = req.body;
 
     const mail = {
-        from: name,
-        to: '***************@gmail.com',
+        from: 'sportutilitymarine@gmail.com',
+        to: process.env.REACT_APP_GMAIL_USER,
         subject: 'Contact Form Submission',
         html: `<p>Name: ${name}</p>
            <p>Email: ${email}</p>
