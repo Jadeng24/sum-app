@@ -60,15 +60,15 @@ contactEmail.verify((error) => {
 app.post('/api/contact', (req, res) => {
     const { name, email, message } = req.body;
 
-    const mail = {
-        from: 'sportutilitymarine@gmail.com',
-        to: process.env.REACT_APP_GMAIL_USER,
-        subject: 'Contact Form Submission',
+    const mailOptions = {
+        from: `${name} <${email}>`,
+        to: 'sportutilitymarine@gmail.com, jaden.goodwin24@gmail.com',
+        subject: `SUM inquiry - ${name}`,
         html: `<p>Name: ${name}</p>
            <p>Email: ${email}</p>
            <p>Message: ${message}</p>`,
     };
-    contactEmail.sendMail(mail, (error) => {
+    contactEmail.sendMail(mailOptions, (error) => {
         if (error) {
             res.json({ status: 'ERROR' });
         } else {
