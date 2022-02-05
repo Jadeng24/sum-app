@@ -10,22 +10,30 @@ const MapBox = () => {
 
     return (
         // Made using Mapbox api
-        <Map
-            initialViewState={{
-                latitude,
-                longitude,
-                zoom: 3,
-            }}
-            style={{
-                width: '100%',
-                height: 350,
-                marginTop: '40px',
-            }}
-            mapStyle="mapbox://styles/mapbox/dark-v10"
-            mapboxAccessToken={mapBoxKey}
-        >
-            <Marker longitude={longitude} latitude={latitude} color="red" />
-        </Map>
+        <div>
+            {mapBoxKey && (
+                <Map
+                    initialViewState={{
+                        latitude,
+                        longitude,
+                        zoom: 3,
+                    }}
+                    style={{
+                        width: '100%',
+                        height: 350,
+                        marginTop: '40px',
+                    }}
+                    mapStyle="mapbox://styles/mapbox/dark-v10"
+                    mapboxAccessToken={mapBoxKey}
+                >
+                    <Marker
+                        longitude={longitude}
+                        latitude={latitude}
+                        color="red"
+                    />
+                </Map>
+            )}
+        </div>
     );
 };
 export default MapBox;
