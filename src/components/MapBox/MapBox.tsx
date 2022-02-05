@@ -13,18 +13,18 @@ const MapBox = () => {
         <div>
             {mapBoxKey && (
                 <Map
+                    mapboxAccessToken={mapBoxKey}
                     initialViewState={{
                         latitude,
                         longitude,
                         zoom: 3,
                     }}
+                    mapStyle="mapbox://styles/mapbox/dark-v10"
                     style={{
                         width: '100%',
                         height: 350,
                         marginTop: '40px',
                     }}
-                    mapStyle="mapbox://styles/mapbox/dark-v10"
-                    mapboxAccessToken={mapBoxKey}
                 >
                     <Marker
                         longitude={longitude}
