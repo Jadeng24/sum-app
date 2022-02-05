@@ -5,7 +5,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 const MapBox = () => {
     const mapBoxKey = process.env.REACT_APP_MAPBOX_KEY || '';
-    const latitude = 40.337483;
+    const latitude = 40.337483; // lindon, utah
     const longitude = -111.750738;
 
     return (

@@ -47,10 +47,7 @@ const Contact = () => {
                         : 'row space-between'
                 }
             >
-                <form
-                    onSubmit={handleSubmit}
-                    className="contact-form contact-section"
-                >
+                <form onSubmit={handleSubmit} className="contact-section">
                     <div>
                         <label htmlFor="name">Name:</label>
                         <input type="text" id="name" required />
