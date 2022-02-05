@@ -1,13 +1,18 @@
 .Contact {
     .contact-section {
-        width: calc(50% - 20px);
+        width: calc(50% - 30px);
+
+        h1 {
+            color: #444;
+            margin-top: 0px;
+        }
     }
 
     .isTabletOrMobile {
         // Column content
         flex-direction: column-reverse;
         .contact-section {
-            margin-bottom: 20px;
+            margin-bottom: 60px;
             width: 100%;
         }
     }

@@ -47,29 +47,41 @@ const Contact = () => {
                         : 'row space-between'
                 }
             >
-                <form onSubmit={handleSubmit} className="contact-section">
-                    <div>
-                        <label htmlFor="name">Name:</label>
-                        <input type="text" id="name" required />
-                    </div>
-                    <div>
-                        <label htmlFor="email">Email:</label>
-                        <input type="email" id="email" required />
-                    </div>
-                    <div>
-                        <label htmlFor="message">Message:</label>
-                        <textarea id="message" required />
-                    </div>
-                    <ReCAPTCHA
-                        sitekey={captchaKey}
-                        onChange={onCaptchaChange}
-                    />
-                    <button type="submit" disabled={isCaptchaValid === null}>
-                        {status}
-                    </button>
-                </form>
                 <div className="contact-section">
-                    hello
+                    <h1>Send us a Message</h1>
+                    <form onSubmit={handleSubmit} className="contact-form">
+                        <div>
+                            <label htmlFor="name">Name:</label>
+                            <input type="text" id="name" required />
+                        </div>
+                        <div>
+                            <label htmlFor="email">Email:</label>
+                            <input type="email" id="email" required />
+                        </div>
+                        <div>
+                            <label htmlFor="message">Message:</label>
+                            <textarea id="message" required />
+                        </div>
+                        <ReCAPTCHA
+                            sitekey={captchaKey}
+                            onChange={onCaptchaChange}
+                        />
+                        <button
+                            type="submit"
+                            disabled={isCaptchaValid === null}
+                        >
+                            {status}
+                        </button>
+                    </form>
+                </div>
+                <div className="contact-section">
+                    <div>
+                        <h1>Sport Utility Marine</h1>
+                        <h3>Phone: 801-796-7416</h3>
+                        <h3>Email: sportutilitymarine@gmail.com</h3>
+                        <h3>Hours: 10:00am to 5:00pm MDT</h3>
+                        <h3>Address: 1459 West 40 South Lindon, Utah 84042</h3>
+                    </div>
                     <MapBox />
                 </div>
             </div>
