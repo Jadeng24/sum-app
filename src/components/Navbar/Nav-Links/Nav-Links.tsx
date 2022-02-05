@@ -31,10 +31,10 @@ const NavLinks = () => {
                 Shop
             </NavLink>
             <NavLink
-                to="/about"
+                to="/engines"
                 className={({ isActive }) => (isActive ? 'active' : 'inactive')}
             >
-                About
+                Engines
             </NavLink>
             <NavLink
                 to="/contact"

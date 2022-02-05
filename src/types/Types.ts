@@ -1,10 +1,11 @@
 // eslint-disable-next-line no-shadow
 export enum Pages {
-    Home = 'home',
-    About = 'about',
-    Shop = 'shop',
     BoatBuilder = 'boat-builder',
+    Boats = 'boats',
     Contact = 'contact',
+    Engines = 'engines',
+    Home = 'home',
+    Shop = 'shop',
 }
 
 export interface productColor {

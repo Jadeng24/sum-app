@@ -1,5 +1,6 @@
 import { Grid } from '@material-ui/core';
 import React from 'react';
+import Banner from '../../components/Banner/Banner';
 import { productColor } from '../../types/Types';
 import './Boats.scss';
 
@@ -176,7 +177,7 @@ const Boats = () => {
 
     return (
         <div className="Page Boats">
-            <h2>SUM Boats</h2>
+            <Banner title="Boats" />
             <Grid container justify="center" spacing={4}>
                 {boats.map((boat) => (
                     <Grid item key="boat.id" xs={12} sm={12} md={6} lg={4}>

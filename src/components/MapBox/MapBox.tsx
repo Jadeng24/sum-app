@@ -18,11 +18,10 @@ const MapBox = () => {
             }}
             style={{
                 width: '100%',
-                height: 300,
+                height: 350,
                 marginTop: '40px',
-                borderRadius: '10px',
             }}
-            mapStyle="mapbox://styles/mapbox/streets-v9"
+            mapStyle="mapbox://styles/mapbox/dark-v10"
             mapboxAccessToken={mapBoxKey}
         >
             <Marker longitude={longitude} latitude={latitude} color="red" />

@@ -1,0 +1,21 @@
+.Contact {
+    .contact-section {
+        width: calc(50% - 20px);
+        border: solid 1px red;
+    }
+    .contact-form {
+        input {
+            width: 100%;
+            padding: 0;
+        }
+    }
+
+    .isTabletOrMobile {
+        // Column content
+        flex-direction: column-reverse;
+        .contact-section {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+    }
+}

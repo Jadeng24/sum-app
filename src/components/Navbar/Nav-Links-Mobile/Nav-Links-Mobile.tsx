@@ -35,11 +35,11 @@ const NavLinksMobile = (props: NavLinksMobileProps) => {
                 Shop
             </NavLink>
             <NavLink
-                to="/about"
+                to="/engines"
                 onClick={closeModal}
                 className={({ isActive }) => (isActive ? 'active' : 'inactive')}
             >
-                About
+                Engines
             </NavLink>
             <NavLink
                 to="/contact"

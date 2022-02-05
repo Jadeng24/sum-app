@@ -8,6 +8,7 @@ nav {
     backdrop-filter: blur(20px);
     box-sizing: border-box; // maintain width at 100%;
     min-height: 70px;
+    z-index: 100;
     &.mobile-active {
         background: rgba(255, 255, 255, 0.94);
     }
