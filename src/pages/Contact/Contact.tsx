@@ -1,8 +1,11 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
+import MapBox from '../../components/MapBox/MapBox';
 
 const Contact = () => {
     const [status, setStatus] = useState('Submit');
+    const [isCaptchaValid, setIsCaptchaValid] = useState(null);
     const handleSubmit = async (e) => {
         e.preventDefault();
         setStatus('Sending...');
@@ -23,6 +26,13 @@ const Contact = () => {
         const result = await response.json();
         alert(result.status);
     };
+
+    const onCaptchaChange = (token: string | null) => {
+        // setCaptcha()
+        console.log(token);
+        setIsCaptchaValid(token);
+    };
+    const captchaKey = process.env.REACT_APP_CAPTCHA_KEY || '';
     return (
         <div className="Page Contact column">
             <form onSubmit={handleSubmit}>
@@ -38,8 +48,12 @@ const Contact = () => {
                     <label htmlFor="message">Message:</label>
                     <textarea id="message" required />
                 </div>
-                <button type="submit">{status}</button>
+                <ReCAPTCHA sitekey={captchaKey} onChange={onCaptchaChange} />
+                <button type="submit" disabled={isCaptchaValid === null}>
+                    {status}
+                </button>
             </form>
+            <MapBox />
         </div>
     );
 };

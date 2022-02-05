@@ -9,6 +9,7 @@ import About from './pages/About/About';
 import Contact from './pages/Contact/Contact';
 import Boats from './pages/Boats/Boats';
 import BoatBuilder from './pages/Boat-Builder/Boat-Builder';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 const App = () => {
     return (
