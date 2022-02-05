@@ -62,10 +62,12 @@ const Contact = () => {
                             <label htmlFor="message">Message:</label>
                             <textarea id="message" required />
                         </div>
-                        <ReCAPTCHA
-                            sitekey={captchaKey}
-                            onChange={onCaptchaChange}
-                        />
+                        {captchaKey && (
+                            <ReCAPTCHA
+                                sitekey={captchaKey}
+                                onChange={onCaptchaChange}
+                            />
+                        )}
                         <button
                             type="submit"
                             disabled={isCaptchaValid === null}
