@@ -40,6 +40,20 @@ app.get('/api/boats', async (req, res) => {
     }
 });
 
+app.post('/api/boats', async (req, res) => {
+    try {
+        await pool.query(
+            "INSERT INTO boats(name, length, type, width, model, featured_image)VALUES('Aluminum Custom Jetboat', 14, 'aluminum', 6, 'sumv1aluminum', 'https://www.discoverboating.com/sites/default/files/styles/large/public/jet_boat2.JPG?h=736091d5&itok=l_f8x_EE')",
+            (err, response) => {
+                console.log(err, response);
+                pool.end();
+            }
+        );
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
 // Nodemailer --------------------------------------------------------------------------
 const contactEmail = nodemailer.createTransport({
     service: 'gmail',

@@ -4,17 +4,18 @@
     background: linear-gradient(10deg, #222, #555);
     color: white;
     font-weight: 600;
-    margin: 20px 0 40px;
+    margin: 20px 0px 40px;
     border-radius: 0px;
     user-select: none;
     align-items: center;
     justify-content: center;
+    text-align: center;
     .title-text {
         font-size: 40px;
-        padding: 25px 0px;
+        padding: 25px 20px;
     }
     .subtitle-text {
         font-size: 20px;
-        padding-bottom: 30px;
+        padding: 0px 20px 30px 20px;
     }
 }
