@@ -1,5 +1,4 @@
-import { Grid } from '@material-ui/core';
-import React from 'react';
+import React, { useState } from 'react';
 import Banner from '../../components/Banner/Banner';
 import { productColor } from '../../types/Types';
 import './Boats.scss';
@@ -175,17 +174,42 @@ const Boats = () => {
         },
     ];
 
+    const [status, setStatus] = useState('Create');
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus('Creating...');
+        // const { name, email, message, copy } = e.target.elements;
+        const details = {
+            name: 'aluminum',
+            email: 'aluminum',
+            message: 'aluminum',
+            copy: 'aluminum',
+        };
+        const response = await fetch('/api/boats', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+            },
+            body: JSON.stringify(details),
+        });
+        setStatus('Create');
+        const result = await response.json();
+        alert(result.status);
+    };
     return (
         <div className="Page Boats">
             <Banner title="Boats" />
-            <Grid container justify="center" spacing={4}>
+            {/* <Grid container justify="center" spacing={4}>
                 {boats.map((boat) => (
                     <Grid item key="boat.id" xs={12} sm={12} md={6} lg={4}>
                         <div>{boat.name}</div>
                         <div>{boat.length}</div>
                     </Grid>
                 ))}
-            </Grid>
+            </Grid> */}
+            <button type="submit" onClick={handleSubmit}>
+                {status}
+            </button>
         </div>
     );
 };
