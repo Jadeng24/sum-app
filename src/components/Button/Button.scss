@@ -1,14 +1,14 @@
 a.Button {
     padding: 15px 30px;
-    background: dodgerblue;
+    background: linear-gradient(0deg, dodgerblue, rgb(89, 172, 255));
     width: auto;
     border-radius: 30px;
     color: white;
     text-decoration: none;
     transition: 0.3s;
     &:hover {
-        opacity: 0.8;
-        padding: 18px 33px;
+        opacity: 0.9;
+        padding: 16px 33px;
     }
 }
 .secondary {

@@ -1,3 +1,5 @@
+// GLOBAL STYLES
+
 .flex {
     display: flex;
     align-items: center;
@@ -42,7 +44,28 @@ textarea {
     margin: 4px 0px 25px;
     max-width: 100%;
     border: solid 2px rgba(34, 34, 34, 0.7);
+    font-family: Arial, Helvetica, sans-serif;
 }
 textarea {
     min-height: 150px;
+}
+input[type='checkbox'] {
+    width: 30px;
+    height: 30px;
+    accent-color: dodgerblue;
+    cursor: pointer;
+}
+
+button.square-button {
+    background: linear-gradient(0deg, dodgerblue, rgb(89, 172, 255));
+    border: none;
+    color: white;
+    padding: 12px 26px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 20px;
+    &:disabled {
+        cursor: not-allowed;
+        filter: grayscale(1);
+    }
 }

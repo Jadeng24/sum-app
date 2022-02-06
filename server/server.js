@@ -58,15 +58,26 @@ contactEmail.verify((error) => {
 });
 
 app.post('/api/contact', (req, res) => {
-    const { name, email, message } = req.body;
-
+    const { name, email, message, copy } = req.body;
+    const emailTo = 'sportutilitymarine@gmail.com, jaden.goodwin24@gmail.com';
+    const emailRecipients = copy ? `${emailTo}, ${email}` : emailTo;
     const mailOptions = {
         from: `${name} <${email}>`,
-        to: 'sportutilitymarine@gmail.com, jaden.goodwin24@gmail.com',
+        to: emailRecipients,
         subject: `SUM inquiry - ${name}`,
-        html: `<p>Name: ${name}</p>
-           <p>Email: ${email}</p>
-           <p>Message: ${message}</p>`,
+        html: `
+        <div style="background: linear-gradient(0deg, dodgerblue, rgb(89, 172, 255)); border-radius:15px; overflow: hidden">
+            <div style="width: 100%; padding: 10px 20px; background: #333; color: white; font-weight: 600;">
+                <p>Name: ${name}</p>
+            </div>
+            <div style="padding: 30px 20px 20px 20px">
+                <div style="background: white; padding: 20px 20px 10px 20px; color:#222; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px;">
+                    <a href='http://sport-utility-marine.com/' style="text-decoration:none;color:dodgerblue;"><h2 style="color:dodgerblue; margin:0; padding: 0;">Sport Utility Marine</h2></a>
+                    <p style="color: #222">${message}</p>
+                    <p style="color: #222; margin-bottom:20px;">Sent from: ${name} - ${email}</p>
+              </div>
+           </div>
+        </div>`,
     };
     contactEmail.sendMail(mailOptions, (error) => {
         if (error) {

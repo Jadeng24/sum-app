@@ -13,11 +13,12 @@ const Contact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setStatus('Sending...');
-        const { name, email, message } = e.target.elements;
+        const { name, email, message, copy } = e.target.elements;
         const details = {
             name: name.value,
             email: email.value,
             message: message.value,
+            copy: copy.value,
         };
         const response = await fetch('/api/contact', {
             method: 'POST',
@@ -32,8 +33,6 @@ const Contact = () => {
     };
 
     const onCaptchaChange = (token: string | null) => {
-        // setCaptcha()
-        console.log(token);
         setIsCaptchaValid(token);
     };
     const captchaKey = process.env.REACT_APP_CAPTCHA_KEY || '';
@@ -51,16 +50,22 @@ const Contact = () => {
                     <h1>Send us a Message</h1>
                     <form onSubmit={handleSubmit} className="contact-form">
                         <div>
-                            <label htmlFor="name">Name:</label>
+                            <label htmlFor="name">Name*</label>
                             <input type="text" id="name" required />
                         </div>
                         <div>
-                            <label htmlFor="email">Email:</label>
+                            <label htmlFor="email">Email*</label>
                             <input type="email" id="email" required />
                         </div>
                         <div>
-                            <label htmlFor="message">Message:</label>
+                            <label htmlFor="message">Message*</label>
                             <textarea id="message" required />
+                        </div>
+                        <div className="column">
+                            <label htmlFor="message">
+                                Send me copied email:
+                            </label>
+                            <input type="checkbox" id="copy" />
                         </div>
                         {captchaKey && (
                             <ReCAPTCHA
@@ -69,6 +74,7 @@ const Contact = () => {
                             />
                         )}
                         <button
+                            className="square-button"
                             type="submit"
                             disabled={isCaptchaValid === null}
                         >

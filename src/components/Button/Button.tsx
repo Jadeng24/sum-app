@@ -12,7 +12,7 @@ interface ButtonProps {
 const Button = (props: ButtonProps) => {
     const { text, link, secondary } = props;
     return (
-        <div>
+        <div className="Button">
             <Link
                 className={`Button ${secondary ? 'secondary' : ''} `}
                 to={`/${link}`}

@@ -9,6 +9,7 @@ interface HomeSectionProps {
     title: string;
     subtitle: string;
 }
+
 const HomeSection = (props: HomeSectionProps) => {
     const { backgroundImg, link, title, subtitle } = props;
     return (
