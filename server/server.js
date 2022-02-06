@@ -34,7 +34,7 @@ app.get('/api/boats', async (req, res) => {
     try {
         const allBoats = await pool.query('SELECT * FROM boats');
 
-        res.json({ data: allBoats.rows });
+        res.json({ data: await allBoats.rows });
     } catch (err) {
         console.error(err.message);
     }
