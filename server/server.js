@@ -12,14 +12,14 @@ const pool = require('../db.ts');
 require('dotenv').config();
 
 const port = process.env.PORT || 8080;
-
-// Endpoints --------------------------------------------------------------------------
-// place holder for the data
-const users = ['test'];
-
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
+app.use(express.urlencoded({ extended: false }));
+// Endpoints --------------------------------------------------------------------------
+// place holder for the data
+const users = ['test'];
 app.get('/api/users', (req, res) => {
     res.json(users);
 });
@@ -114,7 +114,7 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.resolve(__dirname, 'build', '../build/index.html'));
     });
 } else {
-    app.use(express.json);
+    // app.use(express.json);
     app.use('/', router);
 }
 
