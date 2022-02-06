@@ -6,7 +6,10 @@ import './Engines.scss';
 const Engines = () => {
     return (
         <div className="Page Engines">
-            <Banner title="Engines" />
+            <Banner
+                title="Engines"
+                subtitle="Built with Quality, Innovation, Performance, and Reliability."
+            />
         </div>
     );
 };

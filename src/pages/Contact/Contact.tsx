@@ -38,7 +38,10 @@ const Contact = () => {
     const captchaKey = process.env.REACT_APP_CAPTCHA_KEY || '';
     return (
         <div className="Page Contact column">
-            <Banner title="Contact" />
+            <Banner
+                title="Contact"
+                subtitle="Feel free to reach out with any questions or suggestions you may have."
+            />
             <div
                 className={
                     isTabletOrMobile()
@@ -63,7 +66,7 @@ const Contact = () => {
                         </div>
                         <div className="column">
                             <label htmlFor="message">
-                                Send me copied email:
+                                Send me an email copy
                             </label>
                             <input type="checkbox" id="copy" />
                         </div>

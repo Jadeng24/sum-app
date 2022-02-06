@@ -53,7 +53,7 @@ contactEmail.verify((error) => {
     if (error) {
         console.log(error);
     } else {
-        console.log('Ready to Send');
+        console.log('Ready to Send Email');
     }
 });
 
