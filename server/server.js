@@ -34,7 +34,7 @@ app.get('/api/boats', async (req, res) => {
     try {
         const allBoats = await pool.query('SELECT * FROM boats');
 
-        res.json(allBoats.rows);
+        res.json({ data: allBoats.rows });
     } catch (err) {
         console.error(err.message);
     }
@@ -45,14 +45,12 @@ app.post('/api/boats', async (req, res) => {
     try {
         await pool.query(
             "INSERT INTO boats(name, length, type, width, model, featured_image)VALUES('Aluminum Custom Jetboat', 14, 'aluminum', 6, 'sumv1aluminum', 'https://www.discoverboating.com/sites/default/files/styles/large/public/jet_boat2.JPG?h=736091d5&itok=l_f8x_EE')",
-            (err, response) => {
-                if (err) {
-                    res.json({ status: 'ERROR' });
-                } else {
-                    res.json({ status: 'Message Sent' });
-                }
-                console.log(err, response);
-                // pool.end();
+            (response) => {
+                res.json({ status: 'Message Sent' });
+                console.log(response);
+            },
+            (err) => {
+                res.json({ status: 'Error' });
             }
         );
     } catch (err) {

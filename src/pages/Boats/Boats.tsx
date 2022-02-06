@@ -21,12 +21,12 @@ const Boats = () => {
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
             },
-        }).then((res) => {
-            console.log(res);
         });
-        console.log(response);
+        const result = await response.json();
         // setBoats(response);
+        console.log(result.data);
     };
+
     const createBoat = async (e) => {
         e.preventDefault();
         setStatus('Creating...');
