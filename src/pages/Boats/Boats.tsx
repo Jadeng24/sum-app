@@ -11,171 +11,20 @@ interface Boat {
     colors: productColor[];
 }
 const Boats = () => {
-    const boats: Boat[] = [
-        {
-            id: 1,
-            type: 'aluminum',
-            name: 'Aluminum 14 foot Boat',
-            length: 14,
-            colors: [
-                {
-                    name: 'red',
-                    color: '#F00',
-                },
-                {
-                    name: 'blue',
-                    color: '#F00',
-                },
-                {
-                    name: 'orange',
-                    color: '#F00',
-                },
-                {
-                    name: 'black',
-                    color: '#F00',
-                },
-                {
-                    name: 'white',
-                    color: '#F00',
-                },
-                {
-                    name: 'aluminum',
-                    color: '#F00',
-                },
-            ],
-        },
-        {
-            id: 2,
-            type: 'inflatable',
-            name: 'Inflatable 14 foot Raft',
-            length: 14,
-            colors: [
-                {
-                    name: 'Red',
-                    color: '#F00',
-                },
-                {
-                    name: 'Blue',
-                    color: '#F00',
-                },
-                {
-                    name: 'Orange',
-                    color: '#F00',
-                },
-                {
-                    name: 'Black',
-                    color: '#F00',
-                },
-                {
-                    name: 'White',
-                    color: '#F00',
-                },
-                {
-                    name: 'Army green',
-                    color: '#F00',
-                },
-            ],
-        },
-        {
-            id: 3,
-            type: 'aluminum',
-            name: 'Aluminum 14 foot Boat',
-            length: 14,
-            colors: [
-                {
-                    name: 'red',
-                    color: '#F00',
-                },
-                {
-                    name: 'blue',
-                    color: '#F00',
-                },
-                {
-                    name: 'orange',
-                    color: '#F00',
-                },
-                {
-                    name: 'black',
-                    color: '#F00',
-                },
-                {
-                    name: 'white',
-                    color: '#F00',
-                },
-                {
-                    name: 'aluminum',
-                    color: '#F00',
-                },
-            ],
-        },
-        {
-            id: 4,
-            type: 'inflatable',
-            name: 'Inflatable 14 foot Raft',
-            length: 14,
-            colors: [
-                {
-                    name: 'Red',
-                    color: '#F00',
-                },
-                {
-                    name: 'Blue',
-                    color: '#F00',
-                },
-                {
-                    name: 'Orange',
-                    color: '#F00',
-                },
-                {
-                    name: 'Black',
-                    color: '#F00',
-                },
-                {
-                    name: 'White',
-                    color: '#F00',
-                },
-                {
-                    name: 'Army green',
-                    color: '#F00',
-                },
-            ],
-        },
-        {
-            id: 5,
-            type: 'aluminum',
-            name: 'Aluminum 14 foot Boat',
-            length: 14,
-            colors: [
-                {
-                    name: 'red',
-                    color: '#F00',
-                },
-                {
-                    name: 'blue',
-                    color: '#F00',
-                },
-                {
-                    name: 'orange',
-                    color: '#F00',
-                },
-                {
-                    name: 'black',
-                    color: '#F00',
-                },
-                {
-                    name: 'white',
-                    color: '#F00',
-                },
-                {
-                    name: 'aluminum',
-                    color: '#F00',
-                },
-            ],
-        },
-    ];
-
     const [status, setStatus] = useState('Create');
-    const handleSubmit = async (e) => {
+    const [boats, setBoats] = useState([]);
+
+    const getBoats = async (e) => {
+        e.preventDefault();
+        const response = await fetch('/api/boats', {
+            method: 'GET',
+        }).then((res) => {
+            console.log(res);
+        });
+        console.log(response);
+        // setBoats(response);
+    };
+    const createBoat = async (e) => {
         e.preventDefault();
         setStatus('Creating...');
         // const { name, email, message, copy } = e.target.elements;
@@ -207,8 +56,12 @@ const Boats = () => {
                     </Grid>
                 ))}
             </Grid> */}
-            <button type="submit" onClick={handleSubmit}>
+            _{boats}_
+            <button type="submit" onClick={createBoat}>
                 {status}
+            </button>
+            <button type="submit" onClick={getBoats}>
+                get boats
             </button>
         </div>
     );
