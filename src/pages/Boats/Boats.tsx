@@ -19,7 +19,7 @@ const Boats = () => {
         const response = await fetch('/api/boats', {
             method: 'GET',
             headers: {
-                'Content-type': 'application/json',
+                'Content-Type': 'application/json;charset=utf-8',
             },
         }).then((res) => {
             console.log(res);
