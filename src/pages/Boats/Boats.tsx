@@ -18,6 +18,9 @@ const Boats = () => {
         e.preventDefault();
         const response = await fetch('/api/boats', {
             method: 'GET',
+            headers: {
+                'Content-type': 'application/json',
+            },
         }).then((res) => {
             console.log(res);
         });
