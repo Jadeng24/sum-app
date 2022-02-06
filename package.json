@@ -43,7 +43,8 @@
         "react-scripts": "5.0.0",
         "react-use-wizard": "^2.1.1",
         "swiper": "^7.4.1",
-        "web-vitals": "^2.1.4"
+        "web-vitals": "^2.1.4",
+        "worker-loader": "^3.0.8"
     },
     "scripts": {
         "start": "node server/server.js",

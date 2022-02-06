@@ -1,7 +1,14 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/no-webpack-loader-syntax */
 import * as React from 'react';
 import Map, { Marker } from 'react-map-gl';
-
+import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+
+// @ts-ignore
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass =
+    require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 const MapBox = () => {
     const mapBoxKey = process.env.REACT_APP_MAPBOX_KEY || '';
