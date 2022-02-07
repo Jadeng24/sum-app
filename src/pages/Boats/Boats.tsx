@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Banner from '../../components/Banner/Banner';
 import { productColor } from '../../types/Types';
+import BoatDetails from './Boat-details/Boat-details';
 import './Boats.scss';
 
 interface Boat {
@@ -23,7 +24,7 @@ const Boats = () => {
             },
         });
         const result = await response.json();
-        // setBoats(response);
+        setBoats(result.data);
         console.log(result.data);
     };
 
@@ -59,13 +60,23 @@ const Boats = () => {
                     </Grid>
                 ))}
             </Grid> */}
-            _{boats}_
             <button type="submit" onClick={createBoat}>
                 {status}
             </button>
             <button type="submit" onClick={getBoats}>
                 get boats
             </button>
+            {boats.map((boat) => {
+                return (
+                    <BoatDetails
+                        name={boat.name}
+                        length={boat.length}
+                        width={boat.width}
+                        model={boat.model}
+                        featuredImage={boat.featured_image}
+                    />
+                );
+            })}
         </div>
     );
 };
