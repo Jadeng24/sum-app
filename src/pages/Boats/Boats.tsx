@@ -29,25 +29,26 @@ const Boats = () => {
     };
 
     const createBoat = async (e) => {
-        e.preventDefault();
-        setStatus('Creating...');
-        // const { name, email, message, copy } = e.target.elements;
-        const details = {
-            name: 'aluminum',
-            email: 'aluminum',
-            message: 'aluminum',
-            copy: 'aluminum',
-        };
-        const response = await fetch('/api/boats', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8',
-            },
-            body: JSON.stringify(details),
-        });
-        setStatus('Create');
-        const result = await response.json();
-        alert(result.status);
+        console.log('Database_URL', process.env.DATABASE_URL);
+        // e.preventDefault();
+        // setStatus('Creating...');
+        // // const { name, email, message, copy } = e.target.elements;
+        // const details = {
+        //     name: 'aluminum',
+        //     email: 'aluminum',
+        //     message: 'aluminum',
+        //     copy: 'aluminum',
+        // };
+        // const response = await fetch('/api/boats', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json;charset=utf-8',
+        //     },
+        //     body: JSON.stringify(details),
+        // });
+        // setStatus('Create');
+        // const result = await response.json();
+        // alert(result.status);
     };
     return (
         <div className="Page Boats">
