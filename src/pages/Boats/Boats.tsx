@@ -66,17 +66,20 @@ const Boats = () => {
             <button type="submit" onClick={getBoats}>
                 get boats
             </button>
-            {boats.map((boat) => {
-                return (
-                    <BoatDetails
-                        name={boat.name}
-                        length={boat.length}
-                        width={boat.width}
-                        model={boat.model}
-                        featuredImage={boat.featured_image}
-                    />
-                );
-            })}
+            <div>Total Boats: {boats && boats.length}</div>
+            {boats &&
+                boats.length &&
+                boats.map((boat) => {
+                    return (
+                        <BoatDetails
+                            name={boat.name}
+                            length={boat.length}
+                            width={boat.width}
+                            model={boat.model}
+                            featuredImage={boat.featured_image}
+                        />
+                    );
+                })}
         </div>
     );
 };
