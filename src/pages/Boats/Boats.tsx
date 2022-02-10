@@ -51,6 +51,7 @@ const Boats = () => {
             getBoats();
         }
     };
+
     const handleDeleteBoat = async (id: number) => {
         setDeleteStatus('Deleting...');
         const response = await fetch(`/api/boats/${id}`, {
@@ -62,7 +63,7 @@ const Boats = () => {
         setDeleteStatus('Delete');
         const result = await response.json();
         if (result.status === 200) {
-            getBoats();
+            getBoats(); // filter list instead without boat
         }
     };
 

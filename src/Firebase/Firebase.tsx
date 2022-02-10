@@ -38,8 +38,10 @@ export const signInWithGoogle = () => {
     signInWithPopup(auth, gmailProvider).then(
         (response) => {
             const name = response.user.displayName || '';
+            const email = response.user.email || '';
             const pic = response.user.photoURL || '';
             localStorage.setItem('currentUser', name);
+            localStorage.setItem('currentUserEmail', email);
             localStorage.setItem('profilePic', pic);
         },
         (error) => {

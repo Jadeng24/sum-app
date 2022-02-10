@@ -9,6 +9,7 @@ import Contact from './pages/Contact/Contact';
 import Boats from './pages/Boats/Boats';
 import BoatBuilder from './pages/Boat-Builder/Boat-Builder';
 import Engines from './pages/Engines/Engines';
+import Admin from './pages/Admin/Admin';
 
 const App = () => {
     return (
@@ -18,6 +19,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/boats" element={<Boats />} />
+                    <Route path="/admin" element={<Admin />} />
                     <Route path="/engines" element={<Engines />} />
                     <Route path="/boat-builder" element={<BoatBuilder />} />
                     <Route path="/shop" element={<Shop />} />
