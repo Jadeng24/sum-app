@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { MouseEventHandler, useEffect, useState } from 'react';
 import Banner from '../../components/Banner/Banner';
 import { productColor } from '../../types/Types';
 import BoatDetails from './Boat-details/Boat-details';
@@ -10,13 +10,14 @@ interface Boat {
     name: string;
     length: number;
     colors: productColor[];
+    description: string;
 }
 const Boats = () => {
-    const [status, setStatus] = useState('Create');
+    const [createStatus, setCreateStatus] = useState('Create');
+    const [deleteStatus, setDeleteStatus] = useState('Delete');
     const [boats, setBoats] = useState([]);
 
-    const getBoats = async (e) => {
-        e.preventDefault();
+    const getBoats = async () => {
         const response = await fetch('/api/boats', {
             method: 'GET',
             headers: {
@@ -30,8 +31,7 @@ const Boats = () => {
 
     const createBoat = async (e) => {
         e.preventDefault();
-        setStatus('Creating...');
-        // const { name, email, message, copy } = e.target.elements;
+        setCreateStatus('Creating...');
         const details = {
             name: 'aluminum',
             email: 'aluminum',
@@ -45,24 +45,39 @@ const Boats = () => {
             },
             body: JSON.stringify(details),
         });
-        setStatus('Create');
+        setCreateStatus('Create');
         const result = await response.json();
-        alert(result.status);
+        if (result.status === 200) {
+            getBoats();
+        }
     };
+    const handleDeleteBoat = async (id: number) => {
+        setDeleteStatus('Deleting...');
+        const response = await fetch(`/api/boats/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+            },
+        });
+        setDeleteStatus('Delete');
+        const result = await response.json();
+        if (result.status === 200) {
+            getBoats();
+        }
+    };
+
+    useEffect(() => {
+        getBoats();
+    }, []);
+
     return (
         <div className="Page Boats">
             <Banner title="Boats" />
-            {/* <Grid container justify="center" spacing={4}>
-                {boats.map((boat) => (
-                    <Grid item key="boat.id" xs={12} sm={12} md={6} lg={4}>
-                        <div>{boat.name}</div>
-                        <div>{boat.length}</div>
-                    </Grid>
-                ))}
-            </Grid> */}
+
             <button type="submit" onClick={createBoat}>
-                {status}
+                {createStatus}
             </button>
+
             <button type="submit" onClick={getBoats}>
                 get boats
             </button>
@@ -77,6 +92,11 @@ const Boats = () => {
                             width={boat.width}
                             model={boat.model}
                             featuredImage={boat.featured_image}
+                            description={boat.description}
+                            key={boat.id}
+                            onDeleteBoat={() => {
+                                handleDeleteBoat(boat.id);
+                            }}
                         />
                     );
                 })}

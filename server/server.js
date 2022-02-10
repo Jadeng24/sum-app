@@ -9,13 +9,13 @@ const cors = require('cors');
 const nodemailer = require('nodemailer');
 // eslint-disable-next-line import/extensions
 const pool = require('../db.ts');
+const boats = require('./controllers/boats_ctrl.js');
 require('dotenv').config();
 
 const port = process.env.PORT || 8080;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
-console.log('Database_URL', process.env.DATABASE_URL);
 
 app.use(express.urlencoded({ extended: false }));
 // Endpoints --------------------------------------------------------------------------
@@ -30,34 +30,11 @@ app.post('/api/user', (req, res) => {
     users.push(user);
     res.json('user addedd');
 });
+// Boats -------------------------------------------------------------------------------
+app.get('/api/boats', boats.getBoats);
 
-app.get('/api/boats', async (req, res) => {
-    try {
-        const allBoats = await pool.query('SELECT * FROM boats');
-
-        res.json({ data: await allBoats.rows });
-    } catch (err) {
-        console.error(err.message);
-    }
-});
-
-app.post('/api/boats', async (req, res) => {
-    const { name, email, message, copy } = req.body;
-    try {
-        await pool.query(
-            "INSERT INTO boats(name, length, type, width, model, featured_image)VALUES('Aluminum Custom Jetboat', 14, 'aluminum', 6, 'sumv1aluminum', 'https://www.discoverboating.com/sites/default/files/styles/large/public/jet_boat2.JPG?h=736091d5&itok=l_f8x_EE')",
-            (response) => {
-                res.json({ status: 'Message Sent' });
-                console.log(response);
-            },
-            (err) => {
-                res.json({ status: 'Error' });
-            }
-        );
-    } catch (err) {
-        console.error(err.message);
-    }
-});
+app.post('/api/boats', boats.createBoat);
+app.delete('/api/boats/:id', boats.deleteBoat);
 
 // Nodemailer --------------------------------------------------------------------------
 const contactEmail = nodemailer.createTransport({

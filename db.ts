@@ -13,11 +13,10 @@ require('dotenv').config();
 const devConfig = `postgresql://${process.env.POSTGRES_USER}:${process.env.POSTGRES_PASSWORD}@${process.env.POSTGRES_HOST}:${process.env.POSTGRES_PORT}/${process.env.POSTGRES_DATABASE}`;
 
 const proConfig = process.env.DATABASE_URL; // heroku addons
-
+const isProd = process.env.NODE_ENV === 'production';
 const pool = new Pool({
-    connectionString:
-        process.env.NODE_ENV === 'production' ? proConfig : devConfig,
-    ssl: { rejectUnauthorized: false },
+    connectionString: isProd ? proConfig : devConfig,
+    ssl: isProd ? { rejectUnauthorized: false } : false,
 });
 
 module.exports = pool;
