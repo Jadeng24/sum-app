@@ -1,0 +1,26 @@
+.Login-Button {
+    margin-left: 10px;
+    margin-right: 4px;
+    gap: 5px;
+    font-weight: 600;
+    background: rgba(34, 34, 34, 0.1);
+    color: #222;
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    animation-duration: 8s;
+    animation-name: slideins;
+    transition: 0.3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes slideins {
+    20% {
+    }
+    50% {
+        color: dodgerblue;
+    }
+    60% {
+        background: rgba(201, 201, 201, 0.2);
+    }
+}

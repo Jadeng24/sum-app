@@ -48,7 +48,11 @@ const LoginModal = (props: LoginModalProps) => {
                 contentLabel="Example Modal"
                 style={styles}
             >
-                <LoginModalContent closeModal={closeModal} />
+                <LoginModalContent
+                    closeModal={() => {
+                        closeModal();
+                    }}
+                />
             </Modal>
         </div>
     );

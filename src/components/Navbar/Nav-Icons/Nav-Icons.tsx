@@ -1,8 +1,11 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
+import { FaUserCircle } from 'react-icons/fa';
 import { MdShoppingCart } from 'react-icons/md';
 import LoginModal from '../../Login-Modal/Login-Modal';
+import LoginButton from './Login-Button/Login-Button';
 
 const NavIcons = () => {
     const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -21,16 +24,26 @@ const NavIcons = () => {
             <MdShoppingCart size="30px" style={{ cursor: 'pointer' }} />
             <div className="flex">
                 {localStorage.getItem('currentUser') ? (
-                    <img
-                        onClick={openModal}
-                        className="profilePic clickable"
-                        src={localStorage.getItem('profilePic') || ''}
-                        alt="googlepic"
-                    />
+                    <div className="flex">
+                        {localStorage.getItem('profilePic') ? (
+                            <img
+                                onClick={openModal}
+                                className="profilePic clickable"
+                                src={localStorage.getItem('profilePic') || ''}
+                                alt="user"
+                            />
+                        ) : (
+                            <div
+                                className="clickable flex"
+                                style={{ margin: '0px 8px' }}
+                                onClick={openModal}
+                            >
+                                <FaUserCircle size="40px" />
+                            </div>
+                        )}
+                    </div>
                 ) : (
-                    <button type="button" onClick={openModal}>
-                        Login / Create account
-                    </button>
+                    <LoginButton handleClick={openModal} />
                 )}
             </div>
             <LoginModal

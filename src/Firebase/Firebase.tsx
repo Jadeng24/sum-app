@@ -35,7 +35,7 @@ const gmailProvider = new GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
 
 export const signInWithGoogle = () => {
-    signInWithPopup(auth, gmailProvider).then(
+    return signInWithPopup(auth, gmailProvider).then(
         (response) => {
             const name = response.user.displayName || '';
             const email = response.user.email || '';
@@ -50,9 +50,8 @@ export const signInWithGoogle = () => {
     );
 };
 export const signInWithFacebook = () => {
-    signInWithPopup(auth, facebookProvider).then(
+    return signInWithPopup(auth, facebookProvider).then(
         (response) => {
-            console.log(response.user);
             const name = response.user.displayName || '';
             const pic = response.user.photoURL || '';
             localStorage.setItem('currentUser', name);
@@ -62,4 +61,11 @@ export const signInWithFacebook = () => {
             console.log(error);
         }
     );
+};
+export const signOutUser = (): Promise<void> => {
+    return auth.signOut().then(() => {
+        localStorage.removeItem('currentUser');
+        localStorage.removeItem('currentUserEmail');
+        localStorage.removeItem('profilePic');
+    });
 };
