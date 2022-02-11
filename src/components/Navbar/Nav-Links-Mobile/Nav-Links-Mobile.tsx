@@ -16,21 +16,8 @@ const NavLinksMobile = (props: NavLinksMobileProps) => {
         onChange(!isActive);
     };
 
-    const [modalIsOpen, setIsOpen] = React.useState(false);
-
-    const openModal = () => {
-        closeNav();
-        setIsOpen(true);
-    };
-    const afterOpenModal = () => {
-        // references are now sync'd and can be accessed.
-    };
-    const closeModal = () => {
-        setIsOpen(false);
-    };
     const currentUserEmail = localStorage.getItem('currentUserEmail');
-    const adminUser =
-        JSON.stringify(currentUserEmail) === 'jaden.goodwin24@gmail.com'; // change this to get column from users DB table
+    const adminUser = currentUserEmail === 'jaden.goodwin24@gmail.com'; // change this to get column from users DB table
     return (
         <div
             className={`flex column mobile-links nav-links ${
@@ -40,44 +27,54 @@ const NavLinksMobile = (props: NavLinksMobileProps) => {
             <NavLink
                 to="/boats"
                 onClick={closeNav}
-                className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+                className={({ isActive }) =>
+                    isActive ? 'active nav-link' : 'inactive nav-link'
+                }
             >
                 Boats
             </NavLink>
             <NavLink
                 to="/shop"
                 onClick={closeNav}
-                className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+                className={({ isActive }) =>
+                    isActive ? 'active nav-link' : 'inactive nav-link'
+                }
             >
                 Shop
             </NavLink>
             <NavLink
                 to="/engines"
                 onClick={closeNav}
-                className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+                className={({ isActive }) =>
+                    isActive ? 'active nav-link' : 'inactive nav-link'
+                }
             >
                 Engines
             </NavLink>
             <NavLink
                 to="/contact"
                 onClick={closeNav}
-                className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+                className={({ isActive }) =>
+                    isActive ? 'active nav-link' : 'inactive nav-link'
+                }
             >
                 Contact
             </NavLink>
             <NavLink
                 to="/boat-builder"
                 onClick={closeNav}
-                className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+                className={({ isActive }) =>
+                    isActive ? 'active nav-link' : 'inactive nav-link'
+                }
             >
                 Boat Builder
             </NavLink>
-            {!adminUser && (
+            {adminUser && (
                 <NavLink
                     to="/admin"
                     onClick={closeNav}
                     className={({ isActive }) =>
-                        isActive ? 'active' : 'inactive'
+                        isActive ? 'active nav-link' : 'inactive nav-link'
                     }
                 >
                     Admin

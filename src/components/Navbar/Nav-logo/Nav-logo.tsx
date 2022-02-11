@@ -46,11 +46,6 @@ const NavLogo = (props: NavLogoProps) => {
                         className="logo mobile-logo"
                         alt="SUM logo"
                     />
-                    <img
-                        src={SUMText}
-                        className="logo-text mobile-text-logo"
-                        alt="Sport Utility Marine"
-                    />
                 </Mobile>
             </Link>
         </div>

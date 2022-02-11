@@ -16,15 +16,13 @@
             height: 40px;
         }
         img.mobile-logo {
-            height: 35px;
+            height: 40px;
         }
 
         img.logo-text {
-            &.mobile-text-logo {
-                width: 180px;
-            }
             &.tablet-text-logo {
                 width: 300px;
+                margin-left: 10px;
             }
         }
         &:hover {

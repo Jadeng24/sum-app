@@ -17,34 +17,43 @@ nav {
         display: flex;
         justify-content: center;
         align-items: center;
-        a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            color: #222;
-            height: 100%;
-            width: 70px;
-            padding: 0px 10px;
-            margin-left: 2px;
-            font-family: Arial, Helvetica, sans-serif;
-            text-transform: uppercase;
-            transition: 0.2s;
-            font-size: 16px;
-            font-weight: 600;
-            text-align: center;
-            &:hover {
-                color: grey;
-            }
-        }
-        a.active {
-            color: dodgerblue;
+    }
+
+    img.profilePic {
+        width: 40px;
+        border-radius: 50%;
+        margin: 0px 8px;
+    }
+    a.nav-link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        color: #222;
+        height: 100%;
+        width: 70px;
+        padding: 0px 10px;
+        margin-left: 2px;
+        font-family: Arial, Helvetica, sans-serif;
+        text-transform: uppercase;
+        transition: 0.2s;
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+        &:hover {
+            color: grey;
         }
     }
-    a.build-link {
+    a.nav-link.active {
+        color: dodgerblue;
+    }
+    .right-nav {
+        gap: 10px;
+    }
+    a.nav-link.build-link {
         background: linear-gradient(0deg, dodgerblue, rgb(89, 172, 255));
         color: white;
-        height: 70%;
+        height: 40px;
         padding: 0px 30px;
         margin-right: 8px;
 
@@ -55,11 +64,5 @@ nav {
             opacity: 0.8;
             color: white;
         }
-    }
-
-    img.profilePic {
-        width: 40px;
-        border-radius: 50%;
-        margin: 0px 8px;
     }
 }

@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import Nav from './components/Navbar/Nav';
 
 import './App.scss';
@@ -12,6 +12,14 @@ import Engines from './pages/Engines/Engines';
 import Admin from './pages/Admin/Admin';
 
 const App = () => {
+    const [isAdmin, updateIsAdmin] = useState(false);
+
+    useEffect(() => {
+        const currentUserEmail = localStorage.getItem('currentUserEmail');
+        const adminUser = currentUserEmail === 'jaden.goodwin24@gmail.com';
+        updateIsAdmin(adminUser);
+    }, []);
+
     return (
         <div className="App">
             <BrowserRouter>
@@ -19,7 +27,13 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/boats" element={<Boats />} />
-                    <Route path="/admin" element={<Admin />} />
+                    <Route
+                        path="/admin"
+                        element={
+                            isAdmin ? <Admin /> : <Navigate to="/" replace />
+                        }
+                    />
+                    {/* <Route path="/admin" element={<Admin />} /> */}
                     <Route path="/engines" element={<Engines />} />
                     <Route path="/boat-builder" element={<BoatBuilder />} />
                     <Route path="/shop" element={<Shop />} />

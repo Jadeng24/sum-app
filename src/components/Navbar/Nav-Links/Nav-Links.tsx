@@ -1,71 +1,55 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import LoginModal from '../../Login-Modal/Login-Modal';
 
 const NavLinks = () => {
-    const [modalIsOpen, setIsOpen] = React.useState(false);
-
-    const openModal = () => {
-        setIsOpen(true);
-    };
-    const afterOpenModal = () => {
-        // references are now sync'd and can be accessed.
-    };
-    const closeModal = () => {
-        setIsOpen(false);
-    };
+    const currentUserEmail = localStorage.getItem('currentUserEmail');
+    const adminUser = currentUserEmail === 'jaden.goodwin24@gmail.com';
     return (
         <div className="nav-links">
-            <NavLink
-                to="/boats"
-                className={({ isActive }) => (isActive ? 'active' : 'inactive')}
-            >
-                Boats
-            </NavLink>
-            <NavLink
-                to="/shop"
-                className={({ isActive }) => (isActive ? 'active' : 'inactive')}
-            >
-                Shop
-            </NavLink>
-            <NavLink
-                to="/engines"
-                className={({ isActive }) => (isActive ? 'active' : 'inactive')}
-            >
-                Engines
-            </NavLink>
-            <NavLink
-                to="/contact"
-                className={({ isActive }) => (isActive ? 'active' : 'inactive')}
-            >
-                Contact
-            </NavLink>
-
-            <div>
-                {localStorage.getItem('currentUser') ? (
-                    <img
-                        onClick={openModal}
-                        className="profilePic clickable"
-                        src={localStorage.getItem('profilePic') || ''}
-                        alt="googlepic"
-                    />
-                ) : (
-                    <button type="button" onClick={openModal}>
-                        Open Modal
-                    </button>
+            <div className="flex text-links">
+                {adminUser && (
+                    <NavLink
+                        to="/admin"
+                        className={({ isActive }) =>
+                            isActive ? 'active nav-link' : 'inactive nav-link'
+                        }
+                    >
+                        Admin
+                    </NavLink>
                 )}
+                <NavLink
+                    to="/boats"
+                    className={({ isActive }) =>
+                        isActive ? 'active nav-link' : 'inactive nav-link'
+                    }
+                >
+                    Boats
+                </NavLink>
+                <NavLink
+                    to="/shop"
+                    className={({ isActive }) =>
+                        isActive ? 'active nav-link' : 'inactive nav-link'
+                    }
+                >
+                    Shop
+                </NavLink>
+                <NavLink
+                    to="/engines"
+                    className={({ isActive }) =>
+                        isActive ? 'active nav-link' : 'inactive nav-link'
+                    }
+                >
+                    Engines
+                </NavLink>
+                <NavLink
+                    to="/contact"
+                    className={({ isActive }) =>
+                        isActive ? 'active nav-link' : 'inactive nav-link'
+                    }
+                >
+                    Contact
+                </NavLink>
             </div>
-
-            <NavLink className="build-link" to="/boat-builder">
-                Build
-            </NavLink>
-            <LoginModal
-                modalIsOpen={modalIsOpen}
-                afterOpenModal={afterOpenModal}
-                closeModal={closeModal}
-            />
         </div>
     );
 };
