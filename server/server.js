@@ -34,6 +34,7 @@ app.post('/api/user', (req, res) => {
 app.get('/api/boats', boats.getBoats);
 
 app.post('/api/boats', boats.createBoat);
+app.put('/api/boats/:id', boats.updateBoat);
 app.delete('/api/boats/:id', boats.deleteBoat);
 
 // Nodemailer --------------------------------------------------------------------------
@@ -45,13 +46,13 @@ const contactEmail = nodemailer.createTransport({
     },
 });
 
-contactEmail.verify((error) => {
-    if (error) {
-        console.log(error);
-    } else {
-        console.log('Ready to Send Email');
-    }
-});
+// contactEmail.verify((error) => {
+//     if (error) {
+//         console.log(error);
+//     } else {
+//         console.log('Ready to Send Email');
+//     }
+// });
 
 app.post('/api/contact', (req, res) => {
     const { name, email, message, copy } = req.body;

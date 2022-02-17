@@ -69,17 +69,17 @@ const NavLinksMobile = (props: NavLinksMobileProps) => {
             >
                 Boat Builder
             </NavLink>
-            {adminUser && (
-                <NavLink
-                    to="/admin"
-                    onClick={closeNav}
-                    className={({ isActive }) =>
-                        isActive ? 'active nav-link' : 'inactive nav-link'
-                    }
-                >
-                    Admin
-                </NavLink>
-            )}
+            {/* {adminUser && ( */}
+            <NavLink
+                to="/admin"
+                onClick={closeNav}
+                className={({ isActive }) =>
+                    isActive ? 'active nav-link' : 'inactive nav-link'
+                }
+            >
+                Admin
+            </NavLink>
+            {/* )} */}
         </div>
     );
 };

@@ -1,15 +1,15 @@
 import React from 'react';
 import { Wizard } from 'react-use-wizard';
-import BuilderFooter from '../Builder-Footer/Builder-Footer';
+import BuilderFooter from '../BuilderFooter/BuilderFooter';
 
-import BuilderNav from '../Builder-Nav/Builder-Nav';
-import Step1 from './Builder-steps/Step1/Step1';
-import Step2 from './Builder-steps/Step2/Step2';
-import Step3 from './Builder-steps/Step3/Step3';
-import Step4 from './Builder-steps/Step4/Step4';
-import Step5 from './Builder-steps/Step5/Step5';
+import Tabs from '../../../components/Tabs/Tabs';
+import Step1 from './BuilderSteps/Step1/Step1';
+import Step2 from './BuilderSteps/Step2/Step2';
+import Step3 from './BuilderSteps/Step3/Step3';
+import Step4 from './BuilderSteps/Step4/Step4';
+import Step5 from './BuilderSteps/Step5/Step5';
 
-import './Builder-Wizard.scss';
+import './BuilderWizard.scss';
 
 const BuilderWizard = () => {
     const wizardStepLabels = [
@@ -20,9 +20,9 @@ const BuilderWizard = () => {
         'Summary',
     ];
     return (
-        <div className="Builder-Wizard touch">
+        <div className="BuilderWizard touch">
             <Wizard
-                header={<BuilderNav labels={wizardStepLabels} />}
+                header={<Tabs labels={wizardStepLabels} />}
                 footer={<BuilderFooter labels={wizardStepLabels} />}
             >
                 <Step1 />

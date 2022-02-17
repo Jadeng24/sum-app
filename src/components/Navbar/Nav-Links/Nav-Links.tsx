@@ -7,16 +7,16 @@ const NavLinks = () => {
     return (
         <div className="nav-links">
             <div className="flex text-links">
-                {adminUser && (
-                    <NavLink
-                        to="/admin"
-                        className={({ isActive }) =>
-                            isActive ? 'active nav-link' : 'inactive nav-link'
-                        }
-                    >
-                        Admin
-                    </NavLink>
-                )}
+                {/* {adminUser && ( */}
+                <NavLink
+                    to="/admin"
+                    className={({ isActive }) =>
+                        isActive ? 'active nav-link' : 'inactive nav-link'
+                    }
+                >
+                    Admin
+                </NavLink>
+                {/* )} */}
                 <NavLink
                     to="/boats"
                     className={({ isActive }) =>

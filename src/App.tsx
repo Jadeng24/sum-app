@@ -7,7 +7,7 @@ import Home from './pages/Home/Home';
 import Shop from './pages/Shop/Shop';
 import Contact from './pages/Contact/Contact';
 import Boats from './pages/Boats/Boats';
-import BoatBuilder from './pages/Boat-Builder/Boat-Builder';
+import BoatBuilder from './pages/BoatBuilder/BoatBuilder';
 import Engines from './pages/Engines/Engines';
 import Admin from './pages/Admin/Admin';
 
@@ -27,13 +27,13 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/boats" element={<Boats />} />
-                    <Route
+                    {/* <Route
                         path="/admin"
                         element={
                             isAdmin ? <Admin /> : <Navigate to="/" replace />
                         }
-                    />
-                    {/* <Route path="/admin" element={<Admin />} /> */}
+                    /> */}
+                    <Route path="/admin" element={<Admin />} />
                     <Route path="/engines" element={<Engines />} />
                     <Route path="/boat-builder" element={<BoatBuilder />} />
                     <Route path="/shop" element={<Shop />} />

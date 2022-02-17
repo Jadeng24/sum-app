@@ -1,12 +1,12 @@
 import React from 'react';
 
-import './Boat-Builder.scss';
+import './BoatBuilder.scss';
 
-import BuilderWizard from './Builder-Wizard/Builder-Wizard';
+import BuilderWizard from './BuilderWizard/BuilderWizard';
 
 const BoatBuilder = () => {
     return (
-        <div className="Boat-Builder">
+        <div className="BoatBuilder">
             <BuilderWizard />
         </div>
     );

@@ -4,7 +4,7 @@ import React from 'react';
 import { useWizard } from 'react-use-wizard';
 import { GoChevronRight } from 'react-icons/go';
 
-import './Builder-Footer.scss';
+import './BuilderFooter.scss';
 import { Link } from 'react-router-dom';
 
 interface BuilderFooterProps {
@@ -15,7 +15,7 @@ const BuilderFooter = (props) => {
     const { previousStep, nextStep, activeStep } = useWizard();
 
     return (
-        <div className="Builder-Footer flex">
+        <div className="BuilderFooter flex">
             <div
                 className="footer-section flex clickable"
                 onClick={() => previousStep()}

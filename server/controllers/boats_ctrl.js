@@ -27,6 +27,16 @@ module.exports = {
             console.error(err.message);
         }
     },
+    async updateBoat(req, res) {
+        const id = parseInt(req.params.id, 10);
+        try {
+            // const boat = await pool.query(`UPDATE from boats where id = ${id}`); // PUT BOAT
+
+            res.json({ status: 200 });
+        } catch (err) {
+            console.error(err.message);
+        }
+    },
     async deleteBoat(req, res) {
         const id = parseInt(req.params.id, 10);
         try {

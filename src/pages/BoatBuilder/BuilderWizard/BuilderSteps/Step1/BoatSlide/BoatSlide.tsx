@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Boat-Slide.scss';
+import './BoatSlide.scss';
 
 interface BoatSlideProps {
     boatImg: string;
@@ -11,7 +11,7 @@ interface BoatSlideProps {
 const BoatSlide = (props: BoatSlideProps) => {
     const { boatImg, title, model, length } = props;
     return (
-        <div className="Boat-Slide column">
+        <div className="BoatSlide column">
             <img className="boat-image" src={boatImg} alt={title} />
             <div>{title}</div>
             <div>{length}</div>

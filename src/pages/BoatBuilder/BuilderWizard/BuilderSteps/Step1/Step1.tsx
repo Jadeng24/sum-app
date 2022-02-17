@@ -12,7 +12,7 @@ import aluminumBoat from '../../../../../assets/boat.png';
 import inflatableBoat from '../../../../../assets/boat2.png';
 
 import './Step1.scss';
-import BoatSlide from './Boat-Slide/Boat-Slide';
+import BoatSlide from './BoatSlide/BoatSlide';
 
 const Step1 = () => {
     const [swiperRef, setSwiperRef] = useState(null);
