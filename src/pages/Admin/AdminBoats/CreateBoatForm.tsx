@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
+import ImageUploader from '../../../components/ImageUploader/ImageUploader';
 
 const CreateBoatForm = () => {
     const [createStatus, setCreateStatus] = useState('Submit');
@@ -31,6 +32,7 @@ const CreateBoatForm = () => {
                 <label htmlFor="name">Name*</label>
                 <input type="text" id="name" required />
             </div>
+            <ImageUploader />
             {/* TODO: make these actual boat fields */}
             <div>
                 <label htmlFor="email">Email*</label>

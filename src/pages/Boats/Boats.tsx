@@ -29,29 +29,6 @@ const Boats = () => {
         console.log(result.data);
     };
 
-    const createBoat = async (e) => {
-        e.preventDefault();
-        setCreateStatus('Creating...');
-        const details = {
-            name: 'aluminum',
-            email: 'aluminum',
-            message: 'aluminum',
-            copy: 'aluminum',
-        };
-        const response = await fetch('/api/boats', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8',
-            },
-            body: JSON.stringify(details),
-        });
-        setCreateStatus('Create');
-        const result = await response.json();
-        if (result.status === 200) {
-            getBoats();
-        }
-    };
-
     const handleDeleteBoat = async (id: number) => {
         setDeleteStatus('Deleting...');
         const response = await fetch(`/api/boats/${id}`, {
@@ -75,13 +52,6 @@ const Boats = () => {
         <div className="Page Boats">
             <Banner title="Boats" />
 
-            <button type="submit" onClick={createBoat}>
-                {createStatus}
-            </button>
-
-            <button type="submit" onClick={getBoats}>
-                get boats
-            </button>
             <div>Total Boats: {boats && boats.length}</div>
             {boats &&
                 boats.length &&
