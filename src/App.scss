@@ -8,14 +8,34 @@
 .row {
     display: flex;
     flex-direction: row;
+
+    &.start {
+        align-items: flex-start;
+    }
+    &.end {
+        align-items: flex-end;
+    }
 }
 .column {
     display: flex;
     flex-direction: column;
+
+    &.start {
+        justify-content: flex-start;
+    }
+    &.end {
+        justify-content: flex-end;
+    }
 }
+
 .space-between {
     justify-content: space-between;
 }
+
+.full-width {
+    width: 100%;
+}
+
 .Page {
     padding: 70px 4% 30px;
 }
@@ -34,26 +54,35 @@
 }
 
 input,
-textarea {
+textarea,
+select {
     width: 100%;
-    padding: 10px 4px;
+    padding: 8px;
     box-sizing: border-box;
-    line-height: 22px;
-    font-size: 20px;
+    line-height: 20px;
+    font-size: 18px;
     border-radius: 0px;
     margin: 4px 0px 25px;
     max-width: 100%;
     border: solid 2px rgba(34, 34, 34, 0.7);
     font-family: Arial, Helvetica, sans-serif;
 }
+
+select {
+    cursor: pointer;
+}
 textarea {
-    min-height: 150px;
+    min-height: 140px;
+    min-width: 240px;
 }
 input[type='checkbox'] {
     width: 30px;
     height: 30px;
     accent-color: dodgerblue;
     cursor: pointer;
+}
+button {
+    margin-bottom: 24px;
 }
 
 button.square-button {

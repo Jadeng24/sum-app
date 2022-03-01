@@ -23,9 +23,9 @@ const ImageUploader = () => {
             onSubmit={handleSubmit}
             styles={{
                 dropzone: {
-                    minHeight: 200,
+                    minHeight: 140,
                     maxHeight: 250,
-                    marginBottom: '25px',
+                    margin: '4px 0px 25px',
                 },
             }}
         />

@@ -12,7 +12,7 @@ const Tabs = (props: TabsProps) => {
     const { goToStep, activeStep } = useWizard();
 
     return (
-        <div className="Builder-Nav column">
+        <div className="Tabs column">
             <div className="flex">
                 {labels &&
                     labels.map((label, index) => {
