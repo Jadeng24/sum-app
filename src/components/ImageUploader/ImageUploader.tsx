@@ -21,7 +21,13 @@ const ImageUploader = () => {
             getUploadParams={getUploadParams}
             onChangeStatus={handleChangeStatus}
             onSubmit={handleSubmit}
-            styles={{ dropzone: { minHeight: 200, maxHeight: 250 } }}
+            styles={{
+                dropzone: {
+                    minHeight: 200,
+                    maxHeight: 250,
+                    marginBottom: '25px',
+                },
+            }}
         />
     );
 };
