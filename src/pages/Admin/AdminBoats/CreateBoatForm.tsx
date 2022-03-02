@@ -35,21 +35,32 @@ const CreateBoatForm = () => {
     const [type, setType] = useState(boatTypeOptions[0].value); // aluminum
     const [description, setDescription] = useState('');
     const [featuredImage, setFeaturedImage] = useState('');
+    const [images, setImages] = useState([]);
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         setCreateStatus('Creating...');
 
-        // name, length, type, width, model, featured_image, description
+        const boatData = {
+            name,
+            length,
+            type,
+            width: 6,
+            model: 'AL14jet',
+            featuredImage: '',
+            description,
+        };
+
         const response = await fetch('/api/boats', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
             },
-            body: JSON.stringify({}), // send form data
+            body: JSON.stringify(boatData), // send form data
         });
         setCreateStatus('Create');
-        const result = await response.json();
+
+        // const result = await response.json();
     };
 
     return (

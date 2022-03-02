@@ -12,10 +12,12 @@ module.exports = {
         }
     },
     async createBoat(req, res) {
-        const { name, email, message, copy } = req.body;
+        const { name, length, type, width, model, featuredImage, description } =
+            req.body;
         try {
             await pool.query(
-                "INSERT INTO boats(name, length, type, width, model, featured_image, description)VALUES('Aluminum Custom Jetboat', 14, 'aluminum', 6, 'sumv1aluminum', 'https://www.discoverboating.com/sites/default/files/styles/large/public/jet_boat2.JPG?h=736091d5&itok=l_f8x_EE', 'Check out the all-new 2022 aluminum jetboat from Sport Utility Marine.')",
+                "INSERT INTO boats(name, length, type, width, model, featured_image, description)VALUES($1, $2, $3, $4, $5, 'https://www.discoverboating.com/sites/default/files/styles/large/public/jet_boat2.JPG?h=736091d5&itok=l_f8x_EE', $6)",
+                [name, length, type, width, model, description],
                 (response) => {
                     res.json({ status: 200 });
                 },

@@ -34,7 +34,8 @@ const AdminBoats = () => {
     };
     useEffect(() => {
         getBoats();
-    });
+    }, []);
+
     return (
         <div className="column">
             <h2>Add a new Boat</h2>
@@ -54,6 +55,7 @@ const AdminBoats = () => {
                             onDeleteBoat={() => {
                                 handleDeleteBoat(boat.id);
                             }}
+                            isAdmin // Show delete
                         />
                     );
                 })}

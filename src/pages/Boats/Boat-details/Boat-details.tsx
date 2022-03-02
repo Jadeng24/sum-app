@@ -11,6 +11,7 @@ interface BoatDetailsProps {
     featuredImage: string;
     description: string;
     onDeleteBoat: () => void;
+    isAdmin?: boolean;
 }
 
 const BoatDetails = (props: BoatDetailsProps) => {
@@ -22,11 +23,12 @@ const BoatDetails = (props: BoatDetailsProps) => {
         featuredImage,
         description,
         onDeleteBoat,
+        isAdmin,
     } = props;
 
     return (
         <div className="Boat-details">
-            <MdDelete onClick={onDeleteBoat} />
+            {isAdmin && <MdDelete onClick={onDeleteBoat} />}
             <div>{name}</div>
             <img src={featuredImage} alt={name} />
             <div>{description}</div>

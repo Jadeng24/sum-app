@@ -13,8 +13,6 @@ interface Boat {
     description: string;
 }
 const Boats = () => {
-    const [createStatus, setCreateStatus] = useState('Create');
-    const [deleteStatus, setDeleteStatus] = useState('Delete');
     const [boats, setBoats] = useState([]);
 
     const getBoats = async () => {
@@ -26,22 +24,6 @@ const Boats = () => {
         });
         const result = await response.json();
         setBoats(result.data);
-        console.log(result.data);
-    };
-
-    const handleDeleteBoat = async (id: number) => {
-        setDeleteStatus('Deleting...');
-        const response = await fetch(`/api/boats/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8',
-            },
-        });
-        setDeleteStatus('Delete');
-        const result = await response.json();
-        if (result.status === 200) {
-            getBoats(); // filter list instead without boat
-        }
     };
 
     useEffect(() => {
@@ -51,8 +33,6 @@ const Boats = () => {
     return (
         <div className="Page Boats">
             <Banner title="Boats" />
-
-            <div>Total Boats: {boats && boats.length}</div>
             {boats &&
                 boats.length &&
                 boats.map((boat) => {
@@ -65,9 +45,7 @@ const Boats = () => {
                             featuredImage={boat.featured_image}
                             description={boat.description}
                             key={boat.id}
-                            onDeleteBoat={() => {
-                                handleDeleteBoat(boat.id);
-                            }}
+                            onDeleteBoat={() => {}}
                         />
                     );
                 })}
