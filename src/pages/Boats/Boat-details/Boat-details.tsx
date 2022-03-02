@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React, { useState } from 'react';
 import { MdDelete } from 'react-icons/md';
 
@@ -25,7 +26,6 @@ const BoatDetails = (props: BoatDetailsProps) => {
         onDeleteBoat,
         isAdmin,
     } = props;
-
     return (
         <div className="Boat-details">
             {isAdmin && <MdDelete onClick={onDeleteBoat} />}
