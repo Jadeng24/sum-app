@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import BoatDetails from '../../Boats/Boat-details/Boat-details';
+import BoatItem from '../../Boats/BoatItem/BoatItem';
 import CreateBoatForm from './CreateBoatForm';
 
 const AdminBoats = () => {
@@ -29,7 +29,7 @@ const AdminBoats = () => {
         setDeleteStatus('Delete');
         const result = await response.json();
         if (result.status === 200) {
-            getBoats(); // filter list instead without boat
+            getBoats(); // filter list instead without getting boats
         }
     };
     useEffect(() => {
@@ -44,13 +44,8 @@ const AdminBoats = () => {
                 boats.length &&
                 boats.map((boat) => {
                     return (
-                        <BoatDetails
-                            name={boat.name}
-                            length={boat.length}
-                            width={boat.width}
-                            model={boat.model}
-                            featuredImage={boat.featured_image}
-                            description={boat.description}
+                        <BoatItem
+                            boat={boat}
                             key={boat.id}
                             onDeleteBoat={() => {
                                 handleDeleteBoat(boat.id);

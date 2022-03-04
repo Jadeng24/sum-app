@@ -1,16 +1,25 @@
-import React, { MouseEventHandler, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Banner from '../../components/Banner/Banner';
-import { productColor } from '../../types/Types';
-import BoatDetails from './Boat-details/Boat-details';
+import BoatItem from './BoatItem/BoatItem';
 import './Boats.scss';
 
-interface Boat {
-    id: number;
-    type: string;
+export interface Boat {
     name: string;
     length: number;
-    colors: productColor[];
+    type: string;
+    width: number;
+    model: string;
+    featuredImage?: string;
     description: string;
+    seats: number;
+    weight: number;
+    fuel: number;
+    height: number;
+    price: number;
+    storage: number;
+    weightCapacity: number;
+    hull: string;
+    id: number;
 }
 const Boats = () => {
     const [boats, setBoats] = useState([]);
@@ -35,20 +44,13 @@ const Boats = () => {
             <Banner title="Boats" />
             {boats &&
                 boats.length &&
-                boats.map((boat) => {
-                    return (
-                        <BoatDetails
-                            name={boat.name}
-                            length={boat.length}
-                            width={boat.width}
-                            model={boat.model}
-                            featuredImage={boat.featured_image}
-                            description={boat.description}
-                            key={boat.id}
-                            onDeleteBoat={() => {}}
-                        />
-                    );
-                })}
+                boats.map((boat) =>
+                    boat.type === 'aluminum' ? (
+                        <div>aluminum</div>
+                    ) : (
+                        <div>inflatable</div>
+                    )
+                )}
         </div>
     );
 };
