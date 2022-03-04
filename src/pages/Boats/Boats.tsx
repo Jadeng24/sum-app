@@ -9,7 +9,7 @@ export interface Boat {
     type: string;
     width: number;
     model: string;
-    featuredImage?: string;
+    featured_image?: string;
     description: string;
     seats: number;
     weight: number;

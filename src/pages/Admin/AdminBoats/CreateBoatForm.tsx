@@ -38,7 +38,7 @@ const CreateBoatForm = () => {
     const [images, setImages] = useState([]);
 
     const handleSubmit = async (e) => {
-        // e.preventDefault();
+        e.preventDefault();
         setCreateStatus('Creating...');
 
         const boatData = {
@@ -60,7 +60,7 @@ const CreateBoatForm = () => {
         });
         setCreateStatus('Create');
 
-        // const result = await response.json();
+        const result = await response.json();
     };
 
     return (
