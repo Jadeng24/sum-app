@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // eslint-disable-next-line import/extensions
 const pool = require('../../db.ts');
 
@@ -26,6 +27,7 @@ module.exports = {
                 }
             );
         } catch (err) {
+            // eslint-disable-next-line no-console
             console.error(err.message);
         }
     },

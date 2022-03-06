@@ -1,41 +1,54 @@
 /* eslint-disable no-console */
 const express = require('express');
 
+const port = process.env.PORT || 8080;
+
 const app = express();
 const router = express.Router();
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
+
+// aws requirements
+const sharp = require('sharp');
+const multer = require('multer');
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+const aws = require('aws-sdk');
+
+const s3 = new aws.S3({
+    signatureVersion: 'v4',
+    region: process.env.REACT_APP_AWS_REGION,
+});
+const S3_BUCKET = 'sum-image-upload-storage';
+
 // eslint-disable-next-line import/extensions
 const pool = require('../db.ts');
+
+// Controllers
 const boats = require('./controllers/boats_ctrl.js');
+const images = require('./controllers/images_ctrl.js');
+
 require('dotenv').config();
 
-const port = process.env.PORT || 8080;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
 app.use(express.urlencoded({ extended: false }));
 // Endpoints --------------------------------------------------------------------------
-// place holder for the data
-const users = ['test'];
-app.get('/api/users', (req, res) => {
-    res.json(users);
-});
 
-app.post('/api/user', (req, res) => {
-    const { user } = req.body;
-    users.push(user);
-    res.json('user addedd');
-});
 // Boats -------------------------------------------------------------------------------
 app.get('/api/boats', boats.getBoats);
 
 app.post('/api/boats', boats.createBoat);
 app.put('/api/boats/:id', boats.updateBoat);
 app.delete('/api/boats/:id', boats.deleteBoat);
+
+// AWS Image Storage
+// app.post('/api/images', images.uploadImage);
 
 // Nodemailer --------------------------------------------------------------------------
 const contactEmail = nodemailer.createTransport({
