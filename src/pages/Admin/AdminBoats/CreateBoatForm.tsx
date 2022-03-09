@@ -151,7 +151,7 @@ const CreateBoatForm = () => {
                         required
                         value={width}
                         min={1}
-                        max={20}
+                        max={14}
                         onChange={(e) => setWidth(Number(e.target.value))}
                     />
                 </div>
@@ -220,7 +220,7 @@ const CreateBoatForm = () => {
                         required
                         value={weightCapacity}
                         min={1}
-                        max={20}
+                        max={20000}
                         onChange={(e) =>
                             setWeightCapacity(Number(e.target.value))
                         }
