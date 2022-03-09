@@ -81,6 +81,7 @@ input[type='checkbox'] {
     accent-color: dodgerblue;
     cursor: pointer;
 }
+
 button {
     margin-bottom: 24px;
 }
@@ -96,5 +97,18 @@ button.square-button {
     &:disabled {
         cursor: not-allowed;
         filter: grayscale(1);
+    }
+}
+
+.inputHolder {
+    // see createBoatForm
+    position: relative;
+    input {
+        padding-left: 20px;
+    }
+    .inputSymbol {
+        position: absolute;
+        top: 16px;
+        left: 5px;
     }
 }

@@ -28,6 +28,22 @@ const ImageUploader = () => {
                     margin: '4px 0px 25px',
                 },
             }}
+            // accept=""
+            // multiple={false}
+            // minSizeBytes={0}
+            // maxSizeBytes={0}
+            // maxFiles={0}
+            // autoUpload={false}
+            // disabled={false}
+            // canCancel={false}
+            // canRemove={false}
+            // canRestart={false}
+            // inputContent=""
+            // inputWithFilesContent=""
+            // submitButtonDisabled={false}
+            // submitButtonContent=""
+            // classNames={undefined}
+            // addClassNames={undefined}
         />
     );
 };

@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
+import { BsCurrencyDollar } from 'react-icons/bs';
 import ImageUploader from '../../../components/ImageUploader/ImageUploader';
 
 const CreateBoatForm = () => {
@@ -28,11 +29,23 @@ const CreateBoatForm = () => {
         { value: 'inflatable', label: 'Inflatable' },
     ];
 
+    const boatSeatOptions = [
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    ];
+
     const [createStatus, setCreateStatus] = useState('Submit');
 
     const [name, setName] = useState('');
     const [length, setLength] = useState(boatLengthOptions[6].value); // 12
     const [type, setType] = useState(boatTypeOptions[0].value); // aluminum
+    const [height, setHeight] = useState(3);
+    const [width, setWidth] = useState(5.5);
+    const [seats, setSeats] = useState(boatSeatOptions[3]);
+    const [fuel, setFuel] = useState(10); // in gallons
+    const [weightCapacity, setWeightCapacity] = useState(600); // in lbs
+    const [storage, setStorage] = useState(10); // in Cubic feet.
+    const [maxHp, setMaxHp] = useState(300);
+    const [price, setPrice] = useState(30000); // in USD
     const [description, setDescription] = useState('');
     const [featuredImage, setFeaturedImage] = useState('');
     const [images, setImages] = useState([]);
@@ -45,7 +58,14 @@ const CreateBoatForm = () => {
             name,
             length,
             type,
-            width: 6,
+            height,
+            width,
+            seats,
+            fuel,
+            weightCapacity,
+            storage,
+            maxHp,
+            price,
             model: 'AL14jet',
             featuredImage: '',
             description,
@@ -66,7 +86,9 @@ const CreateBoatForm = () => {
     return (
         <form onSubmit={handleSubmit} className="contact-form">
             <div className="column" style={{ maxWidth: '500px' }}>
-                <label htmlFor="name">Name*</label>
+                <label htmlFor="name" style={{ fontWeight: '600' }}>
+                    Name*
+                </label>
                 <input
                     type="text"
                     id="name"
@@ -89,7 +111,7 @@ const CreateBoatForm = () => {
                         onChange={(e) => setLength(Number(e.target.value))}
                         required
                     >
-                        {boatLengthOptions.map((option) => (
+                        {boatLengthOptions.map((option, i) => (
                             <option key={option.value} value={option.value}>
                                 {option.label}
                             </option>
@@ -114,6 +136,149 @@ const CreateBoatForm = () => {
                             </option>
                         ))}
                     </select>
+                </div>
+            </div>
+
+            <div className="row space-between">
+                <div
+                    className="column"
+                    style={{ width: 'calc(50% - 15px)', maxWidth: '500px' }}
+                >
+                    <label htmlFor="length">Width*</label>
+                    <input
+                        type="number"
+                        id="name"
+                        required
+                        value={width}
+                        min={1}
+                        max={20}
+                        onChange={(e) => setWidth(Number(e.target.value))}
+                    />
+                </div>
+                <div
+                    className="column"
+                    style={{ width: 'calc(50% - 15px)', maxWidth: '500px' }}
+                >
+                    <label htmlFor="length">Height*</label>
+                    <input
+                        type="number"
+                        id="name"
+                        required
+                        value={height}
+                        min={1}
+                        max={20}
+                        onChange={(e) => setHeight(Number(e.target.value))}
+                    />
+                </div>
+            </div>
+
+            <div className="row space-between">
+                <div
+                    className="column"
+                    style={{ width: 'calc(50% - 15px)', maxWidth: '500px' }}
+                >
+                    <label htmlFor="length">Seats*</label>
+                    <select
+                        id="seats"
+                        value={seats}
+                        onChange={(e) => setSeats(Number(e.target.value))}
+                        required
+                    >
+                        {boatSeatOptions.map((number, i) => (
+                            <option key={number} value={number}>
+                                {number}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div
+                    className="column"
+                    style={{ width: 'calc(50% - 15px)', maxWidth: '500px' }}
+                >
+                    <label htmlFor="length">Fuel* (Gallons)</label>
+                    <input
+                        type="number"
+                        id="name"
+                        required
+                        value={fuel}
+                        min={1}
+                        max={200}
+                        onChange={(e) => setFuel(Number(e.target.value))}
+                    />
+                </div>
+            </div>
+
+            <div className="row space-between">
+                <div
+                    className="column"
+                    style={{ width: 'calc(50% - 15px)', maxWidth: '500px' }}
+                >
+                    <label htmlFor="length">Weight Capacity* (Lbs.)</label>
+                    <input
+                        type="number"
+                        id="name"
+                        required
+                        value={weightCapacity}
+                        min={1}
+                        max={20}
+                        onChange={(e) =>
+                            setWeightCapacity(Number(e.target.value))
+                        }
+                    />
+                </div>
+                <div
+                    className="column"
+                    style={{ width: 'calc(50% - 15px)', maxWidth: '500px' }}
+                >
+                    <label htmlFor="length">Storage* (Cu Ft.)</label>
+                    <input
+                        type="number"
+                        id="name"
+                        required
+                        value={storage}
+                        onChange={(e) => setStorage(Number(e.target.value))}
+                    />
+                </div>
+            </div>
+
+            <div className="row space-between">
+                <div
+                    className="column"
+                    style={{ width: 'calc(50% - 15px)', maxWidth: '500px' }}
+                >
+                    <label htmlFor="length">Max Horsepower*</label>
+                    <input
+                        type="number"
+                        id="name"
+                        required
+                        value={maxHp}
+                        min={1}
+                        max={3000}
+                        onChange={(e) => setMaxHp(Number(e.target.value))}
+                    />
+                </div>
+                <div
+                    className="column"
+                    style={{ width: 'calc(50% - 15px)', maxWidth: '500px' }}
+                >
+                    <label htmlFor="length" style={{ fontWeight: '600' }}>
+                        Price* (USD)
+                    </label>
+                    <div className="row inputHolder">
+                        <div className="inputSymbol">
+                            <BsCurrencyDollar />
+                        </div>
+
+                        <input
+                            type="number"
+                            id="name"
+                            required
+                            value={price}
+                            min={1}
+                            max={200000}
+                            onChange={(e) => setPrice(Number(e.target.value))}
+                        />
+                    </div>
                 </div>
             </div>
 
