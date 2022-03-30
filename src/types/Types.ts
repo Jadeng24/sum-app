@@ -12,3 +12,22 @@ export interface productColor {
     name: string;
     color: string;
 }
+
+export interface Boat {
+    name: string;
+    length: number;
+    type: string;
+    width: number;
+    model: string;
+    featured_image?: string;
+    description: string;
+    seats: number;
+    weight: number;
+    fuel: number;
+    height: number;
+    price: number;
+    storage: number;
+    weightCapacity: number;
+    hull: string;
+    id: number;
+}

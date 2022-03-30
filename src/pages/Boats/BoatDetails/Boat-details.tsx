@@ -1,7 +1,7 @@
 /* eslint-disable react/require-default-props */
 import React, { useState } from 'react';
 import { MdDelete } from 'react-icons/md';
-import { Boat } from '../Boats';
+import { Boat } from '../../../types/Types';
 
 // import './BoatDetails.scss';
 

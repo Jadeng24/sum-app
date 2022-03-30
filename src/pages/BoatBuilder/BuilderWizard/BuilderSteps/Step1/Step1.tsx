@@ -8,8 +8,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Virtual } from 'swiper';
 import 'swiper/css/bundle';
 
-import aluminumBoat from '../../../../../assets/boat.png';
-import inflatableBoat from '../../../../../assets/boat2.png';
+import centerConsole4 from '../../../../../assets/console4-t.png';
+import sport4 from '../../../../../assets/sport4-t.png';
 
 import './Step1.scss';
 import BoatSlide from './BoatSlide/BoatSlide';
@@ -23,46 +23,32 @@ const Step1 = () => {
     };
     const boats = [
         {
-            boatImg: aluminumBoat,
-            title: 'Aluminum Jetboat',
-            length: 10,
-            model: 'aluminum',
+            boatImg: centerConsole4,
+            title: 'Center Console Jetboat',
+            length: 13.5,
+            model: 'centerConsole',
             id: 1,
         },
         {
-            boatImg: aluminumBoat,
-            title: 'Aluminum Jetboat',
-            length: 12,
-            model: 'aluminum',
+            boatImg: centerConsole4,
+            title: 'Center Console Jetboat',
+            length: 13.5,
+            model: 'centerConsole',
             id: 2,
         },
         {
-            boatImg: aluminumBoat,
-            title: 'Aluminum Jetboat',
-            length: 14,
-            model: 'aluminum',
-            id: 3,
-        },
-        {
-            boatImg: inflatableBoat,
-            title: 'Inflatable Race boat',
+            boatImg: sport4,
+            title: 'Sport Race Jetboat',
             length: 10,
-            model: 'inflatable',
-            id: 1,
-        },
-        {
-            boatImg: inflatableBoat,
-            title: 'Inflatable Race boat',
-            length: 12,
-            model: 'inflatable',
-            id: 2,
-        },
-        {
-            boatImg: inflatableBoat,
-            title: 'Inflatable Race boat',
-            length: 14,
-            model: 'inflatable',
+            model: 'centerConsole',
             id: 3,
+        },
+        {
+            boatImg: sport4,
+            title: 'Sport Race Jetboat',
+            length: 13.5,
+            model: 'sport',
+            id: 4,
         },
     ];
 

@@ -1,7 +1,7 @@
 /* eslint-disable react/require-default-props */
 import React, { useState } from 'react';
 import { MdDelete } from 'react-icons/md';
-import { Boat } from '../Boats';
+import { Boat } from '../../../types/Types';
 
 import './BoatItem.scss';
 
@@ -13,12 +13,11 @@ interface BoatItemProps {
 
 const BoatItem = (props: BoatItemProps) => {
     const { boat, onDeleteBoat, isAdmin } = props;
-    const { name, width } = boat;
 
     return (
         <div className="BoatItem">
             {isAdmin && <MdDelete onClick={onDeleteBoat} />}
-            <div>{name}</div>
+            <div>{boat.name}</div>
             <img src={boat.featured_image} alt={boat.name} />
             <div>{boat.description}</div>
             <div>{boat.length}</div>

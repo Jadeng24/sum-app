@@ -5,27 +5,32 @@ import ImageUploader from '../../../components/ImageUploader/ImageUploader';
 
 const CreateBoatForm = () => {
     const boatLengthOptions = [
-        { value: 6, label: `6'` },
         { value: 7, label: `7'` },
         { value: 8, label: `8'` },
         { value: 9, label: `9'` },
         { value: 10, label: `10'` },
+        { value: 10.5, label: `10.5'` },
         { value: 11, label: `11'` },
+        { value: 11.5, label: `11.5'` },
         { value: 12, label: `12'` },
+        { value: 12.5, label: `12.5'` },
+        { value: 13, label: `13'` },
+        { value: 13.5, label: `13.5'` },
         { value: 14, label: `14'` },
+        { value: 14.5, label: `14.5'` },
+        { value: 15, label: `15'` },
         { value: 16, label: `16'` },
+        { value: 17, label: `17'` },
         { value: 18, label: `18'` },
         { value: 20, label: `20'` },
         { value: 21, label: `21'` },
         { value: 22, label: `22'` },
-        { value: 23, label: `23'` },
-        { value: 24, label: `24'` },
-        { value: 25, label: `25'` },
-        { value: 26, label: `26'` },
     ];
 
     const boatTypeOptions = [
-        { value: 'aluminum', label: 'Aluminum' },
+        { value: 'sport', label: 'Sport' },
+        { value: 'centerConsole', label: 'Center Console' },
+        { value: 'landingCraft', label: 'Landing Craft' },
         { value: 'inflatable', label: 'Inflatable' },
     ];
 
@@ -36,7 +41,7 @@ const CreateBoatForm = () => {
     const [createStatus, setCreateStatus] = useState('Submit');
 
     const [name, setName] = useState('');
-    const [length, setLength] = useState(boatLengthOptions[6].value); // 12
+    const [length, setLength] = useState(boatLengthOptions[10].value); // 12
     const [type, setType] = useState(boatTypeOptions[0].value); // aluminum
     const [height, setHeight] = useState(3);
     const [width, setWidth] = useState(5.5);
@@ -44,8 +49,8 @@ const CreateBoatForm = () => {
     const [fuel, setFuel] = useState(10); // in gallons
     const [weightCapacity, setWeightCapacity] = useState(600); // in lbs
     const [storage, setStorage] = useState(10); // in Cubic feet.
-    const [maxHp, setMaxHp] = useState(300);
-    const [price, setPrice] = useState(30000); // in USD
+    const [maxHp, setMaxHp] = useState(170);
+    const [price, setPrice] = useState(29999); // in USD
     const [description, setDescription] = useState('');
     const [featuredImage, setFeaturedImage] = useState('');
     const [images, setImages] = useState([]);
@@ -262,7 +267,7 @@ const CreateBoatForm = () => {
                     style={{ width: 'calc(50% - 15px)', maxWidth: '500px' }}
                 >
                     <label htmlFor="length" style={{ fontWeight: '600' }}>
-                        Price* (USD)
+                        Base Price* (USD)
                     </label>
                     <div className="row inputHolder">
                         <div className="inputSymbol">

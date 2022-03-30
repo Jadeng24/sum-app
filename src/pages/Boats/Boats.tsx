@@ -3,24 +3,6 @@ import Banner from '../../components/Banner/Banner';
 import BoatItem from './BoatItem/BoatItem';
 import './Boats.scss';
 
-export interface Boat {
-    name: string;
-    length: number;
-    type: string;
-    width: number;
-    model: string;
-    featured_image?: string;
-    description: string;
-    seats: number;
-    weight: number;
-    fuel: number;
-    height: number;
-    price: number;
-    storage: number;
-    weightCapacity: number;
-    hull: string;
-    id: number;
-}
 const Boats = () => {
     const [boats, setBoats] = useState([]);
 
@@ -44,13 +26,21 @@ const Boats = () => {
             <Banner title="Boats" />
             {boats &&
                 boats.length &&
-                boats.map((boat) =>
-                    boat.type === 'aluminum' ? (
-                        <div>aluminum</div>
-                    ) : (
-                        <div>inflatable</div>
-                    )
-                )}
+                boats.map((boat) => {
+                    return (
+                        <div>
+                            {boat.type === 'sport' && <div>Sport</div>}
+
+                            {boat.type === 'centerConsole' && (
+                                <div>Center Console</div>
+                            )}
+
+                            {boat.type === 'landingCraft' && (
+                                <div>Landing Craft</div>
+                            )}
+                        </div>
+                    );
+                })}
         </div>
     );
 };
