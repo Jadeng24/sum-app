@@ -16,8 +16,8 @@ const ImageUploader = () => {
             ? process.env.AWS_ACCESS_KEY_ID
             : process.env.REACT_APP_AWS_ACCESS_KEY_ID,
         secretAccessKey: isProdEnv
-            ? process.env.AWS_ACCESS_KEY
-            : process.env.REACT_APP_AWS_ACCESS_KEY,
+            ? process.env.AWS_SECRET_ACCESS_KEY
+            : process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
     });
 
     const myBucket = new AWS.S3({
@@ -86,6 +86,8 @@ const ImageUploader = () => {
         console.log('successful!');
         allFiles.forEach((f) => f.remove());
     };
+    // TODO: Add array of image objects / urls to boat after image upload and then
+    // allow a featured image option for boat. (first in list?)
 
     return (
         <div>
