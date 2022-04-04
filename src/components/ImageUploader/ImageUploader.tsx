@@ -88,7 +88,7 @@ const ImageUploader = () => {
     };
     // TODO: Add array of image objects / urls to boat after image upload and then
     // allow a featured image option for boat. (first in list?)
-
+    // set AWS credentials in node.
     return (
         <div>
             {/* <img
