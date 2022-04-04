@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 const express = require('express');
+const aws = require('aws-sdk');
 
 const port = process.env.PORT || 8080;
 
@@ -10,19 +11,15 @@ const path = require('path');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 
-// aws requirements
-const sharp = require('sharp');
-const multer = require('multer');
+const { S3_BUCKET } = process.env;
+aws.config.region = 'us-west-1';
 
-const storage = multer.memoryStorage();
-const upload = multer({ storage });
-const aws = require('aws-sdk');
+app.engine('html', require('ejs').renderFile);
 
-const s3 = new aws.S3({
-    signatureVersion: 'v4',
-    region: process.env.REACT_APP_AWS_REGION,
-});
-const S3_BUCKET = 'sum-image-upload-storage';
+// const s3 = new aws.S3({
+//     signatureVersion: 'v4',
+//     region: process.env.REACT_APP_AWS_REGION,
+// });
 
 // eslint-disable-next-line import/extensions
 const pool = require('../db.ts');
@@ -48,7 +45,7 @@ app.put('/api/boats/:id', boats.updateBoat);
 app.delete('/api/boats/:id', boats.deleteBoat);
 
 // AWS Image Storage
-// app.post('/api/images', images.uploadImage);
+app.post('/api/images', images.uploadImages);
 
 // Nodemailer --------------------------------------------------------------------------
 const contactEmail = nodemailer.createTransport({

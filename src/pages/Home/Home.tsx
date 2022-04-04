@@ -13,6 +13,13 @@ import './Home.scss';
 const Home = () => {
     const homeSections = [
         {
+            backgroundImg: Home5,
+            title: 'Aluminum boats',
+            subtitle: 'Choose your adventure',
+            link: Pages.BoatBuilder,
+            id: 5,
+        },
+        {
             backgroundImg: Home1,
             title: 'Inflatable boats',
             subtitle: 'Choose your adventure',
@@ -39,13 +46,6 @@ const Home = () => {
             subtitle: 'Choose your adventure',
             link: Pages.BoatBuilder,
             id: 4,
-        },
-        {
-            backgroundImg: Home5,
-            title: 'Aluminum boats',
-            subtitle: 'Choose your adventure',
-            link: Pages.BoatBuilder,
-            id: 5,
         },
     ];
 

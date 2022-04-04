@@ -1,17 +1,32 @@
 import React, { useCallback, useState } from 'react';
 import Dropzone from 'react-dropzone-uploader';
 import 'react-dropzone-uploader/dist/styles.css';
+import AWS from 'aws-sdk';
 
 const ImageUploader = () => {
     const [images, setImages] = useState(null);
+    const [progress, setProgress] = useState(0);
+    const [selectedFile, setSelectedFile] = useState(null);
 
-    const getUploadParams = ({ file }) => {
-        const body = new FormData();
-        body.append('image', file);
-        return {
-            url: '/api/uploads',
-            body,
-        };
+    const S3_BUCKET = 'sum-image-upload-storage';
+    const REGION = 'us-west-1';
+    const isProdEnv = process.env.NODE_ENV === 'production';
+    AWS.config.update({
+        accessKeyId: isProdEnv
+            ? process.env.AWS_ACCESS_KEY_ID
+            : process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+        secretAccessKey: isProdEnv
+            ? process.env.AWS_ACCESS_KEY
+            : process.env.REACT_APP_AWS_ACCESS_KEY,
+    });
+
+    const myBucket = new AWS.S3({
+        params: { Bucket: S3_BUCKET },
+        region: REGION,
+    });
+
+    const getUploadParams = () => {
+        return { url: 'https://httpbin.org/post' };
     };
 
     const transformUploads = (uploads) => {
@@ -21,14 +36,34 @@ const ImageUploader = () => {
         }));
     };
 
-    const handleChangeStatus = ({ meta }, status) => {
-        // console.log(status, meta);
+    const handleFileInput = (e) => {
+        setSelectedFile(e.target.files[0]);
     };
 
-    const handleSubmit = (files, allFiles) => {
-        // console.log(files.map((f) => f.meta));
-        allFiles.forEach((f) => f.remove());
+    const uploadFile = (file) => {
+        console.log(file);
+        const params = {
+            ACL: 'public-read',
+            Body: file,
+            Bucket: S3_BUCKET,
+            Key: file.name,
+        };
+
+        myBucket
+            .putObject(params)
+            .on('httpUploadProgress', (uploadedFile) => {
+                setProgress(
+                    Math.round((uploadedFile.loaded / uploadedFile.total) * 100)
+                );
+            })
+            .send((err) => {
+                if (err) console.log(err);
+            });
     };
+
+    // const handleChangeStatus = ({ meta }, status) => {
+    //     // console.log(status, meta);
+    // };
 
     const fetchUploads = useCallback(() => {
         fetch('/api/uploads')
@@ -41,11 +76,27 @@ const ImageUploader = () => {
             .catch(console.error);
     }, []);
 
+    const handleSubmit = async (files, allFiles) => {
+        console.log(allFiles);
+        files.forEach((fileData) => {
+            if (fileData.file) {
+                uploadFile(fileData.file);
+            }
+        });
+        console.log('successful!');
+        allFiles.forEach((f) => f.remove());
+    };
+
     return (
         <div>
+            {/* <img
+                src="https://sum-image-upload-storage.s3.us-west-1.amazonaws.com/console2.png"
+                alt="sumBoat"
+            /> */}
+            <div>File Upload Progress is {progress}%</div>
             <Dropzone
                 getUploadParams={getUploadParams}
-                onChangeStatus={handleChangeStatus}
+                // onChangeStatus={handleChangeStatus}
                 onSubmit={handleSubmit}
                 styles={{
                     dropzone: {
@@ -71,10 +122,14 @@ const ImageUploader = () => {
                 // classNames={undefined}
                 // addClassNames={undefined}
             />
+            {/* <input type="file" onChange={handleFileInput} />
+                <button type="submit" onClick={() => uploadFile(selectedFile)}>
+                    Upload to S3
+                </button> */}
             {images &&
-                images.map((image) => (
+                images.map((image1) => (
                     <img
-                        src={image.original}
+                        src={image1.original}
                         alt="pic"
                         style={{ width: '100px' }}
                     />
