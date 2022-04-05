@@ -38,13 +38,13 @@ const CreateBoatForm = () => {
         1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
     ];
 
-    const [createStatus, setCreateStatus] = useState('Submit');
+    const [formSubmitted, setFormSubmitted] = useState(false);
 
     const [name, setName] = useState('');
     const [length, setLength] = useState(boatLengthOptions[10].value); // 12
     const [type, setType] = useState(boatTypeOptions[0].value); // aluminum
     const [height, setHeight] = useState(3);
-    const [width, setWidth] = useState(5.5);
+    const [width, setWidth] = useState(5);
     const [seats, setSeats] = useState(boatSeatOptions[3]);
     const [fuel, setFuel] = useState(10); // in gallons
     const [weightCapacity, setWeightCapacity] = useState(600); // in lbs
@@ -57,7 +57,7 @@ const CreateBoatForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setCreateStatus('Creating...');
+        setFormSubmitted(true);
 
         const boatData = {
             name,
@@ -75,17 +75,18 @@ const CreateBoatForm = () => {
             featuredImage: '',
             description,
         };
+        setTimeout(() => {
+            setFormSubmitted(false);
+        }, 5000);
+        // const response = await fetch('/api/boats', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json;charset=utf-8',
+        //     },
+        //     body: JSON.stringify(boatData), // send form data
+        // });
 
-        const response = await fetch('/api/boats', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8',
-            },
-            body: JSON.stringify(boatData), // send form data
-        });
-        setCreateStatus('Create');
-
-        const result = await response.json();
+        // const result = await response.json();
     };
 
     return (
@@ -294,17 +295,16 @@ const CreateBoatForm = () => {
                     value={description}
                     placeholder="Enter a description"
                     onChange={(e) => setDescription(e.target.value)}
-                    required
                 />
             </div>
 
             {/* upload to cloudinary or whatever then save image_Id to new boat  */}
             <div className="column">
                 <label htmlFor="boatImages">Boat Images</label>
-                <ImageUploader />
+                <ImageUploader onSubmit={formSubmitted} />
             </div>
             <button className="square-button" type="submit">
-                {createStatus}
+                {formSubmitted ? 'Uploading...' : 'Submit'}
             </button>
         </form>
     );

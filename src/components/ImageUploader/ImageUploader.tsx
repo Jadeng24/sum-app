@@ -1,23 +1,24 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Dropzone from 'react-dropzone-uploader';
 import 'react-dropzone-uploader/dist/styles.css';
 import AWS from 'aws-sdk';
 
-const ImageUploader = () => {
-    const [images, setImages] = useState(null);
+import './ImageUploader.scss';
+
+interface ImageUploaderProps {
+    onSubmit: boolean;
+}
+const ImageUploader = (props: ImageUploaderProps) => {
+    const { onSubmit } = props;
+
     const [progress, setProgress] = useState(0);
-    const [selectedFile, setSelectedFile] = useState(null);
 
     const S3_BUCKET = 'sum-image-upload-storage';
     const REGION = 'us-west-1';
     const isProdEnv = process.env.NODE_ENV === 'production';
     AWS.config.update({
-        accessKeyId: isProdEnv
-            ? process.env.AWS_ACCESS_KEY_ID
-            : process.env.REACT_APP_AWS_ACCESS_KEY_ID,
-        secretAccessKey: isProdEnv
-            ? process.env.AWS_SECRET_ACCESS_KEY
-            : process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
+        accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
     });
 
     const myBucket = new AWS.S3({
@@ -29,61 +30,75 @@ const ImageUploader = () => {
         return { url: 'https://httpbin.org/post' };
     };
 
-    const transformUploads = (uploads) => {
-        return uploads.map((u) => ({
-            original: u.imageUrl,
-            thumbnail: u.thumbnailUrl,
-        }));
-    };
-
-    const handleFileInput = (e) => {
-        setSelectedFile(e.target.files[0]);
-    };
-
-    const uploadFile = (file) => {
-        console.log(file);
-        const params = {
-            ACL: 'public-read',
-            Body: file,
-            Bucket: S3_BUCKET,
-            Key: file.name,
-        };
-
-        myBucket
-            .putObject(params)
-            .on('httpUploadProgress', (uploadedFile) => {
-                setProgress(
-                    Math.round((uploadedFile.loaded / uploadedFile.total) * 100)
-                );
-            })
-            .send((err) => {
-                if (err) console.log(err);
-            });
-    };
-
-    // const handleChangeStatus = ({ meta }, status) => {
-    //     // console.log(status, meta);
+    // const handleFileInput = (e) => {
+    //     setSelectedFile(e.target.files[0]);
     // };
 
-    const fetchUploads = useCallback(() => {
-        fetch('/api/uploads')
-            .then((response) =>
-                response
-                    .json()
-                    .then((data) => setImages(transformUploads(data)))
-            )
-            // eslint-disable-next-line no-console
-            .catch(console.error);
-    }, []);
+    const uploadFile = (file): Promise<string> => {
+        return new Promise((resolve, reject) => {
+            const params = {
+                ACL: 'public-read',
+                Body: file,
+                Bucket: S3_BUCKET,
+                Key: file.name,
+            };
+
+            myBucket
+                .putObject(params)
+                .on('httpUploadProgress', (uploadedFile) => {
+                    setProgress(
+                        Math.round(
+                            (uploadedFile.loaded / uploadedFile.total) * 100
+                        )
+                    );
+                })
+                .send((err) => {
+                    if (err) reject(err);
+                    resolve(file.name);
+                });
+        });
+    };
+
+    // const transformUploads = (uploads) => {
+    //     return uploads.map((u) => ({
+    //         original: u.imageUrl,
+    //         thumbnail: u.thumbnailUrl,
+    //     }));
+    // };
+
+    // const handleChangeStatus = ({ meta }, status) => {
+    //     console.log(status, meta);
+    // };
+
+    // const fetchUploads = useCallback(() => {
+    //     fetch('/api/uploads')
+    //         .then((response) =>
+    //             response
+    //                 .json()
+    //                 .then((data) => setImages(transformUploads(data)))
+    //         )
+    //         // eslint-disable-next-line no-console
+    //         .catch(console.error);
+    // }, []);
+
+    // useEffect(() => {
+    //     console.log(onSubmit);
+    //     if (onSubmit) {
+    //         console.log(getUploadParams());
+    //     }
+    // }, [onSubmit]);
 
     const handleSubmit = async (files, allFiles) => {
-        console.log(allFiles);
+        const fileNames = [];
         files.forEach((fileData) => {
             if (fileData.file) {
-                uploadFile(fileData.file);
+                uploadFile(fileData.file).then((successful) => {
+                    console.log(successful);
+                    if (successful) fileNames.push(fileData.file.name);
+                });
             }
         });
-        console.log('successful!');
+        console.log(fileNames);
         allFiles.forEach((f) => f.remove());
     };
     // TODO: Add array of image objects / urls to boat after image upload and then
@@ -95,7 +110,7 @@ const ImageUploader = () => {
                 src="https://sum-image-upload-storage.s3.us-west-1.amazonaws.com/console2.png"
                 alt="sumBoat"
             /> */}
-            <div>File Upload Progress is {progress}%</div>
+            {progress !== 0 && <div>Progress: {progress}%</div>}
             <Dropzone
                 getUploadParams={getUploadParams}
                 // onChangeStatus={handleChangeStatus}
@@ -119,7 +134,7 @@ const ImageUploader = () => {
                 // canRestart={false}
                 // inputContent=""
                 // inputWithFilesContent=""
-                // submitButtonDisabled={false}
+                // submitButtonDisabled
                 // submitButtonContent=""
                 // classNames={undefined}
                 // addClassNames={undefined}
@@ -128,14 +143,6 @@ const ImageUploader = () => {
                 <button type="submit" onClick={() => uploadFile(selectedFile)}>
                     Upload to S3
                 </button> */}
-            {images &&
-                images.map((image1) => (
-                    <img
-                        src={image1.original}
-                        alt="pic"
-                        style={{ width: '100px' }}
-                    />
-                ))}
         </div>
     );
 };
