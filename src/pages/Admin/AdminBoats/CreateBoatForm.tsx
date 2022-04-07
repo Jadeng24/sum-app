@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BsCurrencyDollar } from 'react-icons/bs';
 import ImageUploader from '../../../components/ImageUploader/ImageUploader';
 
@@ -58,7 +58,7 @@ const CreateBoatForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setFormSubmitted(true);
-
+        console.log(images);
         const boatData = {
             name,
             length,
@@ -71,22 +71,29 @@ const CreateBoatForm = () => {
             storage,
             maxHp,
             price,
-            model: 'AL14jet',
-            featuredImage: '',
+            model: 'Prototype',
+            featuredImage,
             description,
+            images,
         };
-        setTimeout(() => {
-            setFormSubmitted(false);
-        }, 5000);
-        // const response = await fetch('/api/boats', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json;charset=utf-8',
-        //     },
-        //     body: JSON.stringify(boatData), // send form data
-        // });
 
-        // const result = await response.json();
+        const response = await fetch('/api/boats', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+            },
+            body: JSON.stringify(boatData), // send form data
+        });
+
+        const result = await response.json();
+        if (result) setFormSubmitted(false);
+    };
+
+    const handleImageUpload = (imageList) => {
+        console.log(imageList);
+
+        setImages(imageList);
+        setFeaturedImage(imageList[0]);
     };
 
     return (
@@ -301,11 +308,16 @@ const CreateBoatForm = () => {
             {/* upload to cloudinary or whatever then save image_Id to new boat  */}
             <div className="column">
                 <label htmlFor="boatImages">Boat Images</label>
-                <ImageUploader onSubmit={formSubmitted} />
+                <ImageUploader
+                    onUpload={(imageList) => handleImageUpload(imageList)}
+                    // formSubmitted={formSubmitted}
+                />
             </div>
-            <button className="square-button" type="submit">
+            <button className="square-button" type="submit" disabled={!images}>
                 {formSubmitted ? 'Uploading...' : 'Submit'}
             </button>
+
+            {featuredImage && <img src={featuredImage} alt="featuredImage" />}
         </form>
     );
 };

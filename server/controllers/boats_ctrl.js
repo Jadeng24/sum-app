@@ -13,12 +13,29 @@ module.exports = {
         }
     },
     async createBoat(req, res) {
-        const { name, length, type, width, model, featuredImage, description } =
-            req.body;
+        const {
+            name,
+            length,
+            type,
+            width,
+            model,
+            featuredImage,
+            images,
+            description,
+        } = req.body;
         try {
             await pool.query(
-                "INSERT INTO boats(name, length, type, width, model, featured_image, description)VALUES($1, $2, $3, $4, $5, 'https://www.discoverboating.com/sites/default/files/styles/large/public/jet_boat2.JPG?h=736091d5&itok=l_f8x_EE', $6)",
-                [name, length, type, width, model, description],
+                'INSERT INTO boats(name, length, type, width, model, featured_image, images, description)VALUES($1, $2, $3, $4, $5, $6, $7, $8)',
+                [
+                    name,
+                    length,
+                    type,
+                    width,
+                    model,
+                    featuredImage,
+                    images,
+                    description,
+                ],
                 (response) => {
                     res.json({ status: 200 });
                 },
