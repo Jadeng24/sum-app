@@ -49,7 +49,9 @@ const Step1 = () => {
     }, [selectedBoat]);
     return (
         <div className="wizardStep carousel-holder flex">
-            <div className="boat-floor" />
+            <div className="floor-boarder">
+                <div className="floor-circle flex"></div>
+            </div>
 
             <Swiper
                 onSwiper={setSwiperRef}
@@ -64,18 +66,27 @@ const Step1 = () => {
                 centeredSlides
             >
                 {boats.map((boat, index) => (
-                    <div className="slide-holder">
-                        <BoatSlideInfo name={boat.name} length={boat.length} />
-                        <SwiperSlide key={boat.id} virtualIndex={index}>
-                            <BoatSlide
-                                boatImg={boat.featured_image}
-                                type={boat.type}
-                                name={boat.name}
-                                length={boat.length}
-                                model={boat.model}
-                            />
-                        </SwiperSlide>
-                    </div>
+                    <SwiperSlide key={boat.id} virtualIndex={index}>
+                        {({ isActive }) => {
+                            return (
+                                <div>
+                                    <BoatSlide
+                                        boatImg={boat.featured_image}
+                                        type={boat.type}
+                                        name={boat.name}
+                                        length={boat.length}
+                                        model={boat.model}
+                                    />
+                                    {isActive && (
+                                        <BoatSlideInfo
+                                            name={boat.name}
+                                            length={boat.length}
+                                        />
+                                    )}
+                                </div>
+                            );
+                        }}
+                    </SwiperSlide>
                 ))}
             </Swiper>
         </div>

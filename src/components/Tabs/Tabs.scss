@@ -4,6 +4,10 @@
     height: 40px;
     padding: 0px 4px;
     box-sizing: border-box;
+    background: white;
+    position: absolute;
+    top: 70px;
+    z-index: 5;
 
     span {
         cursor: pointer;
