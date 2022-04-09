@@ -18,17 +18,24 @@ const BoatItem = (props: BoatItemProps) => {
         <div className="BoatItem">
             {isAdmin && <MdDelete onClick={onDeleteBoat} />}
             <div>{boat.name}</div>
+            <div>
+                <img
+                    className="boat-image featured-image"
+                    src={boat.featured_image}
+                    alt={boat.name}
+                />
+            </div>
 
-            <img
-                className="boat-image"
-                src={boat.featured_image}
-                alt={boat.name}
-            />
-            {boat.images &&
-                boat.images.map((imageUrl) => (
-                    <img src={imageUrl} alt={boat.name} />
-                ))}
-
+            <div className="image-gallery">
+                {boat.images &&
+                    boat.images.map((imageUrl) => (
+                        <img
+                            className="boat-image"
+                            src={imageUrl}
+                            alt={boat.name}
+                        />
+                    ))}
+            </div>
             <div>Description: {boat.description}</div>
             <div>Length: {boat.length}&apos;</div>
             <div>Width: {boat.width}&apos;</div>

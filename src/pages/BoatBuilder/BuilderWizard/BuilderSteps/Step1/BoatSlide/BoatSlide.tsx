@@ -1,21 +1,21 @@
 import React from 'react';
+import BoatSlideInfo from '../BoatSlideInfo/BoatSlideInfo';
 
 import './BoatSlide.scss';
 
 interface BoatSlideProps {
     boatImg: string;
-    title: string;
-    model: string;
     length: number;
+    model: string;
+    name: string;
+    type: string;
 }
 const BoatSlide = (props: BoatSlideProps) => {
-    const { boatImg, title, model, length } = props;
+    const { boatImg, length, model, name, type } = props;
     return (
         <div className="BoatSlide column">
-            <img className="boat-image" src={boatImg} alt={title} />
-            <div>{title}</div>
-            <div>{length}</div>
-            <div>{model}</div>
+            <img className="boat-image" src={boatImg} alt={name} />
+            {/* <BoatSlideInfo name={name} length={length} /> */}
         </div>
     );
 };

@@ -19,6 +19,9 @@
         animation-name: slidein;
         animation-iteration-count: infinite;
     }
+    .slide-holder {
+        border: solid 1px red;
+    }
     .swiper-slide {
         transform: scale(0.95);
         transition: 0.3s;

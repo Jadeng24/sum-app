@@ -5,8 +5,10 @@
     border: solid 3px transparent;
     border-radius: 10px;
     text-align: center;
+    // position: relative;
+    overflow: hidden;
 
-    .boat-image {
+    img.boat-image {
         width: 100%;
         min-width: 150px;
         max-width: 650px;

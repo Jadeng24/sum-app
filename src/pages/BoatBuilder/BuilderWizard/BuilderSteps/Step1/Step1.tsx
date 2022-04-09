@@ -13,45 +13,40 @@ import sport4 from '../../../../../assets/sport4-t.png';
 
 import './Step1.scss';
 import BoatSlide from './BoatSlide/BoatSlide';
+import BoatSlideInfo from './BoatSlideInfo/BoatSlideInfo';
 
 const Step1 = () => {
     const [swiperRef, setSwiperRef] = useState(null);
+    const [boats, setBoats] = useState([]);
+    const [selectedBoat, setSelectedBoat] = useState(boats[0]);
     const slideTo = (eventObj) => {
         if (eventObj.isPrev) {
             swiperRef.slideTo(swiperRef.activeIndex - 1);
         }
     };
-    const boats = [
-        {
-            boatImg: centerConsole4,
-            title: 'Center Console Jetboat',
-            length: 13.5,
-            model: 'centerConsole',
-            id: 1,
-        },
-        {
-            boatImg: centerConsole4,
-            title: 'Center Console Jetboat',
-            length: 13.5,
-            model: 'centerConsole',
-            id: 2,
-        },
-        {
-            boatImg: sport4,
-            title: 'Sport Race Jetboat',
-            length: 10,
-            model: 'centerConsole',
-            id: 3,
-        },
-        {
-            boatImg: sport4,
-            title: 'Sport Race Jetboat',
-            length: 13.5,
-            model: 'sport',
-            id: 4,
-        },
-    ];
 
+    const getBoats = async () => {
+        const response = await fetch('/api/boats', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+            },
+        });
+        const result = await response.json();
+        setBoats(result.data);
+        setSelectedBoat(result.data[0]);
+    };
+    const handleBoatSelection = () => {
+        setSelectedBoat(boats[swiperRef.realIndex]);
+    };
+
+    useEffect(() => {
+        getBoats();
+    }, []);
+
+    useEffect(() => {
+        console.log(selectedBoat);
+    }, [selectedBoat]);
     return (
         <div className="wizardStep carousel-holder flex">
             <div className="boat-floor" />
@@ -62,21 +57,25 @@ const Step1 = () => {
                 initialSlide={0}
                 spaceBetween={10}
                 slidesPerView={3}
-                // onSlideChange={() => console.log('slide change')}
+                onSlideChange={() => handleBoatSelection()}
                 grabCursor
                 loop
                 slideToClickedSlide
                 centeredSlides
             >
                 {boats.map((boat, index) => (
-                    <SwiperSlide key={boat.id} virtualIndex={index}>
-                        <BoatSlide
-                            boatImg={boat.boatImg}
-                            title={boat.title}
-                            length={boat.length}
-                            model={boat.model}
-                        />
-                    </SwiperSlide>
+                    <div className="slide-holder">
+                        <BoatSlideInfo name={boat.name} length={boat.length} />
+                        <SwiperSlide key={boat.id} virtualIndex={index}>
+                            <BoatSlide
+                                boatImg={boat.featured_image}
+                                type={boat.type}
+                                name={boat.name}
+                                length={boat.length}
+                                model={boat.model}
+                            />
+                        </SwiperSlide>
+                    </div>
                 ))}
             </Swiper>
         </div>

@@ -43,10 +43,11 @@ const CreateBoatForm = () => {
     const [name, setName] = useState('');
     const [length, setLength] = useState(boatLengthOptions[10].value); // 12
     const [type, setType] = useState(boatTypeOptions[0].value); // aluminum
-    const [height, setHeight] = useState(3);
-    const [width, setWidth] = useState(5);
+    const [height, setHeight] = useState(3); // in feet
+    const [width, setWidth] = useState(5); // in feet
     const [seats, setSeats] = useState(boatSeatOptions[3]);
     const [fuel, setFuel] = useState(10); // in gallons
+    const [weight, setWeight] = useState(2500); // in lbs
     const [weightCapacity, setWeightCapacity] = useState(600); // in lbs
     const [storage, setStorage] = useState(10); // in Cubic feet.
     const [maxHp, setMaxHp] = useState(170);
@@ -58,7 +59,6 @@ const CreateBoatForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setFormSubmitted(true);
-        console.log(images);
         const boatData = {
             name,
             length,
@@ -67,6 +67,7 @@ const CreateBoatForm = () => {
             width,
             seats,
             fuel,
+            weight,
             weightCapacity,
             storage,
             maxHp,
@@ -226,6 +227,21 @@ const CreateBoatForm = () => {
                     className="column"
                     style={{ width: 'calc(50% - 15px)', maxWidth: '500px' }}
                 >
+                    <label htmlFor="length">Weight* (Lbs.)</label>
+                    <input
+                        type="number"
+                        id="name"
+                        required
+                        value={weight}
+                        min={1}
+                        max={20000}
+                        onChange={(e) => setWeight(Number(e.target.value))}
+                    />
+                </div>
+                <div
+                    className="column"
+                    style={{ width: 'calc(50% - 15px)', maxWidth: '500px' }}
+                >
                     <label htmlFor="length">Weight Capacity* (Lbs.)</label>
                     <input
                         type="number"
@@ -237,19 +253,6 @@ const CreateBoatForm = () => {
                         onChange={(e) =>
                             setWeightCapacity(Number(e.target.value))
                         }
-                    />
-                </div>
-                <div
-                    className="column"
-                    style={{ width: 'calc(50% - 15px)', maxWidth: '500px' }}
-                >
-                    <label htmlFor="length">Storage* (Cu Ft.)</label>
-                    <input
-                        type="number"
-                        id="name"
-                        required
-                        value={storage}
-                        onChange={(e) => setStorage(Number(e.target.value))}
                     />
                 </div>
             </div>
@@ -274,24 +277,38 @@ const CreateBoatForm = () => {
                     className="column"
                     style={{ width: 'calc(50% - 15px)', maxWidth: '500px' }}
                 >
-                    <label htmlFor="length" style={{ fontWeight: '600' }}>
-                        Base Price* (USD)
-                    </label>
-                    <div className="row inputHolder">
-                        <div className="inputSymbol">
-                            <BsCurrencyDollar />
-                        </div>
+                    <label htmlFor="length">Storage* (Cu Ft.)</label>
+                    <input
+                        type="number"
+                        id="name"
+                        required
+                        value={storage}
+                        onChange={(e) => setStorage(Number(e.target.value))}
+                    />
+                </div>
+            </div>
 
-                        <input
-                            type="number"
-                            id="name"
-                            required
-                            value={price}
-                            min={1}
-                            max={200000}
-                            onChange={(e) => setPrice(Number(e.target.value))}
-                        />
+            <div
+                className="column"
+                style={{ width: 'calc(50% - 15px)', maxWidth: '500px' }}
+            >
+                <label htmlFor="length" style={{ fontWeight: '600' }}>
+                    Base Price* (USD)
+                </label>
+                <div className="row inputHolder">
+                    <div className="inputSymbol">
+                        <BsCurrencyDollar />
                     </div>
+
+                    <input
+                        type="number"
+                        id="name"
+                        required
+                        value={price}
+                        min={1}
+                        max={200000}
+                        onChange={(e) => setPrice(Number(e.target.value))}
+                    />
                 </div>
             </div>
 
@@ -305,7 +322,6 @@ const CreateBoatForm = () => {
                 />
             </div>
 
-            {/* upload to cloudinary or whatever then save image_Id to new boat  */}
             <div className="column">
                 <label htmlFor="boatImages">Boat Images</label>
                 <ImageUploader
