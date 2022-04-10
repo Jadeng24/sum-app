@@ -4,6 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 .row {
     display: flex;
@@ -111,4 +112,9 @@ button.square-button {
         top: 16px;
         left: 5px;
     }
+}
+
+img.thumbnail {
+    width: 140px;
+    border-radius: 3px;
 }

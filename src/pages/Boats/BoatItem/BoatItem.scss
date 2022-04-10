@@ -4,7 +4,8 @@
     max-width: 100%;
     border: solid 1px #222;
     margin-bottom: 20px;
-    .image-gallery {
+    cursor: pointer;
+    & .image-gallery {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -20,4 +21,8 @@
             margin-bottom: 16px;
         }
     }
+}
+.selected-boat {
+    border: solid 2px dodgerblue;
+    margin-top: 100px;
 }

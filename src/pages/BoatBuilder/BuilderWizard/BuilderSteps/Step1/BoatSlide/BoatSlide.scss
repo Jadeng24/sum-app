@@ -6,13 +6,20 @@
     border-radius: 10px;
     text-align: center;
     // position: relative;
-    overflow: hidden;
+    // overflow: hidden;
 
     img.boat-image {
         width: 100%;
         min-width: 150px;
-        max-width: 650px;
+        max-width: 300px;
         margin-bottom: 15px;
-        opacity: 0.3;
+        // margin-top: 50px;
+        // opacity: 0.3;
+    }
+    img.desktop-boat-image {
+        max-width: 400px;
+    }
+    img.mobile-boat-image {
+        margin-top: 50px;
     }
 }

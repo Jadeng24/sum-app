@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { Boat } from '../../../types/Types';
 import BoatItem from '../../Boats/BoatItem/BoatItem';
 import CreateBoatForm from './CreateBoatForm';
 
 const AdminBoats = () => {
     const [createStatus, setCreateStatus] = useState('Create');
     const [deleteStatus, setDeleteStatus] = useState('Delete');
+    const [selectedBoat, setSelectedBoat] = useState(null);
     const [boats, setBoats] = useState([]);
 
     const getBoats = async () => {
@@ -32,6 +34,10 @@ const AdminBoats = () => {
             getBoats(); // filter list instead without getting boats
         }
     };
+
+    const handleBoatSelection = (boat: Boat) => {
+        setSelectedBoat(boat);
+    };
     useEffect(() => {
         getBoats();
     }, []);
@@ -39,7 +45,7 @@ const AdminBoats = () => {
     return (
         <div className="column">
             <h2>Add a new Boat</h2>
-            <CreateBoatForm />
+            <CreateBoatForm editBoat={selectedBoat} />
             {boats &&
                 boats.length &&
                 boats.map((boat) => {
@@ -50,6 +56,10 @@ const AdminBoats = () => {
                             onDeleteBoat={() => {
                                 handleDeleteBoat(boat.id);
                             }}
+                            onSelectBoat={() => {
+                                handleBoatSelection(boat);
+                            }}
+                            isSelected={selectedBoat?.id === boat.id}
                             isAdmin // Show delete
                         />
                     );

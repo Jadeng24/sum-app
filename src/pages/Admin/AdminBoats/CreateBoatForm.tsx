@@ -1,9 +1,21 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
 import { BsCurrencyDollar } from 'react-icons/bs';
+import { FaStar } from 'react-icons/fa';
+import { MdClose, MdDelete } from 'react-icons/md';
 import ImageUploader from '../../../components/ImageUploader/ImageUploader';
+import { Boat } from '../../../types/Types';
 
-const CreateBoatForm = () => {
+import './CreateBoatForm.scss';
+
+interface CreateBoatFormProps {
+    editBoat: Boat | null;
+}
+const CreateBoatForm = (props: CreateBoatFormProps) => {
+    const { editBoat } = props;
     const boatLengthOptions = [
         { value: 7, label: `7'` },
         { value: 8, label: `8'` },
@@ -90,15 +102,46 @@ const CreateBoatForm = () => {
         if (result) setFormSubmitted(false);
     };
 
-    const handleImageUpload = (imageList) => {
-        console.log(imageList);
-
-        setImages(imageList);
-        setFeaturedImage(imageList[0]);
+    const handleFeaturedImage = (image) => {
+        setFeaturedImage(image || '');
     };
 
+    const handleImageUpload = (imageList) => {
+        console.log(imageList);
+        setImages(imageList);
+        handleFeaturedImage(imageList[0]);
+    };
+
+    const onDeleteImage = (selectedImg) => {
+        // const newImages = ;
+        setImages(images.filter((item) => item !== selectedImg));
+        setTimeout(() => {
+            handleFeaturedImage(images);
+        }, 1000);
+    };
+
+    useEffect(() => {
+        if (editBoat?.id) {
+            setName(editBoat.name);
+            setLength(editBoat.length);
+            setType(editBoat.type);
+            setHeight(editBoat.height);
+            setWidth(editBoat.width);
+            setSeats(editBoat.seats);
+            setFuel(editBoat.fuel);
+            setWeight(editBoat.weight);
+            setWeightCapacity(editBoat.weightCapacity);
+            setStorage(editBoat.storage);
+            setMaxHp(editBoat.maxHp);
+            setPrice(editBoat.price);
+            setDescription(editBoat.description);
+            setFeaturedImage(editBoat.featured_image);
+            setImages(editBoat.images);
+        }
+        console.log({ boat: editBoat });
+    }, [editBoat]);
     return (
-        <form onSubmit={handleSubmit} className="contact-form">
+        <form onSubmit={handleSubmit} className="CreateBoatForm">
             <div className="column" style={{ maxWidth: '500px' }}>
                 <label htmlFor="name" style={{ fontWeight: '600' }}>
                     Name*
@@ -324,6 +367,36 @@ const CreateBoatForm = () => {
 
             <div className="column">
                 <label htmlFor="boatImages">Boat Images</label>
+                {images && (
+                    <div className="row start preview-images">
+                        {images.map((image) => (
+                            <div className="preview-image">
+                                <img
+                                    onClick={() => handleFeaturedImage(image)}
+                                    className={`thumbnail ${
+                                        featuredImage === image
+                                            ? 'featured-image'
+                                            : ''
+                                    }`}
+                                    src={image}
+                                    alt="Img"
+                                />
+
+                                <div
+                                    onClick={() => onDeleteImage(image)}
+                                    className="clickable delete-boat-icon"
+                                >
+                                    <MdClose />
+                                </div>
+                                {featuredImage === image && (
+                                    <div className="featured-image-icon">
+                                        <FaStar color="white" />
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                )}
                 <ImageUploader
                     onUpload={(imageList) => handleImageUpload(imageList)}
                     // formSubmitted={formSubmitted}
@@ -332,8 +405,6 @@ const CreateBoatForm = () => {
             <button className="square-button" type="submit" disabled={!images}>
                 {formSubmitted ? 'Uploading...' : 'Submit'}
             </button>
-
-            {featuredImage && <img src={featuredImage} alt="featuredImage" />}
         </form>
     );
 };

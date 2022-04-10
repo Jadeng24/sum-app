@@ -25,6 +25,7 @@ export interface Boat {
     seats: number;
     weight: number;
     fuel: number;
+    maxHp: number;
     height: number;
     price: number;
     storage: number;

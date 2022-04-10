@@ -14,6 +14,14 @@ import sport4 from '../../../../../assets/sport4-t.png';
 import './Step1.scss';
 import BoatSlide from './BoatSlide/BoatSlide';
 import BoatSlideInfo from './BoatSlideInfo/BoatSlideInfo';
+import {
+    isDesktop,
+    isMobile,
+} from '../../../../../components/Devices/MediaQuery';
+import { Mobile } from '../../../../../components/Devices/Mobile';
+import { TabletAndMobile } from '../../../../../components/Devices/TabletAndMobile';
+import { Desktop } from '../../../../../components/Devices/Desktop';
+import { Tablet } from '../../../../../components/Devices/Tablet';
 
 const Step1 = () => {
     const [swiperRef, setSwiperRef] = useState(null);
@@ -49,9 +57,21 @@ const Step1 = () => {
     }, [selectedBoat]);
     return (
         <div className="wizardStep carousel-holder flex">
-            <div className="floor-boarder">
-                <div className="floor-circle flex"></div>
-            </div>
+            <Mobile>
+                <div className="mobile-floor-border floor-border flex">
+                    <div className="floor-circle flex" />
+                </div>
+            </Mobile>
+            <Tablet>
+                <div className="tablet-floor-border floor-border flex">
+                    <div className="floor-circle flex" />
+                </div>
+            </Tablet>
+            <Desktop>
+                <div className="floor-border flex">
+                    <div className="floor-circle flex" />
+                </div>
+            </Desktop>
 
             <Swiper
                 onSwiper={setSwiperRef}

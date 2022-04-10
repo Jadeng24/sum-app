@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/require-default-props */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { MdDelete } from 'react-icons/md';
 import { Boat } from '../../../types/Types';
 
@@ -8,16 +10,26 @@ import './BoatItem.scss';
 interface BoatItemProps {
     boat: Boat;
     onDeleteBoat: () => void;
+    onSelectBoat: (boat: Boat) => void;
+    isSelected: boolean;
     isAdmin?: boolean;
 }
 
 const BoatItem = (props: BoatItemProps) => {
-    const { boat, onDeleteBoat, isAdmin } = props;
+    const { boat, isAdmin, isSelected, onDeleteBoat, onSelectBoat } = props;
+
+    const handleBoatSelection = () => {
+        onSelectBoat(boat);
+    };
 
     return (
-        <div className="BoatItem">
+        <div
+            className={`BoatItem ${isSelected ? 'selected-boat' : ''}`}
+            onClick={() => handleBoatSelection()}
+        >
             {isAdmin && <MdDelete onClick={onDeleteBoat} />}
             <div>{boat.name}</div>
+            {isSelected && <div>selected</div>}
             <div>
                 <img
                     className="boat-image featured-image"
