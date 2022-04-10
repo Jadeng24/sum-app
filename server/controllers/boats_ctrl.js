@@ -67,8 +67,46 @@ module.exports = {
     },
     async updateBoat(req, res) {
         const id = parseInt(req.params.id, 10);
+        const {
+            name,
+            length,
+            type,
+            height,
+            width,
+            seats,
+            fuel,
+            weight,
+            weightCapacity,
+            storage,
+            maxHp,
+            price,
+            model,
+            featuredImage,
+            description,
+            images,
+        } = req.body;
         try {
-            // const boat = await pool.query(`UPDATE from boats where id = ${id}`); // PUT BOAT
+            const boat = await pool.query(
+                `UPDATE boats SET name = $1, length = $2, type = $3, height = $4, width = $5, seats = $6, fuel = $7, weight = $8, weight_capacity = $9, storage = $10, max_hp = $11, price = $12, model = $13, featured_image = $14, description = $15, images = $16 WHERE id = ${id}`,
+                [
+                    name,
+                    length,
+                    type,
+                    height,
+                    width,
+                    seats,
+                    fuel,
+                    weight,
+                    weightCapacity,
+                    storage,
+                    maxHp,
+                    price,
+                    model,
+                    featuredImage,
+                    description,
+                    images,
+                ]
+            ); // PUT BOAT
 
             res.json({ status: 200 });
         } catch (err) {
@@ -78,7 +116,7 @@ module.exports = {
     async deleteBoat(req, res) {
         const id = parseInt(req.params.id, 10);
         try {
-            const boat = await pool.query(`DELETE from boats where id = ${id}`);
+            const boat = await pool.query(`DELETE FROM boats WHERE id = ${id}`);
 
             res.json({ status: 200 });
         } catch (err) {

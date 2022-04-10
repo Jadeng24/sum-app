@@ -89,9 +89,10 @@ const CreateBoatForm = (props: CreateBoatFormProps) => {
             description,
             images,
         };
+        const url = editBoat ? `/api/boats/${editBoat.id}` : '/api/boats';
 
-        const response = await fetch('/api/boats', {
-            method: 'POST',
+        const response = await fetch(url, {
+            method: editBoat ? 'PUT' : 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
             },
@@ -108,7 +109,7 @@ const CreateBoatForm = (props: CreateBoatFormProps) => {
 
     const handleImageUpload = (imageList) => {
         console.log(imageList);
-        setImages(imageList);
+        setImages([...images, ...imageList]);
         handleFeaturedImage(imageList[0]);
     };
 
