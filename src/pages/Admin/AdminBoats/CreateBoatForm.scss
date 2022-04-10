@@ -1,0 +1,27 @@
+.CreateBoatForm {
+    .preview-images {
+        .preview-image {
+            position: relative;
+            cursor: pointer;
+            .featured-image-icon {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+            }
+            .delete-boat-icon {
+                position: absolute;
+                top: 4px;
+                right: 20px;
+                background: white;
+                padding: 4px;
+                border-radius: 4px;
+            }
+        }
+        img.thumbnail {
+            margin-right: 16px;
+        }
+        img.featured-image {
+            border: solid 4px dodgerblue;
+        }
+    }
+}

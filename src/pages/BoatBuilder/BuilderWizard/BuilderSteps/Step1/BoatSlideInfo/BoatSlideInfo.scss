@@ -1,0 +1,24 @@
+.BoatSlideInfo {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    top: 250px;
+    text-align: center;
+    animation: fadeIn 1.5s;
+    color: #222;
+    margin: 0px;
+    padding: 0px;
+}
+.mobile-boat-slide-info {
+    top: 200px;
+    font-size: 14px;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
