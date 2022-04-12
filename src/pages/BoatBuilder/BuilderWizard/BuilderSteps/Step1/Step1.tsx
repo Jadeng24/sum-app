@@ -8,53 +8,36 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Virtual } from 'swiper';
 import 'swiper/css/bundle';
 
-import centerConsole4 from '../../../../../assets/console4-t.png';
-import sport4 from '../../../../../assets/sport4-t.png';
-
 import './Step1.scss';
 import BoatSlide from './BoatSlide/BoatSlide';
 import BoatSlideInfo from './BoatSlideInfo/BoatSlideInfo';
-import {
-    isDesktop,
-    isMobile,
-} from '../../../../../components/Devices/MediaQuery';
+
 import { Mobile } from '../../../../../components/Devices/Mobile';
-import { TabletAndMobile } from '../../../../../components/Devices/TabletAndMobile';
 import { Desktop } from '../../../../../components/Devices/Desktop';
 import { Tablet } from '../../../../../components/Devices/Tablet';
+import { Boat } from '../../../../../types/Types';
 
-const Step1 = () => {
+interface Step1Props {
+    boats: Boat[];
+    selectedBoat: Boat;
+    initialBoatIndex: number;
+    onBoatSelection: (boat: Boat) => void;
+}
+const Step1 = (props: Step1Props) => {
+    const { boats, initialBoatIndex, onBoatSelection, selectedBoat } = props;
+
     const [swiperRef, setSwiperRef] = useState(null);
-    const [boats, setBoats] = useState([]);
-    const [selectedBoat, setSelectedBoat] = useState(boats[0]);
+
     const slideTo = (eventObj) => {
         if (eventObj.isPrev) {
             swiperRef.slideTo(swiperRef.activeIndex - 1);
         }
     };
 
-    const getBoats = async () => {
-        const response = await fetch('/api/boats', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8',
-            },
-        });
-        const result = await response.json();
-        setBoats(result.data);
-        setSelectedBoat(result.data[0]);
-    };
     const handleBoatSelection = () => {
-        setSelectedBoat(boats[swiperRef.realIndex]);
+        if (boats && swiperRef) onBoatSelection(boats[swiperRef.realIndex]);
     };
 
-    useEffect(() => {
-        getBoats();
-    }, []);
-
-    useEffect(() => {
-        console.log(selectedBoat);
-    }, [selectedBoat]);
     return (
         <div className="wizardStep carousel-holder flex">
             <Mobile>
@@ -72,43 +55,44 @@ const Step1 = () => {
                     <div className="floor-circle flex" />
                 </div>
             </Desktop>
-
-            <Swiper
-                onSwiper={setSwiperRef}
-                modules={[Virtual]}
-                initialSlide={0}
-                spaceBetween={10}
-                slidesPerView={3}
-                onSlideChange={() => handleBoatSelection()}
-                grabCursor
-                loop
-                slideToClickedSlide
-                centeredSlides
-            >
-                {boats.map((boat, index) => (
-                    <SwiperSlide key={boat.id} virtualIndex={index}>
-                        {({ isActive }) => {
-                            return (
-                                <div>
-                                    <BoatSlide
-                                        boatImg={boat.featured_image}
-                                        type={boat.type}
-                                        name={boat.name}
-                                        length={boat.length}
-                                        model={boat.model}
-                                    />
-                                    {isActive && (
-                                        <BoatSlideInfo
+            {boats && (
+                <Swiper
+                    onSwiper={setSwiperRef}
+                    modules={[Virtual]}
+                    initialSlide={initialBoatIndex}
+                    spaceBetween={10}
+                    slidesPerView={3}
+                    onSlideChange={() => handleBoatSelection()}
+                    grabCursor
+                    loop
+                    slideToClickedSlide
+                    centeredSlides
+                >
+                    {boats.map((boat, index) => (
+                        <SwiperSlide key={boat.id} virtualIndex={index}>
+                            {({ isActive }) => {
+                                return (
+                                    <div>
+                                        <BoatSlide
+                                            boatImg={boat.featured_image}
+                                            type={boat.type}
                                             name={boat.name}
                                             length={boat.length}
+                                            model={boat.model}
                                         />
-                                    )}
-                                </div>
-                            );
-                        }}
-                    </SwiperSlide>
-                ))}
-            </Swiper>
+                                        {isActive && (
+                                            <BoatSlideInfo
+                                                name={boat.name}
+                                                length={boat.length}
+                                            />
+                                        )}
+                                    </div>
+                                );
+                            }}
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            )}
         </div>
     );
 };

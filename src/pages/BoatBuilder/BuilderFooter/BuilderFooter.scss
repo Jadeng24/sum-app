@@ -11,21 +11,22 @@
         justify-content: space-between;
         padding: 4px 20px;
         box-sizing: border-box;
-    }
-    .footer-right-section {
-        background: linear-gradient(0deg, dodgerblue, rgb(89, 172, 255));
-        color: white;
-
-        .next-button {
+        .footer-button {
             font-weight: 600;
-            // height: 100%;
             align-items: flex-start;
             font-size: 18px;
-            span.next-text {
+            span.small-text {
                 margin-top: -6px;
                 font-size: 12px;
                 margin-bottom: 4px;
             }
+            span.footer-price {
+                font-weight: 700;
+            }
         }
+    }
+    .footer-right-section {
+        background: linear-gradient(0deg, dodgerblue, rgb(89, 172, 255));
+        color: white;
     }
 }

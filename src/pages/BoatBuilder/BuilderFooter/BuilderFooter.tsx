@@ -16,18 +16,20 @@ const BuilderFooter = (props) => {
 
     return (
         <div className="BuilderFooter flex">
-            <div
-                className="footer-section flex clickable"
-                onClick={() => previousStep()}
-            >
-                Go back
+            <div className="footer-section flex">
+                <div className="footer-button column">
+                    <span className="small-text">Total MSRP</span>
+                    {labels && activeStep !== labels.length - 1 && (
+                        <span className="footer-price">$25,385</span>
+                    )}
+                </div>
             </div>
             <div
                 className="footer-section footer-right-section flex clickable touch"
                 onClick={() => nextStep()}
             >
-                <div className="next-button column">
-                    <span className="next-text">Next</span>
+                <div className="footer-button column">
+                    <span className="small-text">Next</span>
                     {labels && activeStep !== labels.length - 1 && (
                         <span>{labels[activeStep + 1]}</span>
                     )}
