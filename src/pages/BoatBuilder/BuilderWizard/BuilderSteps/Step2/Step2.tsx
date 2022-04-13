@@ -28,13 +28,33 @@ const Step2 = (props: Step2Props) => {
                 {boat && (
                     <img
                         className="boat-image"
-                        src={boat.images[1]}
+                        src={boat.featured_image}
                         alt={boat.name}
                     />
                 )}
             </div>
             <div className="options-wrapper column">
                 <StepHeader title={`Build your ${boat.name}`} step="Exterior" />
+                <div>option 1</div>
+                <div>option 2</div>
+                <div>option 3</div>
+                <div>option 4</div>
+                <div>option 1</div>
+                <div>option 1</div>
+                <div>option 1</div>
+                <div>option 1</div>
+                <div>option 1</div>
+                <div>option 1</div>
+                <div>option 1</div>
+                <div>option 1</div>
+                <div>option 1</div>
+                <div>option 1</div>
+                <div>option 1</div>
+                <div>option 1</div>
+                <div>option 1</div>
+                <div>option 1</div>
+                <div>option 1</div>
+                <div>option 1</div>
             </div>
         </div>
     );

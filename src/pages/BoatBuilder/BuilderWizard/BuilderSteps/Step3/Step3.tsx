@@ -22,7 +22,7 @@ const Step3 = (props: Step3Props) => {
                 {boat && (
                     <img
                         className="boat-image"
-                        src={boat.images[2]}
+                        src={boat.featured_image}
                         alt={boat.name}
                     />
                 )}
