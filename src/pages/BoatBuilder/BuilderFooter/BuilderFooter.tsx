@@ -9,18 +9,28 @@ import { Link } from 'react-router-dom';
 
 interface BuilderFooterProps {
     labels: string[];
+    price: number | 0;
 }
 const BuilderFooter = (props) => {
-    const { labels } = props;
+    const { labels, price } = props;
     const { previousStep, nextStep, activeStep } = useWizard();
 
     return (
         <div className="BuilderFooter flex">
             <div className="footer-section flex">
                 <div className="footer-button column">
-                    <span className="small-text">Total MSRP</span>
+                    <span className="small-text">
+                        {activeStep === 0 ? 'Base' : 'Total'} MSRP
+                    </span>
                     {labels && activeStep !== labels.length - 1 && (
-                        <span className="footer-price">$25,385</span>
+                        <span className="footer-price">
+                            {(price &&
+                                new Intl.NumberFormat('en-US', {
+                                    style: 'currency',
+                                    currency: 'USD',
+                                }).format(price)) ||
+                                '$0.00'}
+                        </span>
                     )}
                 </div>
             </div>

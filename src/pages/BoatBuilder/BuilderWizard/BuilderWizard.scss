@@ -2,11 +2,44 @@
     height: calc(100vh - 70px);
     overflow-x: hidden;
     .wizardStep {
-        height: calc(100% - 102px); // Nav and footer
-        // border: solid 1px red;
+        height: calc(100% - 100px); // Nav and footer
     }
+
     .step-content {
         margin-top: 40px;
-        background: #eeeeee;
+        // overflow: hidden;
+        box-sizing: border-box;
+        .boat-preview {
+            width: 60%;
+            min-height: 300px;
+            background: #eeeeee;
+            box-sizing: border-box;
+        }
+        .options-wrapper {
+            max-width: 500px;
+            width: 40%;
+            // min-height: 200px;
+            border-left: solid 2px #cecece;
+            padding: 30px 24px 10px 24px;
+            overflow-y: auto;
+            min-height: 100%;
+            box-sizing: border-box;
+        }
+        &.isTabletOrMobile {
+            .boat-preview {
+                width: 100%;
+                height: 40%;
+                min-width: 100%;
+            }
+            .options-wrapper {
+                border: none;
+                border-top: solid 2px #cecece;
+                height: 60%;
+                min-height: 50%;
+                max-width: 100%;
+                width: 100%;
+                overflow-y: auto;
+            }
+        }
     }
 }

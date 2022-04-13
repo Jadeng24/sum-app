@@ -11,7 +11,7 @@ const BoatSlideInfo = (props: BoatSlideInfoProps) => {
     return (
         <div className="BoatSlideInfo column">
             <h2>{name}</h2>
-            <div>Length: {length}</div>
+            <div>Length: {length}&apos; Hull</div>
         </div>
     );
 };

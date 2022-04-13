@@ -3,7 +3,6 @@
 /* eslint-disable react/jsx-curly-brace-presence */
 /* eslint-disable import/no-unresolved */
 import React, { useEffect, useState } from 'react';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Virtual } from 'swiper';
 import 'swiper/css/bundle';
@@ -25,7 +24,6 @@ interface Step1Props {
 }
 const Step1 = (props: Step1Props) => {
     const { boats, initialBoatIndex, onBoatSelection, selectedBoat } = props;
-
     const [swiperRef, setSwiperRef] = useState(null);
 
     const slideTo = (eventObj) => {

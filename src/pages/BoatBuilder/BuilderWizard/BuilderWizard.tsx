@@ -59,7 +59,12 @@ const BuilderWizard = () => {
         <div className="BuilderWizard touch">
             <Wizard
                 header={<Tabs labels={wizardStepLabels} />}
-                footer={<BuilderFooter labels={wizardStepLabels} />}
+                footer={
+                    <BuilderFooter
+                        labels={wizardStepLabels}
+                        price={selectedBoat?.price}
+                    />
+                }
             >
                 <Step1
                     boats={boats}
@@ -68,9 +73,9 @@ const BuilderWizard = () => {
                     onBoatSelection={(boat) => handleBoatSelection(boat)}
                 />
                 <Step2 boat={selectedBoat} />
-                <Step3 />
-                <Step4 />
-                <Step5 />
+                <Step3 boat={selectedBoat} />
+                <Step4 boat={selectedBoat} />
+                <Step5 boat={selectedBoat} />
             </Wizard>
         </div>
     );
