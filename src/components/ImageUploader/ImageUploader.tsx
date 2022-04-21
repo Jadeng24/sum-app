@@ -12,7 +12,6 @@ interface ImageUploaderProps {
 const ImageUploader = (props: ImageUploaderProps) => {
     const { onUpload } = props;
 
-    const [progress, setProgress] = useState(0);
     const [files, setFiles] = useState([]);
 
     const S3_BUCKET = 'sum-image-upload-storage';
@@ -20,7 +19,7 @@ const ImageUploader = (props: ImageUploaderProps) => {
 
     AWS.config.update({
         accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
-        secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
+        secretAccessKey: process.env.REACT_APP_AWS_ACCESS_KEY,
     });
 
     const myBucket = new AWS.S3({
@@ -45,20 +44,14 @@ const ImageUploader = (props: ImageUploaderProps) => {
                     Key: file.name,
                 };
 
-                myBucket
-                    .putObject(params)
-                    .on('httpUploadProgress', (uploadedFile) => {
-                        setProgress(
-                            Math.round(
-                                (uploadedFile.loaded / uploadedFile.total) * 100
-                            )
-                        );
-                    })
-                    .send((err) => {
-                        if (err) reject(err);
-                        const url = `https://sum-image-upload-storage.s3.us-west-1.amazonaws.com/${fileData.file.name}`;
-                        fileNames.push(url);
-                    });
+                myBucket.upload(params, (err, data) => {
+                    if (err) {
+                        // eslint-disable-next-line no-console
+                        console.error(err);
+                    } else if (data) {
+                        fileNames.push(data.Location);
+                    }
+                });
             });
             resolve(fileNames);
         });
@@ -85,23 +78,8 @@ const ImageUploader = (props: ImageUploaderProps) => {
         });
     };
 
-    // useEffect(() => {
-    //     if (files?.length) {
-    //         console.log(formSubmitted);
-    //         uploadImages(files);
-    //     }
-    // }, [formSubmitted]);
-    // TODO: Add array of image objects / urls to boat after image upload and then
-    // allow a featured image option for boat. (first in list?)
-    // set AWS credentials in node.
     return (
         <div>
-            {/* <img
-                src="https://sum-image-upload-storage.s3.us-west-1.amazonaws.com/console2.png"
-                alt="sumBoat"
-            /> */}
-            {progress !== 0 && <div>Progress: {progress}%</div>}
-            {/* files: {files && files.map((file) => <div>{file}</div>)} */}
             <Dropzone
                 getUploadParams={getUploadParams}
                 onChangeStatus={(file, status, allFiles) =>

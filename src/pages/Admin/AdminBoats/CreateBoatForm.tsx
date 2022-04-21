@@ -5,7 +5,7 @@
 import React, { useEffect, useState } from 'react';
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { FaStar } from 'react-icons/fa';
-import { MdClose, MdDelete } from 'react-icons/md';
+import { MdClose } from 'react-icons/md';
 import ImageUploader from '../../../components/ImageUploader/ImageUploader';
 import { Boat } from '../../../types/Types';
 
@@ -13,9 +13,10 @@ import './CreateBoatForm.scss';
 
 interface CreateBoatFormProps {
     editBoat: Boat | null;
+    handleOnSubmit: () => void;
 }
 const CreateBoatForm = (props: CreateBoatFormProps) => {
-    const { editBoat } = props;
+    const { editBoat, handleOnSubmit } = props;
     const boatLengthOptions = [
         { value: 7, label: `7'` },
         { value: 8, label: `8'` },
@@ -100,7 +101,12 @@ const CreateBoatForm = (props: CreateBoatFormProps) => {
         });
 
         const result = await response.json();
-        if (result) setFormSubmitted(false);
+        if (result) {
+            setTimeout(() => {
+                handleOnSubmit();
+                setFormSubmitted(false);
+            }, 1000);
+        }
     };
 
     const handleFeaturedImage = (image) => {
@@ -108,13 +114,11 @@ const CreateBoatForm = (props: CreateBoatFormProps) => {
     };
 
     const handleImageUpload = (imageList) => {
-        console.log(imageList);
         setImages([...images, ...imageList]);
         handleFeaturedImage(imageList[0]);
     };
 
     const onDeleteImage = (selectedImg) => {
-        // const newImages = ;
         setImages(images.filter((item) => item !== selectedImg));
         setTimeout(() => {
             handleFeaturedImage(images);
@@ -139,7 +143,6 @@ const CreateBoatForm = (props: CreateBoatFormProps) => {
             setFeaturedImage(editBoat.featured_image);
             setImages(editBoat.images);
         }
-        console.log({ boat: editBoat });
     }, [editBoat]);
     return (
         <form onSubmit={handleSubmit} className="CreateBoatForm">
@@ -368,10 +371,10 @@ const CreateBoatForm = (props: CreateBoatFormProps) => {
 
             <div className="column">
                 <label htmlFor="boatImages">Boat Images</label>
-                {images && (
+                {images?.length && (
                     <div className="row start preview-images">
                         {images.map((image) => (
-                            <div className="preview-image">
+                            <div className="preview-image" key={image}>
                                 <img
                                     onClick={() => handleFeaturedImage(image)}
                                     className={`thumbnail ${
@@ -403,7 +406,11 @@ const CreateBoatForm = (props: CreateBoatFormProps) => {
                     // formSubmitted={formSubmitted}
                 />
             </div>
-            <button className="square-button" type="submit" disabled={!images}>
+            <button
+                className="square-button"
+                type="submit"
+                disabled={!images?.length}
+            >
                 {formSubmitted ? 'Uploading...' : 'Submit'}
             </button>
         </form>

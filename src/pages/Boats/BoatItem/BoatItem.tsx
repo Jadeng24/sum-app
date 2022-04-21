@@ -45,6 +45,7 @@ const BoatItem = (props: BoatItemProps) => {
                             className="boat-image"
                             src={imageUrl}
                             alt={boat.name}
+                            key={imageUrl}
                         />
                     ))}
             </div>

@@ -21,6 +21,7 @@ const Tabs = (props: TabsProps) => {
                             <span
                                 className={activeStep === index ? 'active' : ''}
                                 onClick={() => goToStep(index)}
+                                key={label}
                             >
                                 <div>{label}</div>
                             </span>

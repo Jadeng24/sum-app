@@ -45,7 +45,10 @@ const AdminBoats = () => {
     return (
         <div className="column">
             <h2>Add a new Boat</h2>
-            <CreateBoatForm editBoat={selectedBoat} />
+            <CreateBoatForm
+                editBoat={selectedBoat}
+                handleOnSubmit={() => getBoats}
+            />
             {boats &&
                 boats.length &&
                 boats.map((boat) => {
