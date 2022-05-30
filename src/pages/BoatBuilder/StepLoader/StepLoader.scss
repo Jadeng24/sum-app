@@ -1,21 +1,18 @@
 .loading-fade {
     width: 100%;
-    height: calc(100% - 60px);
+    height: calc(100% - 170px);
     position: absolute;
-    top: 0;
+    top: 110px;
     z-index: 6;
-    animation-duration: 1s;
+    animation-duration: 1.5s;
     animation-name: slideins;
-    animation-iteration-count: infinite;
 }
 
 @keyframes slideins {
     0% {
-        background: white;
+        background: rgba(255, 255, 255, 0.85);
     }
-    50% {
-    }
-    80% {
+    90% {
         background: rgba(255, 255, 255, 0.009);
     }
 }

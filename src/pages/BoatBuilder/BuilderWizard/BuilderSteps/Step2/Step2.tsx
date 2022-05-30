@@ -16,16 +16,13 @@ const Step2 = (props: Step2Props) => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        console.log(boat);
-
         setIsLoading(true);
         setTimeout(() => {
             setIsLoading(false);
-        }, 1000);
+        }, 1500);
     }, [boat]);
 
     return (
-        // <div>
         <>
             {isLoading && <StepLoader />}
             <div
@@ -73,7 +70,6 @@ const Step2 = (props: Step2Props) => {
                 </div>
             </div>
         </>
-        // </div>
     );
 };
 
