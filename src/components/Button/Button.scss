@@ -1,14 +1,18 @@
 a.Button {
-    padding: 15px 30px;
-    background: linear-gradient(0deg, dodgerblue, rgb(89, 172, 255));
+    padding: 12px 60px;
+    // background: linear-gradient(0deg, dodgerblue, rgb(89, 172, 255));
+    background: white;
+    color: #222;
     width: auto;
     border-radius: 30px;
-    color: white;
     text-decoration: none;
     transition: 0.3s;
+    text-transform: uppercase;
+    font-family: Raleway;
+    font-weight: 600;
     &:hover {
         opacity: 0.9;
-        padding: 16px 33px;
+        padding: 14px 65px;
     }
 }
 .secondary {

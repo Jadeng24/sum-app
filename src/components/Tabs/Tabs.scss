@@ -8,10 +8,11 @@
     position: absolute;
     top: 70px;
     z-index: 5;
+    border-top: solid 1px #d2d2d2;
 
     span {
         cursor: pointer;
-        padding: 4px 0px;
+        padding: 3px 0px;
         border-bottom: solid 3px transparent;
         transition: 0.3s;
         margin: 0px 6px;

@@ -7,19 +7,19 @@
 
     .step-content {
         margin-top: 40px;
-        // overflow: hidden;
         box-sizing: border-box;
+
         .boat-preview {
             width: 60%;
             min-height: 300px;
-            background: #eeeeee;
+            background: #f7f7f7;
             box-sizing: border-box;
         }
         .options-wrapper {
             max-width: 500px;
             width: 40%;
             // min-height: 200px;
-            border-left: solid 2px #cecece;
+            border-left: solid 1px #d2d2d2;
             padding: 30px 24px 10px 24px;
             overflow-y: auto;
             min-height: 100%;

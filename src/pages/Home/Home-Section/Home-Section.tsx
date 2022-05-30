@@ -21,8 +21,12 @@ const HomeSection = (props: HomeSectionProps) => {
         >
             <div className="section-content">
                 <span className="column">
-                    <h1 style={{ color: 'white' }}>{title}</h1>
-                    <h2 style={{ color: 'white' }}>{subtitle}</h2>
+                    <h1 style={{ color: 'white', marginBottom: '12px' }}>
+                        {title}
+                    </h1>
+                    <h3 style={{ color: 'white', marginTop: '0px' }}>
+                        {subtitle}
+                    </h3>
                 </span>
                 <Button text="Build Now" link={link} />
             </div>
